@@ -141,37 +141,37 @@ const rev_pagination = () => {
   });
 });
 
-document.getElementById("dis_list_pagination").addEventListener("keyup", e => {
-  var current_page = document.getElementById("dis_list_pagination").value.trim();
-  let total = sessionStorage.getItem('count_rows');
-  var last_page = parseInt(sessionStorage.getItem('last_page'));
-  if (e.which === 13) {
-    e.preventDefault();
-    console.log(total);
-    if (current_page != 0 && current_page <= last_page && total > 0) {
-      search_dis(current_page);
-    }
-  }
-});
+// document.getElementById("dis_list_pagination").addEventListener("keyup", e => {
+//   var current_page = document.getElementById("dis_list_pagination").value.trim();
+//   let total = sessionStorage.getItem('count_rows');
+//   var last_page = parseInt(sessionStorage.getItem('last_page'));
+//   if (e.which === 13) {
+//     e.preventDefault();
+//     console.log(total);
+//     if (current_page != 0 && current_page <= last_page && total > 0) {
+//       search_dis(current_page);
+//     }
+//   }
+// });
 
-const get_prev_page = () => {
-    var current_page = parseInt(sessionStorage.getItem('dis_list_pagination'));
-    let total = sessionStorage.getItem('count_rows');
-    var prev_page = current_page - 1;
-    if (prev_page > 0 && total > 0) {
-        search_dis(prev_page);
-    }
-}
+// const get_prev_page = () => {
+//     var current_page = parseInt(sessionStorage.getItem('dis_list_pagination'));
+//     let total = sessionStorage.getItem('count_rows');
+//     var prev_page = current_page - 1;
+//     if (prev_page > 0 && total > 0) {
+//         search_dis(prev_page);
+//     }
+// }
 
-const get_next_page = () => {
-    var current_page = parseInt(sessionStorage.getItem('dis_list_pagination'));
-    let total = sessionStorage.getItem('count_rows');
-    var last_page = parseInt(sessionStorage.getItem('last_page'));
-    var next_page = current_page + 1;
-    if (next_page <= last_page && total > 0) {
-        search_dis(next_page);
-    }
-}
+// const get_next_page = () => {
+//     var current_page = parseInt(sessionStorage.getItem('dis_list_pagination'));
+//     let total = sessionStorage.getItem('count_rows');
+//     var last_page = parseInt(sessionStorage.getItem('last_page'));
+//     var next_page = current_page + 1;
+//     if (next_page <= last_page && total > 0) {
+//         search_dis(next_page);
+//     }
+// }
 
 // const search_dis =current_page=>{
 //   var emp_id = document.getElementById('emp_id_d').value;
