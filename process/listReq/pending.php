@@ -179,11 +179,8 @@ if ($method == 'review') {
 		}else if ($category == 'Initial') {
 			$query = $query . " `t_i_process`";
 		}
-		$query = $query . " SET i_status = 'reviewed', i_review_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE id = '$id' ";
+		$query = $query . " SET i_status = 'Approved', i_review_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE id = '$id' ";
 		$stmt = $conn->prepare($query);
-		/*if ($stmt -> execute()) {
-			update_notif_count_hrd_approver($conn);
-		}*/
 		$stmt -> execute();
 		$count--;
 	}
