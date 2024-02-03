@@ -183,7 +183,7 @@ var arr = [];
         type:'POST',
         cache:false,
         data:{
-        method:'review',
+        method:'i_review',
         category:category,
         arr:arr
        },success:function(response){

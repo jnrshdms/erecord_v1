@@ -3,6 +3,11 @@ session_start();
 include '../conn.php';
 
 $method = $_POST['method'];
+function update_notif_count_hrd_approver($conn) {
+    $sql = "UPDATE `t_notif_can` SET `notif_approval`= notif_approval + 1 WHERE interface = 'hrd_approver'";
+    $stmt = $conn -> prepare($sql);
+    $stmt -> execute();
+}
 
 function count_pending($search_arr, $conn) {
 	if (!empty($search_arr['category'] )) {
@@ -165,13 +170,13 @@ if ($method == 'fetch_category') {
 }
 
 
-if ($method == 'review') {
+if ($method == 'i_review') {
 	$category = $_POST['category'];
 	$arr = [];
 	$arr = $_POST['arr'];
 
 	$count = count($arr);
-	foreach ($arr as $id) {
+	foreach ($arr as $auth_no) {
 
 		$query = "UPDATE";
 		if ($category == 'Final') {
@@ -179,9 +184,11 @@ if ($method == 'review') {
 		}else if ($category == 'Initial') {
 			$query = $query . " `t_i_process`";
 		}
-		$query = $query . " SET i_status = 'Approved', i_review_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE id = '$id' ";
+		$query = $query . " SET i_status = 'Reviewed', i_review_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE auth_no = '$auth_no' ";
 		$stmt = $conn->prepare($query);
-		$stmt -> execute();
+		if ($stmt -> execute()) {
+			update_notif_count_hrd_approver($conn);
+		}
 		$count--;
 	}
 
@@ -192,7 +199,6 @@ if ($method == 'review') {
 	}
 
 }
-
 if ($method == 'update') {
     $auth_no = $_POST['auth_no'];
     $auth_year = $_POST['auth_year'];
