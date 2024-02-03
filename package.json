@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "jquery": "^3.7.0",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.7.20"
+  }
+}
