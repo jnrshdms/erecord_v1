@@ -168,7 +168,7 @@ const get_checked_length = () => {
  
 
 
-const i_review =()=>{
+const review =()=>{
 var category = document.getElementById('category').value;
 var arr = [];
   $('input.singleCheck:checkbox:checked').each((i, el) => {
@@ -183,7 +183,51 @@ var arr = [];
         type:'POST',
         cache:false,
         data:{
-        method:'i_review',
+        method:'review',
+        category:category,
+        arr:arr
+       },success:function(response){
+          console.log(response);
+          if (response == 'success') {
+            Swal.fire({
+                    icon: 'success',
+                    title: 'Succes!!!',
+                    text: 'Success',
+                    showConfirmButton: false,
+                    timer : 1000
+                });
+             search_pending(1);
+             $('#i_review').modal('hide');
+          }
+      }
+    });
+    } else {
+        Swal.fire({
+            icon: 'info',
+            title: 'No checkbox checked !!!',
+            text: 'Information',
+            showConfirmButton: false,
+            timer : 1000
+        });
+    }
+}
+
+const disreview =()=>{
+var category = document.getElementById('category').value;
+var arr = [];
+  $('input.singleCheck:checkbox:checked').each((i, el) => {
+    arr.push($(el).val());
+  });
+  console.log(arr);
+
+  var numberOfChecked = arr.length;
+  if (numberOfChecked > 0) {
+    $.ajax({
+       url:'../../process/listReq/pending.php',
+        type:'POST',
+        cache:false,
+        data:{
+        method:'disreview',
         category:category,
         arr:arr
        },success:function(response){

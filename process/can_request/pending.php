@@ -10,6 +10,12 @@ function update_notif_count_hrd_approver($conn) {
     $stmt -> execute();
 }
 
+function update_notif_count_hrd_disapprover($conn) {
+    $sql = "UPDATE `t_notif_can` SET `notif_disapproval`= notif_approval + 1 WHERE interface = 'hrd_disapprover'";
+    $stmt = $conn -> prepare($sql);
+    $stmt -> execute();
+}
+
 function count_pending($search_arr, $conn) {
 	if (!empty($search_arr['category'] )) {
 	$emp_id = $_POST['emp_id'];
@@ -245,6 +251,35 @@ if ($method == 'qc_review') {
 
 }
 
+if ($method == 'qc_disreview') {
+	$category = $_POST['category'];
+	$arr = [];
+	$arr = $_POST['arr'];
+
+	$count = count($arr);
+	foreach ($arr as $auth_no) {
+
+		$query = "UPDATE";
+		if ($category == 'Final') {
+			$query = $query . " `t_f_process`";
+		}else if ($category == 'Initial') {
+			$query = $query . " `t_i_process`";
+		}
+		$query = $query . " SET r_status = 'Disapproved', r_review_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE auth_no = '$auth_no' ";
+		$stmt = $conn->prepare($query);
+		if ($stmt -> execute()) {
+			update_notif_count_hrd_disapprover($conn);
+		}
+		$count--;
+	}
+
+	if ($count == 0) {
+		echo 'success';
+	} else {
+		echo 'Error';
+	}
+
+}
 
 
 ?>

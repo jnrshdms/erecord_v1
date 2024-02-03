@@ -9,6 +9,12 @@ function update_notif_count_hrd_approver($conn) {
     $stmt -> execute();
 }
 
+function update_notif_count_hrd_disapprover($conn) {
+    $sql = "UPDATE `t_notif_can` SET `notif_disapproval`= notif_approval + 1 WHERE interface = 'hrd_disapprover'";
+    $stmt = $conn -> prepare($sql);
+    $stmt -> execute();
+}
+
 function count_pending($search_arr, $conn) {
 	if (!empty($search_arr['category'] )) {
 	$emp_id = $_POST['emp_id'];
@@ -128,8 +134,8 @@ if ($method == 'fetch_category') {
 				$row_class = (!empty($j['i_approve_by'])) ? "bg-yellow" : "";
 
 			
-				// echo '<tr class="' . $row_class . '">';
-				echo '<tr style="cursor:pointer;" class="'.$row_class.'" data-toggle="modal" data-target="#admin_r_update" onclick="rec_admin_update(&quot;'.$j['id'].'~!~'.$j['auth_year'].'~!~'.$j['date_authorized'].'~!~'.$j['expire_date'].'~!~'.$j['remarks'].'~!~'.$j['r_of_cancellation'].'~!~'.$j['dept'].'~!~'.$j['batch'].'~!~'.$j['d_of_cancellation'].'~!~'.$j['fullname'].'~!~'.$j['auth_no'].'~!~'.$j['i_status'].'&quot;)">';
+				echo '<tr class="' . $row_class . '">';
+				// echo '<tr style="cursor:pointer;" class="'.$row_class.'" data-toggle="modal" data-target="#admin_r_update" onclick="rec_admin_update(&quot;'.$j['id'].'~!~'.$j['auth_year'].'~!~'.$j['date_authorized'].'~!~'.$j['expire_date'].'~!~'.$j['remarks'].'~!~'.$j['r_of_cancellation'].'~!~'.$j['dept'].'~!~'.$j['batch'].'~!~'.$j['d_of_cancellation'].'~!~'.$j['fullname'].'~!~'.$j['auth_no'].'~!~'.$j['i_status'].'&quot;)">';
 		
 
 					echo '<td>';
@@ -170,7 +176,7 @@ if ($method == 'fetch_category') {
 }
 
 
-if ($method == 'i_review') {
+if ($method == 'review') {
 	$category = $_POST['category'];
 	$arr = [];
 	$arr = $_POST['arr'];
@@ -199,6 +205,38 @@ if ($method == 'i_review') {
 	}
 
 }
+
+
+if ($method == 'disreview') {
+	$category = $_POST['category'];
+	$arr = [];
+	$arr = $_POST['arr'];
+
+	$count = count($arr);
+	foreach ($arr as $auth_no) {
+
+		$query = "UPDATE";
+		if ($category == 'Final') {
+			$query = $query . " `t_f_process`";
+		}else if ($category == 'Initial') {
+			$query = $query . " `t_i_process`";
+		}
+		$query = $query . " SET i_status = 'Disapproved', i_review_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE auth_no = '$auth_no' ";
+		$stmt = $conn->prepare($query);
+		// if ($stmt -> execute()) {
+		// 	update_notif_count_hrd_disapprover($conn);
+		// }
+		$count--;
+	}
+
+	if ($count == 0) {
+		echo 'success';
+	} else {
+		echo 'Error';
+	}
+
+}
+
 if ($method == 'update') {
     $auth_no = $_POST['auth_no'];
     $auth_year = $_POST['auth_year'];
