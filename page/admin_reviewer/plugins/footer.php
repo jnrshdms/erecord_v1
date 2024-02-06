@@ -19,7 +19,7 @@ include '../../modals/import_employee.php';
 include '../../modals/edit_emp.php';
 include '../../modals/add_emp_pro.php';
 
-// include '../../modals/view_p.php';
+include '../../modals/view_p.php';
 include '../../modals/review.php';
 include '../../modals/approve.php';
 include '../../modals/i_review.php';

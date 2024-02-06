@@ -12,8 +12,8 @@
        Are you sure that you have reviewed it? 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" onclick="qc_disreview()" >Disapprove</button>
-        <button type="button" class="btn btn-primary" onclick="qc_review()">Confirm</button>
+      <button type="button" class="btn btn-danger" onclick="qc_disreview()" >Disapprove</button>
+        <button type="button" class="btn btn-primary" onclick="qc_review()">Save Changes</button>
       </div>
     </div>
   </div>

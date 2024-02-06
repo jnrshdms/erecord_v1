@@ -264,7 +264,7 @@ if ($method == 'disapprove') {
 		}else if ($category == 'Initial') {
 			$query = $query . " `t_i_process`";
 		}
-		$query = $query . " SET r_status = 'Pending', r_approve_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE auth_no = '$auth_no' ";
+		$query = $query . " SET r_status = 'Diapproved', r_approve_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE auth_no = '$auth_no' ";
 		$stmt = $conn->prepare($query);
 		if ($stmt -> execute()) {
 			update_notif_count_disapprove($conn);

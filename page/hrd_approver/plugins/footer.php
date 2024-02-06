@@ -9,7 +9,7 @@
 //MODALS
 include '../../modals/logout.php';
 include '../../modals/view.php';
-// include '../../modals/view_p.php';
+include '../../modals/view_p.php';
 include '../../modals/approve.php';
 include '../../modals/addaccA.php';
 include '../../modals/upaccA.php';

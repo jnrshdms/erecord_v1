@@ -3,17 +3,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Review Certifications</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Review Certification</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-       Are you sure you want to review this certifications?
+       Are you sure that you have reviewed it? 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" onclick="disreview()" >Disapprove</button>
-        <button type="button" class="btn btn-primary" onclick="review()">Confirm</button>
+        <button type="button" class="btn btn-danger" onclick="i_disreview()" >Disapprove</button>
+        <button type="button" class="btn btn-primary" onclick="i_review()">Save Changes</button>
       </div>
     </div>
   </div>

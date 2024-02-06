@@ -141,7 +141,7 @@ if ($method == 'fetch_rev') {
 					echo '<td>';
 	                echo '<p>
 	                        <label>
-	                            <input type="checkbox" name="" id="" class="singleCheck" onclick="get_checked_length_r();" value="'.$j['id'].'">
+	                            <input type="checkbox" name="" id="" class="singleCheck" onclick="get_checked_length();" value="'.$j['id'].'">
 	                            <span></span>
 	                        </label>
 	                    </p>';
@@ -220,7 +220,7 @@ if ($method == 'disapprove') {
 		}else if ($category == 'Initial') {
 			$query = $query . " `t_i_process`";
 		}
-		$query = $query . " SET i_status = 'Pending', i_approve_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE id = '$id' ";
+		$query = $query . " SET i_status = 'Diapproved', i_approve_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE id = '$id' ";
 		$stmt = $conn->prepare($query);
 		// if ($stmt -> execute()) {
 		// 	update_notif_count_disapprove($conn);

@@ -10,12 +10,6 @@ function update_notif_count_hrd_approver($conn) {
     $stmt -> execute();
 }
 
-function update_notif_count_hrd_disapprover($conn) {
-    $sql = "UPDATE `t_notif_can` SET `notif_disapproval`= notif_approval + 1 WHERE interface = 'hrd_disapprover'";
-    $stmt = $conn -> prepare($sql);
-    $stmt -> execute();
-}
-
 function count_pending($search_arr, $conn) {
 	if (!empty($search_arr['category'] )) {
 	$emp_id = $_POST['emp_id'];
@@ -142,9 +136,9 @@ if ($method == 'fetch_category') {
 		if ($stmt->rowCount() > 0) {
 			foreach($stmt->fetchAll() as $j){
 				$c++;
-				$row_class = (!empty($j['r_approve_by'])) ? "bg-yellow" : "";
+			
 				
-					echo '<tr style="cursor:pointer;" class="'.$row_class.'"modal-trigger" data-toggle="modal" data-target="#view_p" onclick="p_details(&quot;'.$j['id'].'~!~'.$j['auth_year'].'~!~'.$j['date_authorized'].'~!~'.$j['expire_date'].'~!~'.$j['remarks'].'~!~'.$j['r_of_cancellation'].'~!~'.$j['d_of_cancellation'].'~!~'.$j['updated_by'].'~!~'.$j['fullname'].'~!~'.$j['auth_no'].'&quot;)">';
+					echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#view_p" onclick="p_details(&quot;'.$j['id'].'~!~'.$j['auth_year'].'~!~'.$j['date_authorized'].'~!~'.$j['expire_date'].'~!~'.$j['remarks'].'~!~'.$j['r_of_cancellation'].'~!~'.$j['d_of_cancellation'].'~!~'.$j['updated_by'].'~!~'.$j['fullname'].'~!~'.$j['auth_no'].'&quot;)">';
 					
 
 					echo '<td>';
@@ -265,10 +259,10 @@ if ($method == 'qc_disreview') {
 		}else if ($category == 'Initial') {
 			$query = $query . " `t_i_process`";
 		}
-		$query = $query . " SET r_status = 'Disapproved', r_review_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE auth_no = '$auth_no' ";
+		$query = $query . " SET r_status = 'Diapproved', r_review_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE auth_no = '$auth_no' ";
 		$stmt = $conn->prepare($query);
 		if ($stmt -> execute()) {
-			update_notif_count_hrd_disapprover($conn);
+			update_notif_count_hrd_approver($conn);
 		}
 		$count--;
 	}
@@ -280,6 +274,8 @@ if ($method == 'qc_disreview') {
 	}
 
 }
+
+
 
 
 ?>

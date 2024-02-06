@@ -88,7 +88,6 @@ const load_notif_qc = () => {
         }
       } catch(e) {
         console.log(response);
-        console.log(`Notification Error!!! Call IT Personnel Immediately!!! They will fix it right away. Error: ${response}`);
       }
       $('#notif_badge').html(notif_badge);
       $('#notif_approved').html(notif_approved);
@@ -187,7 +186,7 @@ const load_notif_qc_page = () => {
         }
       } catch(e) {
         console.log(response);
-        console.log(`Notification Error!!! Call IT Personnel Immediately!!! They will fix it right away. Error: ${response}`);
+        
       }
       $('#notif_badge').html(notif_badge);
       $('#notif_approved').html(notif_approved);
@@ -253,7 +252,7 @@ const update_notif_qc_badge = () => {
         }
       } catch(e) {
         console.log(response);
-        console.log(`Notification Error!!! Call IT Personnel Immediately!!! They will fix it right away. Error: ${response}`);
+        
       }
       $('#notif_badge').html(notif_badge);
       $('#notif_approved').html(notif_approved);
@@ -274,7 +273,7 @@ const update_notif_qc = () => {
     success: response => {
       if (response != '') {
         console.log(response);
-        console.log(`Notification Error!!! Call IT Personnel Immediately!!! They will fix it right away. Error: ${response}`);
+        
       } else {
         update_notif_qc_badge();
       }

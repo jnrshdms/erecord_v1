@@ -272,49 +272,6 @@ var arr = [];
     }
 }
 
-const qc_disreview =()=>{
-var category = document.getElementById('category').value;
-var arr = [];
-  $('input.singleCheck:checkbox:checked').each((i, el) => {
-    arr.push($(el).val());
-  });
-  console.log(arr);
-
-  var numberOfChecked = arr.length;
-  if (numberOfChecked > 0) {
-    $.ajax({
-       url:'../../process/can_request/pending.php',
-        type:'POST',
-        cache:false,
-        data:{
-        method:'qc_disreview',
-        category:category,
-        arr:arr
-       },success:function(response){ 
-          console.log(response);
-          if (response == 'success') {
-            Swal.fire({
-                    icon: 'success',
-                    title: 'Succes!!!',
-                    text: 'Success',
-                    showConfirmButton: false,
-                    timer : 1000
-                });
-             search_pending(1);
-             $('#qc_i_review').modal('hide');
-          }
-      }
-    });
-    } else {
-        Swal.fire({
-            icon: 'info',
-            title: 'No checkbox checked !!!',
-            text: 'Information',
-            showConfirmButton: false,
-            timer : 1000
-        });
-    }
-}
 
 
 
