@@ -38,7 +38,7 @@ include '../../modals/qc_i_review.php';
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.js"></script>
 
-<?php include 'plugins/js/notif_script.php';?>
+
 
 </body>
 </html>

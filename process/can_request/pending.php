@@ -4,12 +4,6 @@ include '../conn.php';
 
 $method = $_POST['method'];
 
-function update_notif_count_hrd_approver($conn) {
-    $sql = "UPDATE `t_notif_can` SET `notif_approval`= notif_approval + 1 WHERE interface = 'hrd_approver'";
-    $stmt = $conn -> prepare($sql);
-    $stmt -> execute();
-}
-
 function count_pending($search_arr, $conn) {
 	if (!empty($search_arr['category'] )) {
 	$emp_id = $_POST['emp_id'];
@@ -231,10 +225,7 @@ if ($method == 'qc_review') {
 		}
 		$query = $query . " SET r_status = 'Reviewed', r_review_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE auth_no = '$auth_no' ";
 		$stmt = $conn->prepare($query);
-		if ($stmt -> execute()) {
-			update_notif_count_hrd_approver($conn);
-		}
-		$count--;
+		$stmt -> execute();
 	}
 
 	if ($count == 0) {
@@ -261,10 +252,7 @@ if ($method == 'qc_disreview') {
 		}
 		$query = $query . " SET r_status = 'Diapproved', r_review_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE auth_no = '$auth_no' ";
 		$stmt = $conn->prepare($query);
-		if ($stmt -> execute()) {
-			update_notif_count_hrd_approver($conn);
-		}
-		$count--;
+		$stmt -> execute();
 	}
 
 	if ($count == 0) {

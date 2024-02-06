@@ -34,7 +34,7 @@ include '../../modals/approve.php';
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.js"></script>
 
-<?php include 'plugins/js/notif_script.php';?>
+
 
 </body>
 </html>

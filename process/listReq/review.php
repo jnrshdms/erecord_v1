@@ -4,16 +4,7 @@ include '../conn.php';
 
 $method = $_POST['method'];
 
-// function update_notif_count_approve($conn) {
-//     $sql = "UPDATE `t_notif_can` SET `notif_approved`= notif_approved + 1 WHERE interface IN ('admin_reviewer', 'admin', 'qc')";
-//     $stmt = $conn -> prepare($sql);
-//     $stmt -> execute();
-// }
-// function update_notif_count_disapprove($conn) {
-//     $sql = "UPDATE `t_notif_can` SET `notif_disapproved`= notif_disapproved + 1 WHERE interface IN ('admin_reviewer', 'admin', 'qc')";
-//     $stmt = $conn -> prepare($sql);
-//     $stmt -> execute();
-// }
+
 
 function count_rev($search_arr, $conn) {
 	if (!empty($search_arr['category'] )) {
@@ -191,11 +182,8 @@ if ($method == 'approve') {
 		}
 		$query = $query . " SET i_status = 'Approved', i_approve_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE id = '$id' ";
 		$stmt = $conn->prepare($query);
-		// if ($stmt -> execute()) {
-		// 	update_notif_count_disapprove($conn);
-		// }
 		$stmt -> execute();
-		$count--;
+	
 	}
 
 	if ($count == 0) {
@@ -222,11 +210,8 @@ if ($method == 'disapprove') {
 		}
 		$query = $query . " SET i_status = 'Diapproved', i_approve_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE id = '$id' ";
 		$stmt = $conn->prepare($query);
-		// if ($stmt -> execute()) {
-		// 	update_notif_count_disapprove($conn);
-		// }
 		$stmt -> execute();
-		$count--;
+		
 	}
 
 	if ($count == 0) {

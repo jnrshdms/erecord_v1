@@ -198,6 +198,5 @@
   </div>
   <!-- /.content-wrapper -->
 <?php include 'plugins/footer.php';?>
-<?php include 'plugins/js/notif_ar_script.php'; //every page except dashboard?> 
 <?php include 'plugins/js/export_script.php';?>
 <?php include 'plugins/js/addemp_pro_script.php';?>

@@ -4,11 +4,7 @@ include '../conn.php';
 
 $method = $_POST['method'];
 
-function update_notif_count_admin_reviewer($conn) {
-    $sql = "UPDATE `t_notif_can` SET `notif_new_can_request`= notif_new_can_request + 1 WHERE interface = 'admin_reviewer'";
-    $stmt = $conn -> prepare($sql);
-    $stmt -> execute();
-}
+
 
 if ($method == 'fetch_pro') {
 	$category = $_POST['category'];

@@ -16,11 +16,7 @@
         return $arr;
     }
 
-    function update_notif_count_admin_reviewer($conn) {
-        $sql = "UPDATE `t_notif_can` SET `notif_new_can_request`= notif_new_can_request + 1 WHERE interface = 'admin_reviewer'";
-        $stmt = $conn -> prepare($sql);
-        $stmt -> execute();
-    }
+    
 
     function check_csv ($file, $category, $conn) {
         // READ FILE
@@ -290,9 +286,7 @@
 
                                 $stmt = $conn->prepare($insert);
                                 if($stmt->execute()){
-                                    if ($r_status == 'Pending') {
-                                        update_notif_count_admin_reviewer($conn);
-                                    }
+                                    
                                     $error = 0;
                                 }else{
                                     $error = $error + 1;

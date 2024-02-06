@@ -179,11 +179,8 @@ if ($method == 'review') {
 		}
 		$query = $query . " SET i_status = 'Reviewed', i_review_by = '" . $_SESSION['fname'] . "/ " . $server_date_time . "' WHERE id = '$id' ";
 		$stmt = $conn->prepare($query);
-		/*if ($stmt -> execute()) {
-			update_notif_count_hrd_approver($conn);
-		}*/
 		$stmt->execute();
-		$count--;
+		
 	}
 
 	if ($count == 0) {
@@ -209,11 +206,8 @@ if ($method == 'disreview') {
 		}
 		$query = $query . " SET i_status = 'Diapproved', i_approve_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE id = '$id' ";
 		$stmt = $conn->prepare($query);
-		// if ($stmt -> execute()) {
-		// 	update_notif_count_disapprove($conn);
-		// }
 		$stmt -> execute();
-		$count--;
+	
 	}
 
 	if ($count == 0) {

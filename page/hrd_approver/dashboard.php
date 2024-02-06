@@ -256,7 +256,6 @@
   </div>
   <!-- /.content-wrapper -->
 <?php include 'plugins/footer.php';?>
-<?php include 'plugins/js/notif_ar_page_script.php'; //only on dashboard?> 
 <?php include 'plugins/js/pending_script.php';?>
 <?php include 'plugins/js/review_script.php';?>
 <?php include 'plugins/js/history_script.php';?>

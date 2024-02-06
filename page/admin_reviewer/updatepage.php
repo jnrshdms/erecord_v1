@@ -240,5 +240,4 @@
 
 
 <?php include 'plugins/footer.php';?>
-<?php include 'plugins/js/notif_ar_script.php'; //every page except dashboard?> 
 <?php include 'plugins/js/update_script.php';?>
