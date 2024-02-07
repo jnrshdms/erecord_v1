@@ -11,57 +11,57 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                <input type="hidden" id="category_d" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off">
-                    <input type="hidden" id="id_d" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off">
+                <input type="hidden" id="category_qc_d" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off">
+                    <input type="hidden" id="id_qc_d" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off">
                     <div class="col-0 mt-1">
                         <span><b>&nbsp;&nbsp;Employee Name :</b></span>
                     </div>
                     <div class="col-3">
-                        <input type="text" id="employee_name_d" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" disabled>
+                        <input type="text" id="employee_name_qc_d" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" disabled>
                     </div>
                     <div class="col-0 mt-1">
                         <span><b>Authorization No. :</b></span>
                     </div>
                     <div class="col-3">
-                        <input type="text" id="auth_no_d" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" disabled>
+                        <input type="text" id="auth_no_qc_d"" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" disabled>
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-3">
                         <span><b>Authorization Year:</b></span>
-                        <input type="text" id="auth_year_d" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" >
+                        <input type="text" id="auth_year_qc_d"" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" disabled>
                     </div>
                     <div class="col-3">
                         <span><b>Date Authorized:</b></span>
-                        <input type="date" id="date_authorized_d" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" >
+                        <input type="date" id="date_authorized_qc_d"" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" disabled>
                     </div>
                     <div class="col-3">
                         <span><b>Expire Date:</b></span>
-                        <input type="date" id="expire_date_d" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" >
+                        <input type="date" id="expire_date_qc_d"" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" disabled >
                     </div>
                     <div class="col-3">
                         <span><b>Remarks:</b></span>
-                        <input type="text" id="remarks_d" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off">
+                        <input type="text" id="remarks_qc_d"" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" disabled>
                     </div>
 
                     <div class="col-3">
                         <span><b>Department:</b></span>
-                        <select id="dept_d" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" >
+                        <select id="dept_qc_d"" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" disabled>
                             <option value="PD">PD</option>
                             <option value="QA">QA</option>
                         </select>
                     </div>
                     <div class="col-3">
                  <span><b>Reason Of Cancellation:</b></span>
-                 <input type="text" id="r_of_cancellation_can" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" disabled>
+                 <input type="text" id="r_of_cancellation_qc_d"" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" >
             </div>
             <div class="col-3">
                  <span><b>Date Of Cancellation:</b></span>
-                 <input type="date" id="d_of_cancellation_can" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" disabled>
+                 <input type="date" id="d_of_cancellation_qc_d"" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" >
             </div>
                     <div class="col-3">
                         <span><b>Updated By:</b></span>
-                        <input type="text" id="updated_by_d" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" >
+                        <input type="text" id="updated_by_qc_d"" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" disabled>
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="float-right">
-                            <a href="#" class="btn btn-primary" onclick="ds_save_data()">Save</a>
+                            <a href="#" class="btn btn-primary" onclick="ds_qc_save_data()">Save</a>
                         </div>
                     </div>
                 </div>

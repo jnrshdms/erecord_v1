@@ -178,8 +178,7 @@ if ($method == 'fetch_status_can') {
 				$c++;
 				$r_status = $j['r_status'];
 				
-				echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#qc_disapproved" onclick="rec_qc_disapproved(&quot;' . $j['id'] . '~!~' . $j['auth_year'] . '~!~' . $j['date_authorized'] . '~!~' . $j['expire_date'] . '~!~' . $j['remarks'] . '~!~' . $j['dept'] . '~!~' . $j['updated_by'] . '~!~' . $j['fullname'] . '~!~' . $j['auth_no'] . '~!~' . $j['category'] .'~!~' . $j['r_status'].  '&quot;)">';
-				echo '<td>' . $c . '</td>';
+				echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#qc_disapproved" onclick="rec_qc_disapproved(&quot;' . $j['id'] . '~!~' . $j['auth_year'] . '~!~' . $j['date_authorized'] . '~!~' . $j['expire_date'] . '~!~' . $j['remarks'] . '~!~' . $j['dept'] .'~!~' . $j['r_of_cancellation'] .'~!~' . $j['d_of_cancellation'] . '~!~' . $j['updated_by'] . '~!~' . $j['fullname'] . '~!~' . $j['auth_no'] . '~!~' . $j['category'] .'~!~' . $j['r_status'].  '&quot;)">';
 					echo '<td>'.$c.'</td>';
 					echo '<td>'.$j['process'].'</td>';
 					echo '<td>'.$j['auth_no'].'</td>';
@@ -208,6 +207,52 @@ if ($method == 'fetch_status_can') {
 }
 
 
+
+
+if ($method == 'ds_qc_update') {
+	$auth_no = $_POST['auth_no'];
+	$dept = $_POST['dept'];
+	$r_of_cancellation = $_POST['r_of_cancellation'];
+	$d_of_cancellation = $_POST['d_of_cancellation'];
+	$updated_by = $_POST['updated_by'];
+	$id = $_POST['id'];
+	$category = $_POST['category'];
+	$c = 0;
+
+	$error = 0;
+
+	$query = "SELECT id FROM ";
+	if ($category == 'Final') {
+		$query .= "`t_f_process`";
+	} else if ($category == 'Initial') {
+		$query .= "`t_i_process`";
+	}
+	$query .= " WHERE id = '$id' AND  auth_no='$auth_no' AND dept = '$dept'";
+
+	$stmt = $conn->prepare($query);
+	$stmt->execute();
+
+
+	if ($stmt->rowCount() < 1) {
+		$query = "UPDATE ";
+		if ($category == 'Final') {
+			$query .= "`t_f_process`";
+		} else if ($category == 'Initial') {
+			$query .= "`t_i_process`";
+		}
+		$query .= " SET r_of_cancellation = 'NULL', d_of_cancellation = 'NULL',  r_status = 'Pending', updated_by = '" . $_SESSION['fname'] . "/ " . $server_date_time . "' WHERE id = '$id'";
+		$stmt = $conn->prepare($query);
+		if (!$stmt->execute()) {
+			$error++;
+		}
+
+		if ($error == 0) {
+			echo 'success';
+		} else {
+			echo 'error';
+		}
+	}
+}
 
 
 

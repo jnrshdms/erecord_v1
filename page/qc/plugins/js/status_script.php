@@ -124,4 +124,110 @@ const search_can_pagination =()=>{
 } 
 
 
+const rec_qc_disapproved =(param)=>{
+  var data = param.split('~!~');
+  var id = data[0];
+  var auth_year = data[1];
+  var date_authorized = data[2];
+  var expire_date = data[3];
+  var remarks = data[4];
+  var dept = data[5];
+  var r_of_cancellation = data[6];
+  var d_of_cancellation =data[7];
+  var updated_by = data[8];
+  var fullname = data[9];
+  var auth_no = data[10];
+  var category = data[11];
+
+  $('#id_qc_d').val(id);
+  $('#auth_year_qc_d').val(auth_year);
+  $('#date_authorized_qc_d').val(date_authorized);
+  $('#expire_date_qc_d').val(expire_date);
+  $('#remarks_qc_d').val(remarks);
+  $('#dept_qc_d').val(dept);
+  $('#r_of_cancellation_qc_d').val(r_of_cancellation);
+  $('#d_of_cancellation_qc_d').val(d_of_cancellation);
+  $('#updated_by_qc_d').val(updated_by);
+  $('#employee_name_qc_d').val(fullname);
+  $('#auth_no_qc_d').val(auth_no);
+  $('#category_qc_d').val(category);
+
+  console.log(param)
+}
+
+const ds_qc_save_data =()=>{
+  var auth_no = document.getElementById('auth_no_qc_d').value;
+  var dept = document.getElementById('dept_qc_d').value;
+  var r_of_cancellation = document.getElementById('r_of_cancellation_qc_d').value; 
+  var d_of_cancellation = document.getElementById('d_of_cancellation_qc_d').value;
+  var updated_by = document.getElementById('updated_by_qc_d').value;
+  var id = document.getElementById('id_qc_d').value;
+  var category = document.getElementById('category_qc_d').value;
+
+
+    $.ajax({
+           url:'../../process/can_request/status.php',
+          type:'POST',
+          cache:false,
+          data:{
+          method:'ds_qc_update',
+          auth_no:auth_no,
+          dept:dept,
+          r_of_cancellation:r_of_cancellation,
+          d_of_cancellation:d_of_cancellation,
+          updated_by:updated_by,
+          id:id,
+          category:category     
+          },success:function(response){    
+              console.log(response)
+              if (response == 'success') {
+                      Swal.fire({
+                        icon: 'success',
+                        title: 'Succesfully Recorded!!!',
+                        text: 'Success',
+                        showConfirmButton: false,
+                        timer : 1000
+                      });
+                  $("#auth_no").val('');
+                  $("#dept").val('');
+                  $("#r_of_cancellation").val('');
+                  $("#d_of_cancellation").val('');
+                  $("#updated_by").val('');
+                  search_cert(1);
+                  $('#qc_disapproved').modal('hide');
+                  
+              }else if(response == 'existing'){
+                       Swal.fire({
+                        icon: 'info',
+                        title: 'Duplicate Data !!!',
+                        text: 'Information',
+                        showConfirmButton: false,
+                        timer : 1000
+                      });
+                    $("#auth_no").val('');
+                    $("#dept").val('');
+                    $("#r_of_cancellation").val('');
+                    $("#d_of_cancellation").val('');
+                    $("#updated_by").val('');
+                    $('#qc_disapproved').modal('hide');
+                  
+              }else{
+                      Swal.fire({
+                        icon: 'error',
+                        title: 'Error !!!',
+                        text: 'Error',
+                        showConfirmButton: false,
+                        timer : 1000
+                      });
+                  $("#auth_no").val('');
+                  $("#dept").val('');
+                  $("#r_of_cancellation").val('');
+                  $("#d_of_cancellation").val('');
+                  $("#updated_by").val('');
+                  $('#qc_disapproved').modal('hide');
+                  }
+          }
+      });
+  }
+
 </script>
