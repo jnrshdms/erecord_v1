@@ -88,6 +88,7 @@ if ($method == 'history_pagination') {
 
 }
 
+// what i need
 if ($method == 'history') {
 	$emp_id = $_POST['emp_id'];
 	$fullname = $_POST['fullname'];
@@ -98,13 +99,8 @@ if ($method == 'history') {
 	if (!empty($category)) {
 
 		$results_per_page = 100;
-
-		//determine the sql LIMIT starting number for the results on the displaying page
 		$page_first_result = ($current_page-1) * $results_per_page;
-
-		// For row numbering
 		$c = $page_first_result;
-
 		$query = "SELECT a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.updated_by,a.r_status,a.r_review_by,a.r_approve_by,b.fullname,b.agency,a.dept,b.batch,b.emp_id,c.category,c.process";
 
 		if ($category == 'Final') {
@@ -129,9 +125,8 @@ if ($method == 'history') {
 			foreach($stmt->fetchAll() as $j){
 				$c++;
 				
-					echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#view_p" onclick="p_details(&quot;'.$j['id'].'~!~'.$j['auth_year'].'~!~'.$j['date_authorized'].'~!~'.$j['expire_date'].'~!~'.$j['remarks'].'~!~'.$j['r_of_cancellation'].'~!~'.$j['d_of_cancellation'].'~!~'.$j['updated_by'].'~!~'.$j['fullname'].'~!~'.$j['auth_no'].'&quot;)">';
-					
-
+				
+				echo '<tr>';
 					echo '<td>'.$c.'</td>';
 					echo '<td>'.$j['process'].'</td>';
 					echo '<td>'.$j['auth_no'].'</td>';
@@ -158,6 +153,7 @@ if ($method == 'history') {
 		echo '<script>alert("Please select category ");</script>';
 	}
 }
+
 
 if ($method == 'view') {
 	$fullname = $_POST['fullname'];

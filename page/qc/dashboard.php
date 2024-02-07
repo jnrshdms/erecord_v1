@@ -76,10 +76,8 @@
                             <th>Expire&nbsp;Date</th>
                             <th>Reason Of Cancellation</th>
                             <th>Date of Cancellation</th>
-                            <th>Prepared By/ Date/ Time</th>
-                            <th>Review By/ Date/ Time</th>
-                            <th>Status</th>
                             <th>Department</th>
+                            <th>Status</th>
                             <th>Remarks</th>
 
                           </tr>

@@ -170,44 +170,44 @@ if ($method == 'fetch_category') {
 }
 
 if ($method == 'qc_view') {
-	$fullname = $_POST['fullname'];
-	$auth_no = $_POST['auth_no'];
-	$category = $_POST['category'];
+    $fullname = $_POST['fullname'];
+    $auth_no = $_POST['auth_no'];
+    $category = $_POST['category'];
 
-	$c = 0;
+    $c = 0;
 
-		$query = "SELECT a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.updated_by,a.r_status,a.r_review_by,b.fullname,b.emp_id,c.category";
+    $query = "SELECT a.id, a.auth_no, a.auth_year, a.date_authorized, a.expire_date, a.r_of_cancellation, a.d_of_cancellation, a.remarks, a.updated_by, a.r_status, a.r_review_by, b.fullname, b.emp_id, c.category ";
 
-		if ($category == 'Final') {
-			$query = $query . " FROM `t_f_process`";
-		}else if ($category == 'Initial') {
-			$query = $query . " FROM `t_i_process`";
-		}
-		$query = $query . "a
-							LEFT JOIN t_employee_m b  ON a.emp_id = b.emp_id  
-							JOIN `m_process` c ON a.process = c.process
-							where a.auth_no = '$auth_no'";
+    if ($category == 'Final') {
+        $query .= "FROM `t_f_process` a ";
+    } else if ($category == 'Initial') {
+        $query .= "FROM `t_i_process` a ";
+    }
 
-	$stmt = $conn->prepare($query);
-	$stmt->execute();
-	if ($stmt->rowCount() > 0) {
-		foreach($stmt->fetchAll() as $j){
-			$c++;
-			echo '<tr>';
-				
-				echo '<td>'.$j['auth_year'].'</td>';
-				echo '<td>'.$j['date_authorized'].'</td>';
-				echo '<td>'.$j['expire_date'].'</td>';
-					
-			echo '</tr>';
-	}
-	}else{
-		echo '<tr>';
-			echo '<td style="text-align:center;" colspan="4">No Result</td>';
-		echo '</tr>';
-	}
+    $query .= "LEFT JOIN t_employee_m b ON a.emp_id = b.emp_id ";
+    $query .= "JOIN `m_process` c ON a.process = c.process ";
+    $query .= "WHERE a.auth_no = :auth_no";
 
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':auth_no', $auth_no);
+    $stmt->execute();
+    
+    if ($stmt->rowCount() > 0) {
+        foreach ($stmt->fetchAll() as $j) {
+            $c++;
+            echo '<tr>';
+            echo '<td>' . $j['auth_year'] . '</td>';
+            echo '<td>' . $j['date_authorized'] . '</td>';
+            echo '<td>' . $j['expire_date'] . '</td>';
+            echo '</tr>';
+        }
+    } else {
+        echo '<tr>';
+        echo '<td style="text-align:center;" colspan="4">No Result</td>';
+        echo '</tr>';
+    }
 }
+
 
 if ($method == 'qc_review') {
 	$category = $_POST['category'];

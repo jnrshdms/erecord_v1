@@ -99,7 +99,7 @@ if ($method == 'fetch_status_cert') {
 
 		// For row numbering
 		$c = $page_first_result;
-		$query = "SELECT a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.up_date_time,a.i_status,a.i_review_by,b.fullname,b.agency,a.dept,b.batch,b.emp_id,c.category,c.process";
+		$query = "SELECT a.updated_by,a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.up_date_time,a.i_status,a.i_review_by,b.fullname,b.agency,a.dept,b.batch,b.emp_id,c.category,c.process";
 
 		if ($category == 'Final') {
 			$query = $query . " FROM `t_f_process`";
@@ -121,9 +121,7 @@ if ($method == 'fetch_status_cert') {
 			foreach($stmt->fetchAll() as $j){
 				$c++;
 				$i_status = $j['i_status'];
-					echo '<tr>';
-					
-
+					echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#disapproved" onclick="rec_disapproved(&quot;'.$j['id'].'~!~'.$j['auth_year'].'~!~'.$j['date_authorized'].'~!~'.$j['expire_date'].'~!~'.$j['remarks'].'~!~'.$j['dept'].'~!~'.$j['updated_by'].'~!~'.$j['fullname'].'~!~'.$j['auth_no'].'~!~'.$j['i_status'].'&quot;)">';
 					echo '<td>'.$c.'</td>';
 					echo '<td>'.$j['process'].'</td>';
 					echo '<td>'.$j['auth_no'].'</td>';
@@ -154,5 +152,50 @@ if ($method == 'fetch_status_cert') {
 }
 
 
+
+if ($method == 'ds_update') {
+    $auth_no = $_POST['auth_no'];
+    $auth_year = $_POST['auth_year'];
+    $date_authorized = $_POST['date_authorized'];
+    $expire_date = $_POST['expire_date'];
+    $remarks = $_POST['remarks'];
+    $dept = $_POST['dept'];
+    $updated_by = $_POST['updated_by'];
+    $id = $_POST['id'];
+    $category = $_POST['category'];
+    $c = 0;
+
+    $error = 0;
+
+    $query = "SELECT id FROM ";
+    if ($category == 'Final') {
+        $query .= "`t_f_process`";
+    } else if ($category == 'Initial') {
+        $query .= "`t_i_process`";
+    }
+    $query .= " WHERE id = '$id' AND  auth_no='$auth_no'  AND auth_year = '$auth_year' AND date_authorized = '$date_authorized' AND expire_date = '$expire_date' AND remarks = '$remarks' AND dept = '$dept'";
+
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    if ($stmt->rowCount() < 1) {
+        $query = "UPDATE ";
+        if ($category == 'Final') {
+            $query .= "`t_f_process`";
+        } else if ($category == 'Initial') {
+            $query .= "`t_i_process`";
+        }
+        $query .= " SET remarks = '$remarks', auth_year = '$auth_year', date_authorized = '$date_authorized', expire_date = '$expire_date', dept = '$dept', i_status = 'Pending', updated_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE id = '$id'";
+        $stmt = $conn->prepare($query);
+        if (!$stmt->execute()) {
+            $error++;
+        }
+    } 
+
+    if ($error == 0) {
+        echo 'success';
+    } else {
+        echo 'error';
+    }
+}
 
 ?>
