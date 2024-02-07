@@ -164,7 +164,6 @@ const ds_qc_save_data =()=>{
   var id = document.getElementById('id_qc_d').value;
   var category = document.getElementById('category_qc_d').value;
 
-
     $.ajax({
            url:'../../process/can_request/status.php',
           type:'POST',

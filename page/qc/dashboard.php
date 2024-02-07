@@ -71,13 +71,13 @@
                             <th>Authorization&nbsp;No.</th>
                             <th>Employee&nbsp;Name</th>
                             <th>Employee No</th>
-                            <th>Authorization Year</th>
-                            <th>Date Authorized</th>
-                            <th>Expire&nbsp;Date</th>
                             <th>Reason Of Cancellation</th>
                             <th>Date of Cancellation</th>
-                            <th>Department</th>
+                            <th>Prepared By/ Date/ Time</th>
+                            <th>Review By/ Date/ Time</th>
+                            <th>Approved By/ Date/ Time</th>
                             <th>Status</th>
+                            <th>Department</th>
                             <th>Remarks</th>
 
                           </tr>

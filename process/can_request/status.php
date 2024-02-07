@@ -208,52 +208,57 @@ if ($method == 'fetch_status_can') {
 
 
 
-
 if ($method == 'ds_qc_update') {
-	$auth_no = $_POST['auth_no'];
-	$dept = $_POST['dept'];
-	$r_of_cancellation = $_POST['r_of_cancellation'];
-	$d_of_cancellation = $_POST['d_of_cancellation'];
-	$updated_by = $_POST['updated_by'];
-	$id = $_POST['id'];
-	$category = $_POST['category'];
-	$c = 0;
+    $auth_no = $_POST['auth_no'];
+    $dept = $_POST['dept'];
+    $r_of_cancellation = $_POST['r_of_cancellation'];
+    $d_of_cancellation = $_POST['d_of_cancellation'];
+    $updated_by = $_POST['updated_by'];
+    $id = $_POST['id'];
+    $category = $_POST['category'];
+    $c = 0;
 
-	$error = 0;
+    $error = 0;
 
-	$query = "SELECT id FROM ";
-	if ($category == 'Final') {
-		$query .= "`t_f_process`";
-	} else if ($category == 'Initial') {
-		$query .= "`t_i_process`";
-	}
-	$query .= " WHERE id = '$id' AND  auth_no='$auth_no' AND dept = '$dept'";
+    $query = "SELECT id FROM ";
+    if ($category == 'Final') {
+        $query .= "`t_f_process`";
+    } else if ($category == 'Initial') {
+        $query .= "`t_i_process`";
+    }
+    $query .= " WHERE id = '$id' AND  auth_no='$auth_no' AND dept = '$dept'";
 
-	$stmt = $conn->prepare($query);
-	$stmt->execute();
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
 
 
-	if ($stmt->rowCount() < 1) {
-		$query = "UPDATE ";
-		if ($category == 'Final') {
-			$query .= "`t_f_process`";
-		} else if ($category == 'Initial') {
-			$query .= "`t_i_process`";
-		}
-		$query .= " SET r_of_cancellation = 'NULL', d_of_cancellation = 'NULL',  r_status = 'Pending', updated_by = '" . $_SESSION['fname'] . "/ " . $server_date_time . "' WHERE id = '$id'";
-		$stmt = $conn->prepare($query);
-		if (!$stmt->execute()) {
-			$error++;
-		}
+    if ($stmt->rowCount() < 1) {
+        $query = "UPDATE ";
+        if ($category == 'Final') {
+            $query .= "`t_f_process`";
+        } else if ($category == 'Initial') {
+            $query .= "`t_i_process`";
+        }
+        
+        // Check if r_of_cancellation and d_of_cancellation should be set to NULL or '0000-00-00'
+        if ($r_of_cancellation == 'NULL' && $d_of_cancellation == 'NULL') {
+            $query .= " SET r_of_cancellation = NULL, d_of_cancellation = NULL,  r_status = 'Pending', updated_by = '" . $_SESSION['fname'] . "/ " . $server_date_time . "' WHERE id = '$id'";
+        } else {
+            $query .= " SET r_of_cancellation = '$r_of_cancellation', d_of_cancellation = '$d_of_cancellation',  r_status = 'Pending', updated_by = '" . $_SESSION['fname'] . "/ " . $server_date_time . "' WHERE id = '$id'";
+        }
 
-		if ($error == 0) {
-			echo 'success';
-		} else {
-			echo 'error';
-		}
-	}
+        $stmt = $conn->prepare($query);
+        if (!$stmt->execute()) {
+            $error++;
+        }
+
+        if ($error == 0) {
+            echo 'success';
+        } else {
+            echo 'error';
+        }
+    }
 }
-
 
 
 
