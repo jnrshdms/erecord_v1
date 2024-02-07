@@ -155,78 +155,85 @@ const rec_qc_disapproved =(param)=>{
   console.log(param)
 }
 
-const ds_qc_save_data =()=>{
-  var auth_no = document.getElementById('auth_no_qc_d').value;
-  var dept = document.getElementById('dept_qc_d').value;
-  var r_of_cancellation = document.getElementById('r_of_cancellation_qc_d').value; 
-  var d_of_cancellation = document.getElementById('d_of_cancellation_qc_d').value;
-  var updated_by = document.getElementById('updated_by_qc_d').value;
-  var id = document.getElementById('id_qc_d').value;
-  var category = document.getElementById('category_qc_d').value;
+const ds_qc_save_data = () => {
+    var auth_no = document.getElementById('auth_no_qc_d').value;
+    var dept = document.getElementById('dept_qc_d').value;
+    var r_of_cancellation = document.getElementById('r_of_cancellation_qc_d').value;
+    var d_of_cancellation = document.getElementById('d_of_cancellation_qc_d').value;
+    var updated_by = document.getElementById('updated_by_qc_d').value;
+    var id = document.getElementById('id_qc_d').value;
+    var category = document.getElementById('category_qc_d').value;
+
+
 
     $.ajax({
-           url:'../../process/can_request/status.php',
-          type:'POST',
-          cache:false,
-          data:{
-          method:'ds_qc_update',
-          auth_no:auth_no,
-          dept:dept,
-          r_of_cancellation:r_of_cancellation,
-          d_of_cancellation:d_of_cancellation,
-          updated_by:updated_by,
-          id:id,
-          category:category     
-          },success:function(response){    
-              console.log(response)
-              if (response == 'success') {
-                      Swal.fire({
-                        icon: 'success',
-                        title: 'Succesfully Recorded!!!',
-                        text: 'Success',
-                        showConfirmButton: false,
-                        timer : 1000
-                      });
-                  $("#auth_no").val('');
-                  $("#dept").val('');
-                  $("#r_of_cancellation").val('');
-                  $("#d_of_cancellation").val('');
-                  $("#updated_by").val('');
-                  search_cert(1);
-                  $('#qc_disapproved').modal('hide');
-                  
-              }else if(response == 'existing'){
-                       Swal.fire({
-                        icon: 'info',
-                        title: 'Duplicate Data !!!',
-                        text: 'Information',
-                        showConfirmButton: false,
-                        timer : 1000
-                      });
-                    $("#auth_no").val('');
-                    $("#dept").val('');
-                    $("#r_of_cancellation").val('');
-                    $("#d_of_cancellation").val('');
-                    $("#updated_by").val('');
-                    $('#qc_disapproved').modal('hide');
-                  
-              }else{
-                      Swal.fire({
-                        icon: 'error',
-                        title: 'Error !!!',
-                        text: 'Error',
-                        showConfirmButton: false,
-                        timer : 1000
-                      });
-                  $("#auth_no").val('');
-                  $("#dept").val('');
-                  $("#r_of_cancellation").val('');
-                  $("#d_of_cancellation").val('');
-                  $("#updated_by").val('');
-                  $('#qc_disapproved').modal('hide');
-                  }
-          }
-      });
-  }
+        url: '../../process/can_request/status.php',
+        type: 'POST',
+        cache: false,
+        data: {
+            method: 'ds_qc_update',
+            auth_no: auth_no,
+            dept: dept,
+            r_of_cancellation: r_of_cancellation,
+            d_of_cancellation: d_of_cancellation,
+            updated_by: updated_by,
+            id: id,
+            category: category
+        },
+        success: function (response) {
+            console.log(response);
+            if (response == 'success') {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Successfully Recorded!!!',
+                    text: 'Success',
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+                // Clearing input fields and hiding modal
+                $("#auth_no").val('');
+                $("#dept").val('');
+                $("#r_of_cancellation").val('');
+                $("#d_of_cancellation").val('');
+                $("#updated_by").val('');
+                search_cert(1);
+                $('#qc_disapproved').modal('hide');
+
+            } else if (response == 'existing') {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Duplicate Data !!!',
+                    text: 'Information',
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+                // Clearing input fields and hiding modal
+                $("#auth_no").val('');
+                $("#dept").val('');
+                $("#r_of_cancellation").val('');
+                $("#d_of_cancellation").val('');
+                $("#updated_by").val('');
+                $('#qc_disapproved').modal('hide');
+
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error !!!',
+                    text: 'Error',
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+                // Clearing input fields and hiding modal
+                $("#auth_no").val('');
+                $("#dept").val('');
+                $("#r_of_cancellation").val('');
+                $("#d_of_cancellation").val('');
+                $("#updated_by").val('');
+                $('#qc_disapproved').modal('hide');
+            }
+        }
+    });
+}
+
 
 </script>
