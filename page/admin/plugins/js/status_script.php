@@ -176,8 +176,7 @@ const rec_disapproved =(param)=>{
   var updated_by = data[6];
   var fullname = data[7];
   var auth_no = data[8];
-  //var category = category[10];
-
+  var category = data[9];
 
   $('#id_d').val(id);
   $('#auth_year_d').val(auth_year);
@@ -188,13 +187,8 @@ const rec_disapproved =(param)=>{
   $('#updated_by_d').val(updated_by);
   $('#employee_name_d').val(fullname);
   $('#auth_no_d').val(auth_no);
-
-
-
-    console.log(param)
-    
-
-
+  $('#category_d').val(category);
+  console.log(param)
 }
 
 const ds_save_data =()=>{
@@ -207,7 +201,7 @@ const ds_save_data =()=>{
   var updated_by = document.getElementById('updated_by_d').value;
   var id = document.getElementById('id_d').value;
   var fullname = document.getElementById('employee_name_d').value;
-  var category = document.getElementById('category').value;
+  var category = document.getElementById('category_d').value;
 
 
   if (auth_no == '') {
@@ -277,8 +271,8 @@ const ds_save_data =()=>{
                   $("#remarks").val('');
                   $("#dept").val('');
                   $("#updated_by").val('');
-                
-                  $('#disaproved').modal('hide');
+                  search_cert(1);
+                  $('#disapproved').modal('hide');
                   
               }else if(response == 'existing'){
                        Swal.fire({
@@ -318,6 +312,5 @@ const ds_save_data =()=>{
       });
   }
 }
-
   
 </script>

@@ -1,4 +1,4 @@
-<div class="modal fade bd-example-modal-xl" id="disapproved" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-xl" id="qc_disapproved" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -51,6 +51,14 @@
                             <option value="QA">QA</option>
                         </select>
                     </div>
+                    <div class="col-3">
+                 <span><b>Reason Of Cancellation:</b></span>
+                 <input type="text" id="r_of_cancellation_can" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" disabled>
+            </div>
+            <div class="col-3">
+                 <span><b>Date Of Cancellation:</b></span>
+                 <input type="date" id="d_of_cancellation_can" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" disabled>
+            </div>
                     <div class="col-3">
                         <span><b>Updated By:</b></span>
                         <input type="text" id="updated_by_d" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" >

@@ -178,7 +178,8 @@ if ($method == 'fetch_status_can') {
 				$c++;
 				$r_status = $j['r_status'];
 				
-				echo '<tr>';
+				echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#qc_disapproved" onclick="rec_qc_disapproved(&quot;' . $j['id'] . '~!~' . $j['auth_year'] . '~!~' . $j['date_authorized'] . '~!~' . $j['expire_date'] . '~!~' . $j['remarks'] . '~!~' . $j['dept'] . '~!~' . $j['updated_by'] . '~!~' . $j['fullname'] . '~!~' . $j['auth_no'] . '~!~' . $j['category'] .'~!~' . $j['r_status'].  '&quot;)">';
+				echo '<td>' . $c . '</td>';
 					echo '<td>'.$c.'</td>';
 					echo '<td>'.$j['process'].'</td>';
 					echo '<td>'.$j['auth_no'].'</td>';

@@ -10,6 +10,8 @@
 include '../../modals/logout.php';
 include '../../modals/view.php';
 include '../../modals/update_admin_r.php';
+include '../../modals/qc_disapproved.php';
+
 
 ?>
 <!-- jQuery -->
