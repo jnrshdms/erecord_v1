@@ -221,25 +221,6 @@ const get_auth_no_by_emp_no = () => {
 						$("#dept").val('');
 						$("#batch").val('');
 	          			
-	            // }else if(response == 'existing'){
-	            //          Swal.fire({
-	            //           icon: 'info',
-	            //           title: 'Duplicate Data !!!',
-	            //           text: 'Information',
-	            //           showConfirmButton: false,
-	            //           timer : 1000
-	            //         });
-	            //         $('#add_emp_pro').modal('hide'); 
-	            //         $("#pro").val('');
-	            //         $("#auth_no").val('');
-	            //         $("#emp_id").val('');
-	            //         $("#auth_year").val('');
-	          	// 		$("#date_authorized").val('');
-	          	// 		$("#expire_date").val('');
-	          	// 		$("#remarks").val('');
-				// 		$("#fullname").val('');
-				// 		$("#dept").val('');
-				// 		$("#batch").val('');
 	            }else{
 	                    Swal.fire({
 	                      icon: 'error',
