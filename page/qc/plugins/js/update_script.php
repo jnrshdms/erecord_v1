@@ -312,7 +312,7 @@ const qc_save_data =()=>{
               title: 'Please Input Expire Date !!!',
               text: 'Information',
               showConfirmButton: false,
-              timer : 1000
+              timer : 1000 
           });
   }
       else{

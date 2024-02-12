@@ -464,19 +464,19 @@ if ($method == 'qc_update') {
 
     $stmt = $conn->prepare($query);
     $stmt->execute();
-    if ($stmt->rowCount() < 1) {
-        $query = "UPDATE ";
-        if ($category == 'Final') {
-            $query .= "`t_f_process`";
-        } else if ($category == 'Initial') {
-            $query .= "`t_i_process`";
-        }
-        $query .= " SET remarks = '$remarks', auth_year = '$auth_year', date_authorized = '$date_authorized', expire_date = '$expire_date', dept = '$dept', i_status = 'Pending', updated_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE id = '$id'";
-        $stmt = $conn->prepare($query);
-        if (!$stmt->execute()) {
-            $error++;
-        }
-    } else {
+    // if ($stmt->rowCount() < 1) {
+    //     $query = "UPDATE ";
+    //     if ($category == 'Final') {
+    //         $query .= "`t_f_process`";
+    //     } else if ($category == 'Initial') {
+    //         $query .= "`t_i_process`";
+    //     }
+    //     $query .= " SET remarks = '$remarks', auth_year = '$auth_year', date_authorized = '$date_authorized', expire_date = '$expire_date', dept = '$dept', r_status = 'Pending', updated_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE id = '$id'";
+    //     $stmt = $conn->prepare($query);
+    //     if (!$stmt->execute()) {
+    //         $error++;
+    //     }
+    // } else {
         $query = "UPDATE ";
         if ($category == 'Final') {
             $query .= "`t_f_process`";
@@ -488,7 +488,7 @@ if ($method == 'qc_update') {
         if (!$stmt->execute()) {
             $error++;
         }
-    }
+    // }
 
     if ($error == 0) {
         echo 'success';

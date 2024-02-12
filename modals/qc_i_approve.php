@@ -12,7 +12,7 @@
        Are you sure you want to approve this Certifications?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" onclick="disapprove()" >Disapprove</button>
+        <button type="button" class="btn btn-danger" onclick="qc_disapprove()" >Disapprove</button>
         <button type="button" class="btn btn-primary" onclick="qc_approve()">Confirm</button>
       </div>
     </div>

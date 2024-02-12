@@ -56,62 +56,6 @@ if ($method == 'count_can') {
 
 	echo count_can($search_arr, $conn);
 }
-// function count_can($search_arr, $conn) {
-//     if (!empty($search_arr['category'])) {
-//         $emp_id = $_POST['emp_id'];
-//         $fullname = $_POST['fullname'];
-//         $category = $_POST['category'];
-//         $r_status = $_POST['r_status'];
-//         $query = "SELECT count(a.id) as total";
-
-//         if ($category == 'Final') {
-//             $query .= " FROM `t_f_process`";
-//         } else if ($category == 'Initial') {
-//             $query .= " FROM `t_i_process`";
-//         }
-
-//         $query .= " a
-//                     LEFT JOIN t_employee_m b ON a.emp_id = b.emp_id 
-//                     JOIN `m_process` c ON a.process = c.process
-//                     WHERE a.r_status = '".$search_arr['r_status']."'";
-
-//         if (!empty($search_arr['emp_id'])) {
-//             $query .= " AND (b.emp_id = '".$search_arr['emp_id']."' OR b.emp_id_old = '".$search_arr['emp_id']."')";
-//         }
-
-//         $query .= " AND b.fullname LIKE '".$search_arr['fullname']."%' ";
-//         $query .= " ORDER BY a.process ASC, b.fullname ASC, a.auth_year DESC";
-
-//         $stmt = $conn->prepare($query);
-//         $stmt->execute();
-
-//         if ($stmt->rowCount() > 0) {
-//             foreach ($stmt->fetchAll() as $j) {
-//                 $total = $j['total'];
-//             }
-//         } else {
-//             $total = 0;
-//         }
-
-//         return $total;
-//     }
-// }
-
-
-// if ($method == 'count_can') {
-// 	$emp_id = $_POST['emp_id'];
-// 	$fullname = $_POST['fullname'];
-// 	$category = $_POST['category'];
-// 	$r_status = $_POST['r_status'];
-
-// 	$search_arr = array(
-// 		"emp_id" => $emp_id, 
-// 		"fullname" => $fullname, 
-// 		"category" => $category,
-// 		"r_status" => $r_status
-// 	);
-// 	echo count_can($search_arr, $conn);
-// }
 
 if ($method == 'fetch_can_pagination') {
 	$emp_id = $_POST['emp_id'];
@@ -178,7 +122,8 @@ if ($method == 'fetch_status_can') {
 				$c++;
 				$r_status = $j['r_status'];
 				
-				echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#qc_disapproved" onclick="rec_qc_disapproved(&quot;' . $j['id'] . '~!~' . $j['auth_year'] . '~!~' . $j['date_authorized'] . '~!~' . $j['expire_date'] . '~!~' . $j['remarks'] . '~!~' . $j['dept'] .'~!~' . $j['r_of_cancellation'] .'~!~' . $j['d_of_cancellation'] . '~!~' . $j['updated_by'] . '~!~' . $j['fullname'] . '~!~' . $j['auth_no'] . '~!~' . $j['category'] .'~!~' . $j['r_status'].  '&quot;)">';
+				// echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#qc_disapproved" onclick="rec_qc_disapproved(&quot;' . $j['id'] . '~!~' . $j['auth_year'] . '~!~' . $j['date_authorized'] . '~!~' . $j['expire_date'] . '~!~' . $j['remarks'] . '~!~' . $j['dept'] .'~!~' . $j['r_of_cancellation'] .'~!~' . $j['d_of_cancellation'] . '~!~' . $j['updated_by'] . '~!~' . $j['fullname'] . '~!~' . $j['auth_no'] . '~!~' . $j['category'] .'~!~' . $j['r_status'].  '&quot;)">';
+				 	echo'<tr>';
 					echo '<td>'.$c.'</td>';
 					echo '<td>'.$j['process'].'</td>';
 					echo '<td>'.$j['auth_no'].'</td>';
@@ -219,20 +164,7 @@ if ($method == 'ds_qc_update') {
     $c = 0;
 
     $error = 0;
-
-    $query = "SELECT id FROM ";
-    if ($category == 'Final') {
-        $query .= "`t_f_process`";
-    } else if ($category == 'Initial') {
-        $query .= "`t_i_process`";
-    }
-    $query .= " WHERE id = '$id' AND  auth_no='$auth_no' AND dept = '$dept'";
-
-    $stmt = $conn->prepare($query);
-    $stmt->execute();
-
-
-    if ($stmt->rowCount() < 1) {
+ 
         $query = "UPDATE ";
         if ($category == 'Final') {
             $query .= "`t_f_process`";
@@ -240,7 +172,7 @@ if ($method == 'ds_qc_update') {
             $query .= "`t_i_process`";
         }
         
-        // Check if r_of_cancellation and d_of_cancellation should be set to NULL or '0000-00-00'
+     
         if ($r_of_cancellation == 'NULL' && $d_of_cancellation == 'NULL') {
             $query .= " SET r_of_cancellation = NULL, d_of_cancellation = NULL,  r_status = 'Pending', updated_by = '" . $_SESSION['fname'] . "/ " . $server_date_time . "' WHERE id = '$id'";
         } else {
@@ -258,7 +190,6 @@ if ($method == 'ds_qc_update') {
             echo 'error';
         }
     }
-}
 
 
 

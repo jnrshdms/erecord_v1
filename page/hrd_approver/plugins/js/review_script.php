@@ -212,7 +212,7 @@ var arr = [];
 }
 
 
-const disapprove =()=>{
+const qc_disapprove =()=>{
 var category = document.getElementById('categoryy').value;
 var arr = [];
   $('input.singleCheck:checkbox:checked').each((i, el) => {
@@ -227,7 +227,7 @@ var arr = [];
         type:'POST',
         cache:false,
         data:{
-        method:'disapprove',
+        method:'qc_disapprove',
         category:category,
         arr:arr
        },success:function(response){

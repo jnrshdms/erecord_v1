@@ -67,16 +67,12 @@ if ($method == 'count_category') {
 	$emp_id = $_POST['emp_id'];
 	$pro = $_POST['pro'];
 	$category = $_POST['category'];
-	$date = $_POST['date'];
-	$date_authorized = $_POST['date_authorized'];
 	$fullname = $_POST['fullname']; 
 
 	$search_arr = array(
 		"emp_id" => $emp_id, 
 		"pro" => $pro, 
 		"category" => $category,
-		"date" => $date,
-		"date_authorized" => $date_authorized,
 		"fullname" => $fullname
 	);
 

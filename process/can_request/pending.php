@@ -226,6 +226,7 @@ if ($method == 'qc_review') {
 		$query = $query . " SET r_status = 'Reviewed', r_review_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE auth_no = '$auth_no' ";
 		$stmt = $conn->prepare($query);
 		$stmt -> execute();
+		$count--;
 	}
 
 	if ($count == 0) {
@@ -237,31 +238,30 @@ if ($method == 'qc_review') {
 }
 
 if ($method == 'qc_disreview') {
-	$category = $_POST['category'];
-	$arr = [];
-	$arr = $_POST['arr'];
+    $category = $_POST['category'];
+    $arr = $_POST['arr'];
 
-	$count = count($arr);
-	foreach ($arr as $auth_no) {
+    $count = count($arr);
+    foreach ($arr as $auth_no) {
+        $query = "UPDATE";
+        if ($category == 'Final') {
+            $query .= " `t_f_process`";
+        } else if ($category == 'Initial') {
+            $query .= " `t_i_process`";
+        }
+        $query .= " SET r_status = 'Diapproved', r_review_by = '".$_SESSION['fname']. "/ " .$server_date_time."', r_of_cancellation = NULL, d_of_cancellation = NULL WHERE auth_no = '$auth_no'";
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $count--;
+    }
 
-		$query = "UPDATE";
-		if ($category == 'Final') {
-			$query = $query . " `t_f_process`";
-		}else if ($category == 'Initial') {
-			$query = $query . " `t_i_process`";
-		}
-		$query = $query . " SET r_status = 'Diapproved', r_review_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE auth_no = '$auth_no' ";
-		$stmt = $conn->prepare($query);
-		$stmt -> execute();
-	}
-
-	if ($count == 0) {
-		echo 'success';
-	} else {
-		echo 'Error';
-	}
-
+    if ($count == 0) {
+        echo 'success';
+    } else {
+        echo 'Error';
+    }
 }
+
 
 
 

@@ -180,7 +180,7 @@ if ($method == 'review') {
 		$query = $query . " SET i_status = 'Reviewed', i_review_by = '" . $_SESSION['fname'] . "/ " . $server_date_time . "' WHERE id = '$id' ";
 		$stmt = $conn->prepare($query);
 		$stmt->execute();
-		
+		$count--;
 	}
 
 	if ($count == 0) {
@@ -207,6 +207,7 @@ if ($method == 'disreview') {
 		$query = $query . " SET i_status = 'Diapproved', i_approve_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE id = '$id' ";
 		$stmt = $conn->prepare($query);
 		$stmt -> execute();
+		$count--;
 	
 	}
 
@@ -252,18 +253,6 @@ if ($method == 'update') {
 		}
 		$query .= " SET remarks = '$remarks', auth_year = '$auth_year', date_authorized = '$date_authorized', expire_date = '$expire_date', dept = '$dept', i_status = 'Pending', updated_by = '" . $_SESSION['fname'] . "/ " . $server_date_time . "' WHERE id = '$id'";
 		$stmt = $conn->prepare($query);
-		//     if (!$stmt->execute()) {
-		//         $error++;
-		//     }
-		// } else {
-		//     $query = "UPDATE ";
-		//     if ($category == 'Final') {
-		//         $query .= "`t_f_process`";
-		//     } else if ($category == 'Initial') {
-		//         $query .= "`t_i_process`";
-		//     }
-		//     $query .= " SET r_of_cancellation = '$r_of_cancellation', d_of_cancellation = '$d_of_cancellation', r_status = 'Pending', dept = '$dept', updated_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE auth_no = '$auth_no'";
-		//     $stmt = $conn->prepare($query);
 		if (!$stmt->execute()) {
 			$error++;
 		}
