@@ -2,14 +2,14 @@
 
 if (isset($_SESSION['username'])) {
   if($_SESSION['role'] =='admin_reviewer'){
-    header('location: page/admin_reviewer/dashboard.php');
+    header('location: page/admin_reviewer/list_of_req.php');
   }elseif($_SESSION['role'] =='admin'){
     header('location: page/admin/dashboard.php');
   }elseif($_SESSION['role'] =='qc'){
     header('location: page/qc/viewpage.php');
-  }elseif($_SESSION['role'] =='hrd_approver'){
-    header('location: page/hrd_approver/dashboard.php');
-  }
+  }elseif($role =='hrd_approver'){
+    header('location: page/hrd_approver/list_of_req.php');
+}
 }
 
 ?>
