@@ -26,7 +26,7 @@
           <a href="list_of_req.php" class="nav-link" >
             <img src="../../dist/img/list.png" style="height:25px;">
             <p class="pl-1" style="font-size:16px; color:black">
-              List Of Request
+              List of Request
             </p>
           </a>
         </li>

@@ -58,7 +58,7 @@
           <a href="manpowerpage.php" class="nav-link active">
             <img src="../../dist/img/group.png" style="height:25px;">
             <p class="pl-1" style="font-size:16px; color:black">
-              Masterlist Management
+              Masterlist 
             </p>
           </a>
         </li>
