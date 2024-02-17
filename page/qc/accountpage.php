@@ -42,7 +42,7 @@
                         </div>
                         <div class="col-sm-3">
                             <!-- add account button -->
-                            <a class="btn btn-block d-flex justify-content-left" data-toggle="modal" data-target="#addapprover" style="color:#000;height:34px;border-radius:.25rem;background: #F29A35;font-size:15px;font-weight:normal;"><img src="../../dist/img/add-user.png" style="height:19px;">&nbsp;&nbsp;Add Account</a>
+                            <a class="btn btn-block d-flex justify-content-left" data-toggle="modal" data-target="#addqc" style="color:#000;height:34px;border-radius:.25rem;background: #F29A35;font-size:15px;font-weight:normal;"><img src="../../dist/img/add-user.png" style="height:19px;">&nbsp;&nbsp;Add Account</a>
 
                         </div>
                     </div>

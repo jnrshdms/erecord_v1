@@ -5,11 +5,11 @@
 	});
 
 	//add account
-	const save_acc_approver = () => {
-		var fname = document.getElementById('fname_approver').value;
-		var username = document.getElementById('username_approver').value;
-		var role = document.getElementById('role_approver').value;
-		var password = document.getElementById('password_approver').value;
+	const save_acc_qc = () => {
+		var fname = document.getElementById('fname_qc').value;
+		var username = document.getElementById('username_qc').value;
+		var role = document.getElementById('role_qc').value;
+		var password = document.getElementById('password_qc').value;
 
 
 		if (fname == '') {
@@ -46,11 +46,11 @@
 			});
 		} else {
 			$.ajax({
-				url: '../../process/accounts/add_approver.php',
+				url: '../../process/accounts/add_qc.php',
 				type: 'POST',
 				cache: false,
 				data: {
-					method: 'save_acc_approver',
+					method: 'save_acc_qc',
 					fname: fname,
 					username: username,
 					password: password,
@@ -66,11 +66,11 @@
 							showConfirmButton: false,
 							timer: 1000
 						});
-						$('#fname_approver').val('');
-						$('#username_approver').val('');
-						$('#password_approver').val('');
+						$('#fname_qc').val('');
+						$('#username_qc').val('');
+						$('#password_qc').val('');
 						load_accounts();
-						$('#addapprover').modal('hide');
+						$('#addqc').modal('hide');
 
 					} else if (response == 'duplicate') {
 						Swal.fire({
@@ -80,11 +80,11 @@
 							showConfirmButton: false,
 							timer: 2500
 						});
-						$('#fname_approver').val('');
-						$('#username_approver').val('');
-						$('#password_approver').val('');
+						$('#fname_qc').val('');
+						$('#username_qc').val('');
+						$('#password_qc').val('');
 						load_accounts();
-						$('#addapprover').modal('hide');
+						$('#addqc').modal('hide');
 
 					} else {
 						Swal.fire({
@@ -103,7 +103,7 @@
 	// fetch data
 	const load_accounts = () => {
 		$.ajax({
-			url: '../../process/accounts/add_approver.php',
+			url: '../../process/accounts/add_qc.php',
 			type: 'POST',
 			cache: false,
 			data: {
@@ -140,7 +140,7 @@
 
 
 		$.ajax({
-			url: '../../process/accounts/add_approver.php',
+			url: '../../process/accounts/add_qc.php',
 			type: 'POST',
 			cache: false,
 			data: {
@@ -162,7 +162,7 @@
 						showConfirmButton: false,
 						timer: 1000
 					});
-					$('#update_approver').modal('hide');
+					$('#update_qc').modal('hide');
 					load_accounts();
 					
 					$('#fname').val('')
@@ -178,7 +178,7 @@
 						timer: 2500
 					});
 					load_accounts();
-					$('#update_approver').modal('hide');
+					$('#update_qc').modal('hide');
 					$('#fname').val('')
 					$('#username').val('');
 					$('#password').val('');
@@ -200,7 +200,7 @@
 	const delete_account = () => {
 		var id = document.getElementById('id_update').value;
 		$.ajax({
-			url: '../../process/accounts/add_approver.php',
+			url: '../../process/accounts/add_qc.php',
 			type: 'POST',
 			cache: false,
 			data: {
@@ -217,7 +217,7 @@
 						timer: 1000
 					});
 					load_accounts();
-					$('#update_approver').modal('hide');
+					$('#update_qc').modal('hide');
 				} else {
 					Swal.fire({
 						icon: 'error',
@@ -238,7 +238,7 @@
 
 		if ((username_search != '' || username_search == '')) {
 			$.ajax({
-				url: '../../process/accounts/add_approver.php',
+				url: '../../process/accounts/add_qc.php',
 				type: 'POST',
 				cache: false,
 				data: {

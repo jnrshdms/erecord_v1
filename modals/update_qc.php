@@ -1,7 +1,7 @@
-<div class="modal fade bd-example-modal-xl" id="update_approver" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+<div class="modal fade bd-example-modal-xl" id="update_qc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content" style="background:#fff;">
-            <div class="modal-header" style="background:#1e96fc;">
+            <div class="modal-header" style="background:#E5A55B;">
                 <h5 class="modal-title" id="exampleModalLabel" style="font-weight: normal;color: #000;">
                     Update Account Details
                 </h5>

@@ -11,7 +11,8 @@ include '../../modals/logout.php';
 include '../../modals/view.php';
 include '../../modals/update_admin_r.php';
 include '../../modals/qc_disapproved.php';
-
+include '../../modals/add_qc.php';
+include '../../modals/update_qc.php';
 
 ?>
 <!-- jQuery -->
