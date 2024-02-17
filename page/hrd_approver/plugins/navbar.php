@@ -1,26 +1,26 @@
-<?php 
+<?php
 //SESSION
 include '../../process/session.php';
 
 if (!isset($_SESSION['username'])) {
   header('location: ../../index.php');
   exit;
-} else if ($_SESSION['role'] =='admin_reviewer'){
+} else if ($_SESSION['role'] == 'admin_reviewer') {
   header('location: ../../page/admin_reviewer/dashboard.php');
   exit;
-}
-else if ($_SESSION['role'] =='qc'){
+} else if ($_SESSION['role'] == 'qc') {
   header('location: ../../page/qc/viewpage.php');
   exit;
-}else if ($_SESSION['role'] =='admin'){
+} else if ($_SESSION['role'] == 'admin') {
   header('location: ../../page/admin/dashboard.php');
   exit;
 }
 
 
-?>  
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,7 +33,7 @@ else if ($_SESSION['role'] =='qc'){
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
-   <!-- Sweet Alert -->
+  <!-- Sweet Alert -->
   <link rel="stylesheet" href="../../node_modules/sweetalert2/dist/sweetalert2.min.css">
   <style>
     .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
@@ -111,6 +111,10 @@ else if ($_SESSION['role'] =='qc'){
     .nav-icon-top:hover {
       color: #2b2b2b;
       opacity: 1.0;
+    }
+
+    .nav-link.active {
+      color: #1e96fc !important;
     }
   </style>
 </head>

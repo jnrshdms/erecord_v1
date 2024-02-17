@@ -11,7 +11,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="dashboard.php">E-Record System</a></li>
+            <li class="breadcrumb-item"><a href="list_of_req.php">E-Record System</a></li>
             <li class="breadcrumb-item active">View Data</li>
           </ol>
         </div><!-- /.col -->
@@ -112,9 +112,9 @@
         </div>
       </div>
     </div>
-</section>
+  </section>
 
-<!-- /.content -->
+  <!-- /.content -->
 </div>
 
 
