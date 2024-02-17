@@ -1,4 +1,4 @@
-<div class="modal fade bd-example-modal-xl" id="update_admin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+<div class="modal fade bd-example-modal-xl" id="update_admin_r" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content" style="background:#fff;">
             <div class="modal-header" style="background:#6c757d;">
