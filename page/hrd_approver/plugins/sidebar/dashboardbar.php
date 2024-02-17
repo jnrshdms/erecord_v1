@@ -31,7 +31,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="cancellation.php" class="nav-link" active>
+          <a href="cancellation.php" class="nav-link active" >
             <img src="../../dist/img/file.png" style="height:25px;">
             <p class="pl-1" style="font-size:16px; color:black">
               Cancellation Request

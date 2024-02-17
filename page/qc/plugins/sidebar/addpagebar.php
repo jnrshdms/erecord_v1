@@ -31,7 +31,7 @@
           </a>
         </li>
         <li class="nav-item">
-             <a href="viewpage.php" class="nav-link">
+             <a href="viewpage.php" class="nav-link" >
             <img src="../../dist/img/view.png" style="height:25px;">
             <p class="pl-1" style="font-size:16px; color:black">
             View Data
@@ -39,7 +39,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="updatepage.php" class="nav-link active">
+          <a href="updatepage.php" class="nav-link" >
             <img src="../../dist/img/backup.png" style="height:25px;">
             <p class="pl-1" style="font-size:16px; color:black">
               Update Process
@@ -47,7 +47,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="accountpage.php" class="nav-link ">
+          <a href="accountpage.php" class="nav-link active">
             <img src="../../dist/img/account.png" style="height:25px;">
             <p class="pl-1" style="font-size:16px; color:black">
               Account Management

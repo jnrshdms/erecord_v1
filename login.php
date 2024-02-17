@@ -6,7 +6,7 @@ if (isset($_SESSION['username'])) {
   }elseif($_SESSION['role'] =='admin'){
     header('location: page/admin/dashboard.php');
   }elseif($_SESSION['role'] =='qc'){
-    header('location: page/qc/viewpage.php');
+    header('location: page/qc/dashboard.php');
   }elseif($role =='hrd_approver'){
     header('location: page/hrd_approver/list_of_req.php');
 }

@@ -23,7 +23,7 @@
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
         <li class="nav-item">
-          <a href="list_of_req.php" class="nav-link" active>
+          <a href="list_of_req.php" class="nav-link active" >
             <img src="../../dist/img/list.png" style="height:25px;">
             <p class="pl-1" style="font-size:16px; color:black">
               List Of Request
