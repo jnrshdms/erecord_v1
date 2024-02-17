@@ -1,117 +1,263 @@
 <script type="text/javascript">
 	$(function() {
-   search_data();
+		load_accounts();
 
-});
+	});
 
+	//add account
+	const save_acc_approver = () => {
+		var fname = document.getElementById('fname_approver').value;
+		var username = document.getElementById('username_approver').value;
+		var role = document.getElementById('role_approver').value;
+		var password = document.getElementById('password_approver').value;
 
-	const save_data =()=>{
-		var fname = document.getElementById('fname').value;
-		var username = document.getElementById('username').value;
-		var role = document.getElementById('role').value;
-		var password = document.getElementById('password').value;
-		
 
 		if (fname == '') {
-		Swal.fire({
-		            icon: 'info',
-		            title: 'Please Input Fullname !!!',
-		            text: 'Information',
-		            showConfirmButton: false,
-		            timer : 1000
-		        });
-	}else if(username == ''){
-		Swal.fire({
-		            icon: 'info',
-		            title: 'Please Input Username !!!',
-		            text: 'Information',
-		            showConfirmButton: false,
-		            timer : 1000
-		        });
-	}else if(password == ''){
-		Swal.fire({
-		            icon: 'info',
-		            title: 'Please Select Password !!!',
-		            text: 'Information',
-		            showConfirmButton: false,
-		            timer : 1000
-		        });
-	}else if(role == ''){
-		Swal.fire({
-		            icon: 'info',
-		            title: 'Please Select Role !!!',
-		            text: 'Information',
-		            showConfirmButton: false,
-		            timer : 1000
-		        });
-	}else{
-	$.ajax({
-		url:'../../process/accounts/add_approver.php',
-		type:'POST',
-		cache:false,
-		data:{
-		method:'save_acc',
-		fname:fname,
-		username:username,
-		password:password,
-		role:role
-		},success:function(response){
-			console.log(response);
-			if (response == 'success') {
-				Swal.fire({
-		            icon: 'success',
-		            title: 'Succesfully Recorded !!!',
-		            text: 'Success',
-		            showConfirmButton: false,
-		            timer : 1000
-		        });
-		        search_data();
-		        $('#addaccA').modal('hide');
-		        $('#fname').val('')
-		        $('#username').val('');
-				$('#password').val('');
-				$('#role').val('');
-			}else if(response == 'existing'){
-				Swal.fire({
-		            icon: 'info',
-		            title: 'Existing Data !!!',
-		            text: 'Information',
-		            showConfirmButton: false,
-		            timer : 1000
-		        });
-		        $('#addaccA').modal('hide');
-		        $('#fname').val('')
-		        $('#username').val('');
-				$('#password').val('');
-				$('#role').val('');
-			}else{
-				Swal.fire({
-		            icon: 'error',
-		            title: 'Error !!!',
-		            text: 'Error',
-		            showConfirmButton: false,
-		            timer : 1000
-		        });
-			}
+			Swal.fire({
+				icon: 'info',
+				title: 'Please Input Fullname !!!',
+				text: 'Information',
+				showConfirmButton: false,
+				timer: 1000
+			});
+		} else if (username == '') {
+			Swal.fire({
+				icon: 'info',
+				title: 'Please Input Username !!!',
+				text: 'Information',
+				showConfirmButton: false,
+				timer: 1000
+			});
+		} else if (password == '') {
+			Swal.fire({
+				icon: 'info',
+				title: 'Please Select Password !!!',
+				text: 'Information',
+				showConfirmButton: false,
+				timer: 1000
+			});
+		} else if (role == '') {
+			Swal.fire({
+				icon: 'info',
+				title: 'Please Select Role !!!',
+				text: 'Information',
+				showConfirmButton: false,
+				timer: 1000
+			});
+		} else {
+			$.ajax({
+				url: '../../process/accounts/add_approver.php',
+				type: 'POST',
+				cache: false,
+				data: {
+					method: 'save_acc_approver',
+					fname: fname,
+					username: username,
+					password: password,
+					role: role
+				},
+				success: function(response) {
+					console.log(response);
+					if (response == 'success') {
+						Swal.fire({
+							icon: 'success',
+							title: 'Succesfully Recorded !!!',
+							text: 'Success',
+							showConfirmButton: false,
+							timer: 1000
+						});
+						$('#fname_approver').val('');
+						$('#username_approver').val('');
+						$('#password_approver').val('');
+						load_accounts();
+						$('#addapprover').modal('hide');
+
+					} else if (response == 'duplicate') {
+						Swal.fire({
+							icon: 'info',
+							title: 'Duplicate Data!',
+							text: 'Information',
+							showConfirmButton: false,
+							timer: 2500
+						});
+						$('#fname_approver').val('');
+						$('#username_approver').val('');
+						$('#password_approver').val('');
+						load_accounts();
+						$('#addapprover').modal('hide');
+
+					} else {
+						Swal.fire({
+							icon: 'error',
+							title: 'Error !!!',
+							text: 'Error',
+							showConfirmButton: false,
+							timer: 1000
+						});
+					}
+				}
+			});
 		}
-	});
 	}
-}
 
-	const search_data =()=>{
-	var name = document.getElementById('username_search').value;
-	$.ajax({
-		url:'../../process/accounts/add_approver.php',
-		type:'POST',
-		cache:false,
-		data:{
-		method:'fetch_account',
-		name:name
-		},success:function(response){
-			$('#account_list').html(response);
+	// fetch data
+	const load_accounts = () => {
+		$.ajax({
+			url: '../../process/accounts/add_approver.php',
+			type: 'POST',
+			cache: false,
+			data: {
+				method: 'fetch_account'
+			},
+			success: function(response) {
+				$('#account_list').html(response);
+				$('#spinner').fadeOut();
+			}
+		});
+	}
+
+	// get account details onclick
+	const get_account_details = (param) => {
+		var string = param.split('~!~');
+		var id = string[0];
+		var fname = string[1];
+		var username = string[2];
+		var role = string[3];
+		document.getElementById('id_update').value = id;
+		document.getElementById('fname_update').value = fname;
+		document.getElementById('username_update').value = username;
+		document.getElementById('role_update').value = role;
+
+	}
+
+	// update account
+	const update_account = () => {
+		var id = document.getElementById('id_update').value;
+		var fname = document.getElementById('fname_update').value;
+		var username = document.getElementById('username_update').value;
+		var password = document.getElementById('password_update').value;
+		var role = document.getElementById('role_update').value;
+
+
+		$.ajax({
+			url: '../../process/accounts/add_approver.php',
+			type: 'POST',
+			cache: false,
+			data: {
+				method: 'update_account',
+				id: id,
+				fname: fname,
+				username: username,
+				password: password,
+				role: role
+
+			},
+			success: function(response) {
+				console.log(response);
+				if (response == 'success') {
+					Swal.fire({
+						icon: 'success',
+						title: 'Successfully Recorded!',
+						text: 'Success',
+						showConfirmButton: false,
+						timer: 1000
+					});
+					$('#update_approver').modal('hide');
+					load_accounts();
+					
+					$('#fname').val('')
+					$('#username').val('');
+					$('#password').val('');
+					$('#role').val('');
+				} else if (response == 'duplicate') {
+					Swal.fire({
+						icon: 'info',
+						title: 'Duplicate Data!',
+						text: 'Information',
+						showConfirmButton: false,
+						timer: 2500
+					});
+					load_accounts();
+					$('#update_approver').modal('hide');
+					$('#fname').val('')
+					$('#username').val('');
+					$('#password').val('');
+					$('#role').val('');
+				} else {
+					Swal.fire({
+						icon: 'error',
+						title: 'Error!',
+						text: 'Error',
+						showConfirmButton: false,
+						timer: 2500
+					});
+				}
+			}
+		});
+	}
+
+	// delete account
+	const delete_account = () => {
+		var id = document.getElementById('id_update').value;
+		$.ajax({
+			url: '../../process/accounts/add_approver.php',
+			type: 'POST',
+			cache: false,
+			data: {
+				method: 'delete_account',
+				id: id
+			},
+			success: function(response) {
+				if (response == 'success') {
+					Swal.fire({
+						icon: 'info',
+						title: 'Successfully Deleted!',
+						text: 'Information',
+						showConfirmButton: false,
+						timer: 1000
+					});
+					load_accounts();
+					$('#update_approver').modal('hide');
+				} else {
+					Swal.fire({
+						icon: 'error',
+						title: 'Error !!!',
+						text: 'Error',
+						showConfirmButton: false,
+						timer: 2500
+					});
+				}
+			}
+		});
+	}
+
+	// search account
+	const search_account = () => {
+		var username_search = document.getElementById('username_search').value;
+
+
+		if ((username_search != '' || username_search == '')) {
+			$.ajax({
+				url: '../../process/accounts/add_approver.php',
+				type: 'POST',
+				cache: false,
+				data: {
+					method: 'search_account_list',
+					username_search: username_search
+				},
+				success: function(response) {
+					$('#account_list').html(response);
+					$('#spinner').fadeOut();
+				}
+			});
+		} else {
+			Swal.fire({
+				icon: 'info',
+				title: 'Empty Fields',
+				text: 'Fill-out input search field/s',
+				showConfirmButton: false,
+				timer: 1000
+			});
 		}
-	});
-}
-
-
+	}
 </script>

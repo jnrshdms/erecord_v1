@@ -1,22 +1,6 @@
 <?php include 'plugins/navbar.php'; ?>
 <?php include 'plugins/sidebar/addaccbar.php'; ?>
 
-<!-- <div class="container-fluid">
-
-<div class="card-tools">
-<div class="input-group input-group-sm">
-<input type="text" name="" id="username_search" class="form-control float-right" placeholder="Search">
-<div class="input-group-append">
-<button type="submit" class="btn btn-default" onclick="search_data()">
-<i class="fas fa-search"></i>
-</button>
-</div>
-</div>
-</div>
-</div>
-
- -->
-
 <div class="content-wrapper" style="background: #FFF;">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -50,7 +34,7 @@
                         </div>
                         <div class="col-sm-3">
                             <!-- search full name -->
-                            <input type="text" name="full_name_search" id="username_search" class="form-control" placeholder="Full Name" autocomplete="off" style="color: #525252;font-size: 15px;border-radius: .25rem;border: 1px solid #525252;background: #FFF;height:34px; width:100%;" class="pl-3">
+                            <input type="text" name="username_search" id="username_search" class="form-control" placeholder="Username" autocomplete="off" style="color: #525252;font-size: 15px;border-radius: .25rem;border: 1px solid #525252;background: #FFF;height:34px; width:100%;" class="pl-3">
                         </div>
                         <div class="col-sm-3">
                             <!-- search button -->
@@ -93,4 +77,3 @@
 
 <?php include 'plugins/footer.php'; ?>
 <?php include 'plugins/js/addacc_script.php'; ?>
-<?php include 'plugins/js/editacc_script.php'; ?>
