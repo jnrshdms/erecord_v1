@@ -31,14 +31,14 @@ if ($method == 'save_acc') {
 if ($method == 'fetch_account') {
 	$name = $_POST['name'];
 	$c = 0;
-	$query = "SELECT * FROM accounts WHERE username LIKE '$name%' AND role != 'hrd_approver'";
+	$query = "SELECT * FROM accounts WHERE username LIKE '$name%' AND role != 'admin_reviewer' AND role !='hrd_approver'";
 	$stmt = $conn->prepare($query);
 	$stmt->execute();
 	if ($stmt->rowCount() > 0) {
 		foreach($stmt->fetchAll() as $j){
 			$c++;
 			
-			echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#upacc" onclick="account_details(&quot;'.$j['id'].'~!~'.$j['fname'].'~!~'.$j['role'].'~!~'.$j['password'].'~!~'.$j['username'].'&quot;)">';
+			echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#upacc_admin" onclick="account_details(&quot;'.$j['id'].'~!~'.$j['fname'].'~!~'.$j['role'].'~!~'.$j['password'].'~!~'.$j['username'].'&quot;)">';
 			echo '<td style="display:none;" >'.$j['id'].'</td>';
 				echo '<td>'.$c.'</td>';
 				echo '<td>'.$j['fname'].'</td>';
