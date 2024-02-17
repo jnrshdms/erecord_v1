@@ -11,7 +11,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="list_of_req.php">E-Record System</a></li>
+                        <li class="breadcrumb-item"><a href="dashboard.php">E-Record System</a></li>
                         <li class="breadcrumb-item active">Account Management</li>
                     </ol>
                 </div><!-- /.col -->

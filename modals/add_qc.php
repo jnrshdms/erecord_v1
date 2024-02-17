@@ -1,7 +1,7 @@
 <div class="modal fade bd-example-modal-xl" id="addqc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content" style="background:#fff;">
-      <div class="modal-header" style="background:#F29A35;">
+      <div class="modal-header" style="background:#ffc300;">
         <h5 class="modal-title" id="exampleModalLabel" style="font-weight: normal;color: #000;">
           Add New Account
         </h5>

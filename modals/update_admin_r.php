@@ -1,7 +1,7 @@
 <div class="modal fade bd-example-modal-xl" id="admine_r_update" tabindex="-1"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+    <div class="modal-header" style="background:#ffc300;">
         <h5 class="modal-title" id="exampleModalLabel">
             <b>Update Data</b>
         </h5>
