@@ -24,7 +24,7 @@
     <div class="col-md-12">
       <div class="card card-light" style="background: #fff; border-top: 2px solid #6c757d;">
         <div class="card-header">
-          <h3 class="card-title"><img src="../../dist/img/acct-user.png" style="height:28px;">&ensp;Certification Process Table</h3>
+          <h3 class="card-title"><img src="../../dist/img/check-list.png" style="height:28px;">&ensp;Certification Process Table</h3>
         </div>
 
         <div class="card-body"">
@@ -57,7 +57,7 @@
         </div>
         <br>
         <div class="col-12">
-          <div class="card-body table-responsive p-0" style="height: 450px;">
+          <div class="card-body table-responsive p-0" style="height: 500px;">
             <table class="table table-head-fixed text-nowrap" id="employee_data">
               <thead>
                 <tr>
