@@ -108,7 +108,7 @@
               <div class="card-body" style="overflow: auto;">
     <!-- Main content -->
 <div class="container-fluid">
-  <div><h4> COUNT: <span id="demo"> </span ></h4> </div>
+  <!-- <div><h4> COUNT: <span id="demo"> </span ></h4> </div> -->
   <div class="row d-flex justify-content-end">
 
       <div class="col-0">
