@@ -27,6 +27,7 @@
         </div>
         <div class="card-body">
           <div class="row">
+            <div class="col-sm-2"></div>
             <div class="col-sm-2">
               <select class="form-control btn bg-teal" recquired name="category" id="category_can" onchange="search_can(1)">
                 <option value="">Category</option>
@@ -50,7 +51,7 @@
             </div>
             <div class="col-sm-2">
               <!-- search button -->
-              <button class="btn btn-block d-flex justify-content-left" id="search_btn" onclick="search_can(1)" style="color:#fff;height:34px;border-radius:.25rem;background: #20c997;font-size:15px;font-weight:normal;"><img src="../../dist/img/search.png" style="height:19px;">&nbsp;&nbsp;Search</button>
+              <button class="btn btn-block d-flex justify-content-left" id="search_btn" onclick="search_can(1)" style="color:#fff;height:38px;border-radius:.25rem;background: #20c997;font-size:15px;font-weight:normal;"><img src="../../dist/img/search.png" style="height:19px;">&nbsp;&nbsp;Search</button>
             </div>
           </div>
           <br>
@@ -84,6 +85,7 @@
 
                 </table>
               </div>
+              <br>
               <div class="row">
                 <div class="col-sm-12 col-md-9 col-9">
                   <div class="dataTables_info" id="count_rows_display" role="status" aria-live="polite"></div>
