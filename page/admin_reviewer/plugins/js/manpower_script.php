@@ -339,16 +339,15 @@ const save_emp_data =()=>{
 }
 
 
-  const edit_employee =(param)=>{
+const edit_employee =(param)=>{
   var data = param.split('~!~');
   var id = data[0];
   var fullname = data[1];
   var emp_id = data[2];
   var agency = data[3];
-  var dept = data[4];
-  var batch = data[5];
-  var emp_status = data[6];
-  var m_name = data[7];
+  var batch = data[4];
+  var emp_status = data[5];
+  var m_name = data[6];
 
 
 
@@ -356,7 +355,6 @@ const save_emp_data =()=>{
   $('#fullname_edit').val(fullname);
   $('#emp_id_edit').val(emp_id);
   $('#agency_edit').val(agency);
-  $('#dept_edit').val(dept);
   $('#batch_edit').val(batch);
   $('#emp_status_edit').val(emp_status);
   $('#m_name_edit').val(m_name);
@@ -368,7 +366,6 @@ const save_emp_data =()=>{
     var fullname = document.getElementById('fullname_edit').value;
     var emp_id = document.getElementById('emp_id_edit').value;
     var agency = document.getElementById('agency_edit').value;
-    var dept = document.getElementById('dept_edit').value;
     var batch = document.getElementById('batch_edit').value;
     var id = document.getElementById('id_edit').value;
     var emp_status = document.getElementById('emp_status_edit').value;
@@ -399,14 +396,6 @@ const save_emp_data =()=>{
                 showConfirmButton: false,
                 timer : 1000
             });
-  }else if(dept == ''){
-    Swal.fire({
-                icon: 'info',
-                title: 'Please Select Department !!!',
-                text: 'Information',
-                showConfirmButton: false,
-                timer : 1000
-            });
   }else if(batch == ''){
     Swal.fire({
                 icon: 'info',
@@ -425,7 +414,6 @@ const save_emp_data =()=>{
     fullname:fullname,
     emp_id:emp_id,
     agency:agency,
-    dept:dept,
     batch:batch,
     id:id,
     emp_status:emp_status,
@@ -445,7 +433,6 @@ const save_emp_data =()=>{
             $('#fullname').val('');
             $('#emp_id').val('');
             $('#agency').val('');
-            $('#dept').val('');
             $('#batch').val('');
       }else if(response == 'existing'){
         Swal.fire({
@@ -459,7 +446,6 @@ const save_emp_data =()=>{
             $('#fullname').val('');
             $('#emp_id').val('');
             $('#agency').val('');
-            $('#dept').val('');
             $('#batch').val('');
       }else{
         Swal.fire({
