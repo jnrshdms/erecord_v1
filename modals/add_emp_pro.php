@@ -46,7 +46,7 @@
           </div>
           <div class="col-sm-3">
             <span><b>Department:</b></span>
-            <input type="text" id="dept_add" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" readonly>
+            <input type="text" id="dept_add" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" >
             <!-- <select id="dept_add" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off">
               <option value="PD">PD</option>
               <option value="QA">QA</option>
