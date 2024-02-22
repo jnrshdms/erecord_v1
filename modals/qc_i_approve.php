@@ -13,7 +13,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" onclick="qc_disapprove()" >Disapprove</button>
-        <button type="button" class="btn btn-primary" onclick="qc_approve()">Confirm</button>
+        <button type="button" class="btn btn-primary" onclick="qc_approve()">Approve</button>
       </div>
     </div>
   </div>

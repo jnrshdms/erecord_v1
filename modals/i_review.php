@@ -13,7 +13,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" onclick="i_disreview()" >Disapprove</button>
-        <button type="button" class="btn btn-primary" onclick="i_review()">Save Changes</button>
+        <button type="button" class="btn btn-primary" onclick="i_review()">Approve</button>
       </div>
     </div>
   </div>
