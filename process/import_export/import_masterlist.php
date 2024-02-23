@@ -1,101 +1,98 @@
 <?php
 include '../conn.php';
 include '../session.php';
-$method = $_POST['method'];
+
+
 $page = '';
-    if ($_SESSION['role'] =='admin_reviewer'){
-        $page = 'admin_reviewer';
-    } else if ($_SESSION['role'] =='admin'){
-        $page = 'admin';
-    }
+if ($_SESSION['role'] == 'admin_reviewer') {
+    $page = 'admin_reviewer';
+} else if ($_SESSION['role'] == 'admin') {
+    $page = 'admin';
+}
 
-	if(isset($_POST['upload'])){
-        $id_number_record1 = $_POST['id_number_record1'];
-        $csvMimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain');
-        
-        if(!empty($_FILES['file']['name']) && in_array($_FILES['file']['type'],$csvMimes)){
-            if(is_uploaded_file($_FILES['file']['tmp_name'])){
-                //READ FILE
-                $csvFile = fopen($_FILES['file']['tmp_name'],'r');
-                // SKIP FIRST LINE
-                fgetcsv($csvFile);
-                // PARSE
-                $error = 0;
-                while(($line = fgetcsv($csvFile)) !== false){
+if (isset($_POST['upload'])) {
+    $csvMimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain');
 
-                	 if(empty(implode('', $line))){
-                        continue;
-                    }
+    if (!empty($_FILES['file']['name']) && in_array($_FILES['file']['type'], $csvMimes)) {
+        if (is_uploaded_file($_FILES['file']['tmp_name'])) {
+            //READ FILE
+            $csvFile = fopen($_FILES['file']['tmp_name'], 'r');
+            // SKIP FIRST LINE
+            fgetcsv($csvFile);
+            // PARSE
+            $error = 0;
+            while (($line = fgetcsv($csvFile)) !== false) {
 
-                    $fullname = $line[0];
-                    $m_name = $line[1];
-                    $emp_id = $line[2];
-                    $emp_id_old = $line[3];
-                    $agency = $line[4];
-                    $batch = $line[5];
-                    $emp_status = $line [6];
-                   
-                  
-                    // CHECK IF BLANK DATA
-                    if($line[0] == '' || $line[6] == '' || $line[2] == '' || $line[4] == '' || $line[5] == ''  ){
-                        // IF BLANK DETECTED ERROR += 1
-                        $error = $error + 1;
-                    }else{
+                if (empty(implode('', $line))) {
+                    continue;
+                }
 
-                      
-                        // CHECK DATA
+                $fullname = $line[0];
+                $m_name = $line[1];
+                $emp_id = $line[2];
+                $emp_id_old = $line[3];
+                $agency = $line[4];
+                $batch = $line[5];
+                $emp_status = $line[6];
+
+
+                // CHECK IF BLANK DATA
+                if ($line[0] == '' || $line[1] == '' || $line[2] == '' || $line[3] == '' || $line[4] == '' || $line[5] == '' || $line[6] == '') {
+                    // IF BLANK DETECTED ERROR += 1
+                    $error = $error + 1;
+                } else {
+                    // CHECK DATA
                     $prevQuery = "SELECT id, emp_id, emp_id_old FROM t_employee_m WHERE emp_id IN ('$line[2]', '$line[3]')";
-
                     $res = $conn->prepare($prevQuery);
                     $res->execute();
-                    if($res->rowCount() > 0){
-                        foreach($res->fetchALL() as $x){
+                    if ($res->rowCount() > 0) {
+                        foreach ($res->fetchAll() as $x) {
                             $id = $x['id'];
                             $emp_id_ref = $x['emp_id'];
                             $emp_id_old_ref = $x['emp_id_old'];
                         }
 
-                        $update ="UPDATE t_employee_m SET fullname = '$fullname'";
+                        $update = "UPDATE t_employee_m SET fullname = '$fullname', emp_id = '$emp_id', batch = '$batch', m_name = '$m_name', agency = '$agency', emp_status ='$emp_status', emp_id_old = '$emp_id_old'";
+
 
                         if (!empty($emp_id_old) && empty($emp_id_old_ref)) {
-                        	$update = $update . ", emp_id_old = emp_id";
+                            $update .= ", emp_id_old = '$emp_id'";
                         } else if (!empty($emp_id_old) && !empty($emp_id_old_ref)) {
-                        	$update = $update . ", emp_id_old = '$emp_id_old'";
+                            $update .= ", emp_id_old = '$emp_id_old'";
+
                         }
 
-                        $update = $update . ", emp_id = '$emp_id', batch = '$batch', m_name = '$m_name', agency = '$agency', emp_status ='$emp_status' WHERE id = '$id'";
+                        $update .= " WHERE id = '$id'";
 
                         $stmt = $conn->prepare($update);
-                        if($stmt->execute()){
-                            $error = 0;
-                        }else{
+                        if ($stmt->execute()) {
+
+                        } else {
                             $error = $error + 1;
                         }
 
                         if (!empty($emp_id_old) && empty($emp_id_old_ref)) {
-                        	$query = "UPDATE t_f_process SET emp_id_old = emp_id, emp_id = '$emp_id' WHERE emp_id = '$emp_id_ref'";
-					    	$stmt = $conn->prepare($query);
-					    	$stmt->execute();
-					    	$query = "UPDATE t_i_process SET emp_id_old = emp_id, emp_id = '$emp_id' WHERE emp_id = '$emp_id_ref'";
-					    	$stmt = $conn->prepare($query);
-					    	$stmt->execute();
-                            $error = 0;
-                        }else{
+                            $query = "UPDATE t_f_process SET emp_id_old = emp_id, emp_id = '$emp_id' WHERE emp_id = '$emp_id_ref'";
+                            $stmt = $conn->prepare($query);
+                            $stmt->execute();
+                            $query = "UPDATE t_i_process SET emp_id_old = emp_id, emp_id = '$emp_id' WHERE emp_id = '$emp_id_ref'";
+                            $stmt = $conn->prepare($query);
+                            $stmt->execute();
+                        } else {
                             $error = $error + 1;
                         }
-                    }else{
+                    } else {
 
                         $insert = "INSERT INTO t_employee_m (`fullname` ,`m_name`,`emp_id`, `agency`, `batch`,`emp_status`) VALUES ('$fullname', '$m_name', '$emp_id', '$agency', '$batch','$emp_status')";
                         $stmt = $conn->prepare($insert);
-                        if($stmt->execute()){
-                            $error = 0;
-                        }else{
+                        if ($stmt->execute()) {
+                        } else {
                             $error = $error + 1;
-                            }
                         }
                     }
                 }
-                
+            }
+
                 fclose($csvFile);
                if($error == 0){
                     echo '<script>
@@ -140,4 +137,4 @@ $page = '';
     }
 
 ?>
-	
+ 

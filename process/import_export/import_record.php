@@ -252,7 +252,7 @@
                                     $insert = $insert . "INSERT INTO `t_i_process`";
                                 }
 
-                                $insert = $insert . "(`emp_id`, `process`, `auth_no`, `auth_year`, `date_authorized`, `expire_date`, `up_date_time`, `dept`, `batch`";
+                                $insert = $insert . "(`emp_id`, `process`, `auth_no`, `auth_year`, `date_authorized`, `expire_date`, `up_date_time`, `dept`, `batch`,`i_status`";
 
                                 if (!empty($remarks)) {
                                     $insert = $insert . ", `remarks`";
@@ -267,7 +267,7 @@
                                     $insert = $insert . ", `r_status`";
                                 }
 
-                                $insert = $insert . ") VALUES ('$emp_id', '$pro', '$auth_no', '$auth_year', '$date_authorized', '$expire_date', '$up_date', '$dept', '$batch'";
+                                $insert = $insert . ") VALUES ('$emp_id', '$pro', '$auth_no', '$auth_year', '$date_authorized', '$expire_date', '$up_date', '$dept', '$batch', 'Pending'";
                                 
                                 if (!empty($remarks)) {
                                     $insert = $insert . ", '$remarks'";

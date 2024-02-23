@@ -37,7 +37,6 @@
             </div>
             <div class="col-sm-2">
               <select class="form-control btn bg-teal" name="stat" id="r_status_can" required onchange="search_can(1)">
-                <option>Status</option>
                 <option value="Pending">Pending</option>
                 <option value="Reviewed">Reviewed</option>
                 <option value="Disapproved">Disapproved</option>
@@ -107,9 +106,8 @@
           </div>
         </div>
       </div>
-</div>
-</section>
-<!-- /.content -->
+  </section>
+  <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 <?php include 'plugins/footer.php'; ?>

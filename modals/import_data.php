@@ -10,7 +10,6 @@
       <form action="../../process/import_export/import_record.php"  enctype="multipart/form-data" method="POST">
         <div class="modal-body">
           <div class="row">
-            <input type="hidden" name="id_number_record" id="id_number_record" value="<?=$id_number;?>">
             <div class="file-field input-field">
                 <div class="btn teal #00695c teal darken-3">
                     <input type="file" name="file" class="form-control-lg" accept=".csv">

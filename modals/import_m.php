@@ -9,7 +9,7 @@
       </div>
       <div class="modal-body">
         <form action="../../process/import_export/import_masterlist.php"  enctype="multipart/form-data" method="POST">
-          <input type="hidden" name="id_number_record1" id="id_number_record1" value="<?=$id_number;?>">
+
             <div class="file-field input-field">
                 <div class="btn teal #00695c teal darken-3">
                     <input type="file" name="file" class="form-control-lg" accept=".csv">
