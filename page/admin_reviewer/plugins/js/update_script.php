@@ -180,7 +180,7 @@ const search_data_pagination = () =>{
   var remarks = data[4];
   var r_of_cancellation = data[5];
   var d_of_cancellation = data[6];
-  var updated_by = data[7];
+  var up_date_time = data[7];
   var fullname = data[8];
   var m_name = data[9];
   var auth_no = data[10];
@@ -195,7 +195,7 @@ const search_data_pagination = () =>{
   $('#remarks_view').val(remarks);
   $('#r_of_cancellation_view').val(r_of_cancellation);
   $('#d_of_cancellation_view').val(d_of_cancellation);
-  $('#updated_by_view').val(updated_by);
+  $('#up_date_time_view').val(up_date_time);
   $('#employee_name_view').val(fullname);
   $('#auth_no_view').val(auth_no);
   //$('#category').val(category);
@@ -243,7 +243,7 @@ const view_data =()=>{
   var r_of_cancellation = data[5];
   var dept = data[6];
   var d_of_cancellation = data[7];
-  var updated_by = data[8];
+  var up_date_time = data[8];
   var fullname = data[9];
   var auth_no = data[10];
   //var category = category[10];
@@ -257,7 +257,7 @@ const view_data =()=>{
   $('#r_of_cancellation_can').val(r_of_cancellation);
   $('#dept_can').val(dept);
   $('#d_of_cancellation_can').val(d_of_cancellation);
-  $('#updated_by_can').val(updated_by);
+  $('#up_date_time_can').val(up_date_time);
   $('#employee_name_can').val(fullname);
   $('#auth_no_can').val(auth_no);
 
@@ -276,10 +276,10 @@ const save_data =()=>{
   var date_authorized = document.getElementById('date_authorized_can').value;
   var expire_date = document.getElementById('expire_date_can').value;
   var remarks = document.getElementById('remarks_can').value;
-  // var r_of_cancellation = document.getElementById('r_of_cancellation_can').value;
+  var r_of_cancellation = document.getElementById('r_of_cancellation_can').value;
   var dept = document.getElementById('dept_can').value;
-  // var d_of_cancellation = document.getElementById('d_of_cancellation_can').value;
-  var updated_by = document.getElementById('updated_by_can').value;
+  var d_of_cancellation = document.getElementById('d_of_cancellation_can').value;
+  var up_date_time = document.getElementById('up_date_time_can').value;
   var id = document.getElementById('id_can').value;
   var fullname = document.getElementById('employee_name_can').value;
   var category = document.getElementById('category').value;
@@ -329,10 +329,10 @@ const save_data =()=>{
           date_authorized:date_authorized,
           expire_date:expire_date,
           remarks:remarks,
-          // r_of_cancellation:r_of_cancellation,
+          r_of_cancellation:r_of_cancellation,
           dept:dept,
-          // d_of_cancellation:d_of_cancellation,
-          updated_by:updated_by,
+          d_of_cancellation:d_of_cancellation,
+          up_date_time:up_date_time,
           id:id,
           fullname:fullname,
           category:category       
@@ -354,7 +354,7 @@ const save_data =()=>{
                   $("#r_of_cancellation").val('');
                   $("#dept").val('');
                   $("#d_of_cancellation").val('');
-                  $("#updated_by").val('');
+                  $("#up_date_time").val('');
                   view_data();
                   $('#update').modal('hide');
                   
@@ -374,7 +374,7 @@ const save_data =()=>{
                   $("#r_of_cancellation").val('');
                   $("#dept").val('');
                   $("#d_of_cancellation").val('');
-                  $("#updated_by").val('');
+                  $("#up_date_time").val('');
                   $('#update').modal('hide');
                   
               }else{
@@ -393,7 +393,7 @@ const save_data =()=>{
                   $("#r_of_cancellation").val('');
                   $("#dept").val('');
                   $("#d_of_cancellation").val('');
-                  $("#updated_by").val('');
+                  $("#up_date_time").val('');
                   $('#update').modal('hide');
                   }
           }

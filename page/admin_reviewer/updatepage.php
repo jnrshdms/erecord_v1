@@ -64,7 +64,7 @@
                    <th>Employee No.</th>
                    <th>Batch No.</th>
                    <th>Department</th>
-                   <th>Uploader/Date/Time</th>
+                   <!-- <th>Uploader/Date/Time</th> -->
                  </tr>
                </thead>
                <tbody id="process_details">
