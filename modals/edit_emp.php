@@ -27,6 +27,10 @@
         </div>
         <br>
         <div class="row">
+        <!-- <div class="col-sm-3">
+            <span><b>Employee No. Old</b></span>
+            <input type="text" id="id_old_edit" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off">
+          </div> -->
           <div class="col-sm-4">
             <span><b>Provider:</b></span><br>
             <select class="form-control" id="agency_edit" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off">

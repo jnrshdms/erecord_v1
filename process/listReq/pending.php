@@ -204,7 +204,7 @@ if ($method == 'disreview') {
 		}else if ($category == 'Initial') {
 			$query = $query . " `t_i_process`";
 		}
-		$query = $query . " SET i_status = 'Diapproved', i_approve_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE id = '$id' ";
+		$query = $query . " SET i_status = 'Disapproved', i_approve_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE id = '$id' ";
 		$stmt = $conn->prepare($query);
 		$stmt -> execute();
 		$count--;

@@ -6,12 +6,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Add Certifications</h1>
+          <h1 class="m-0">Add Records</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="dashboard.php">E-Record System</a></li>
-            <li class="breadcrumb-item active">Add Certifications</li>
+            <li class="breadcrumb-item active">Add Record</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -28,10 +28,24 @@
         <!-- ./col -->
         <div class="col-lg-3 col-6">
           <!-- small card -->
+          <a href="#" data-toggle="modal" data-target="#add_new_autho">
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h4>ADD NEW</h4>
+                <br>
+                <p></p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-plus-circle"></i>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-6">
+          <!-- small card -->
           <a href="#" data-toggle="modal" data-target="#add_emp_pro">
             <div class="small-box bg-danger">
               <div class="inner">
-                <h4>ADD</h4>
+                <h4>ADD AUTHORIZATION</h4>
                 <br>
                 <p></p>
               </div>
@@ -42,7 +56,7 @@
         </div>
         </a>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-2 col-6">
           <!-- small card -->
           <a href="../../template/import.csv" download>
             <div class="small-box bg-warning">
@@ -58,7 +72,7 @@
         </div>
         </a>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-2 col-6">
           <!-- small card -->
           <a href="#" data-toggle="modal" data-target="#import_data">
             <div class="small-box bg-success">
@@ -74,7 +88,7 @@
           </a>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-2 col-6">
           <!-- small card -->
           <a href="#" onclick="export_data('employee_data')">
             <div class="small-box bg-info">

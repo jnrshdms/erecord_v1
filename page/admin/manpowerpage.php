@@ -140,6 +140,7 @@
                     <th>Employee Name</th>
                     <th>Maiden Name</th>
                     <th>Employee ID</th>
+                    <th>Employee ID Old</th>
                     <th>Provider</th>
                     <th>Batch No.</th>
                   </tr>

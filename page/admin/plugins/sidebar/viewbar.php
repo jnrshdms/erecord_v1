@@ -26,7 +26,7 @@
           <a href="dashboard.php" class="nav-link ">
             <img src="../../dist/img/check-list.png" style="height:25px;">
             <p class="pl-1" style="font-size:16px; color:black">
-              Status Process
+              Record Status
             </p>
           </a>
         </li>
@@ -42,7 +42,7 @@
           <a href="import_exportpage.php" class="nav-link ">
             <img src="../../dist/img/add-user.png" style="height:25px;">
             <p class="pl-1" style="font-size:16px; color:black">
-              Add Certifications
+              Add Record
             </p>
           </a>
         </li>
@@ -50,7 +50,7 @@
           <a href="updatepage.php" class="nav-link ">
             <img src="../../dist/img/backup.png" style="height:25px;">
             <p class="pl-1" style="font-size:16px; color:black">
-              Update Process
+              Update Data
             </p>
           </a>
         </li>

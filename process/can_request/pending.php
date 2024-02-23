@@ -249,7 +249,7 @@ if ($method == 'qc_disreview') {
         } else if ($category == 'Initial') {
             $query .= " `t_i_process`";
         }
-        $query .= " SET r_status = 'Diapproved', r_review_by = '".$_SESSION['fname']. "/ " .$server_date_time."', r_of_cancellation = NULL, d_of_cancellation = NULL WHERE auth_no = '$auth_no'";
+        $query .= " SET r_status = 'Disapproved', r_review_by = '".$_SESSION['fname']. "/ " .$server_date_time."', r_of_cancellation = NULL, d_of_cancellation = NULL WHERE auth_no = '$auth_no'";
         $stmt = $conn->prepare($query);
         $stmt->execute();
         $count--;

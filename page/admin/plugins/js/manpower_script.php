@@ -50,7 +50,7 @@ const search_data =current_page=>{
   var batch = document.getElementById('batch').value;
   var fullname = document.getElementById('fullname_search').value;
   var emp_status = document.getElementById('emp_status').value;
-     if (emp_status == 'STATUS:') {
+  if (emp_status == 'STATUS:') {
     emp_status = '';
   }
   if (agency == 'Provider') {
@@ -175,7 +175,7 @@ const search_data_pagination =()=>{
 //   });     
 // }
 const import_emp =()=> {
-  $("#import_emp").click(function(){
+    $("#import_emp").click(function(){
     $('#import_employee').modal('hide');
     Swal.fire({
       icon: 'info',
@@ -345,6 +345,7 @@ const save_emp_data =()=>{
   $('#batch_edit').val(batch);
   $('#emp_status_edit').val(emp_status);
   $('#m_name_edit').val(m_name);
+
   console.log(param)
 
 }
@@ -419,6 +420,7 @@ const save_emp_data =()=>{
             $('#edit_emp').modal('hide');
             $('#fullname').val('');
             $('#emp_id').val('');
+            $('#emp_id_old').val('');
             $('#agency').val('');
             $('#batch').val('');
       }else if(response == 'existing'){
@@ -432,6 +434,7 @@ const save_emp_data =()=>{
             $('#edit_emp').modal('hide');
             $('#fullname').val('');
             $('#emp_id').val('');
+            $('#emp_id_old').val('');
             $('#agency').val('');
             $('#batch').val('');
       }else{
