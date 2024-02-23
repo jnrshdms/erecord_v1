@@ -123,9 +123,7 @@ if ($method == 'fetch_category') {
 
 
 				
-				echo '<tr style="cursor:pointer;" class="modal-trigger"  data-toggle="modal" data-target="#admin_r_update" onclick="rec_admin_update(&quot;' . $j['id'] . '~!~' . $j['auth_year'] . '~!~' . $j['date_authorized'] . '~!~' . $j['expire_date'] . '~!~' . $j['remarks'] . '~!~' . $j['r_of_cancellation'] . '~!~' . $j['dept'] . '~!~' . $j['batch'] . '~!~' . $j['d_of_cancellation'] . '~!~' . $j['fullname'] . '~!~' . $j['auth_no'] . '~!~' . $j['i_status'] . '&quot;)">';
-
-
+				echo '<tr >';
 				echo '<td>';
 				echo  '<p>
 					<label>
@@ -134,7 +132,7 @@ if ($method == 'fetch_category') {
 					</label>
 				</p>';
 				echo '</td>';
-				echo '<td>' . $c . '</td>';
+				echo '<td style="cursor:pointer;" class="modal-trigger"  data-toggle="modal" data-target="#admin_r_update" onclick="rec_admin_update(&quot;' . $j['id'] . '~!~' . $j['auth_year'] . '~!~' . $j['date_authorized'] . '~!~' . $j['expire_date'] . '~!~' . $j['remarks'] . '~!~' . $j['r_of_cancellation'] . '~!~' . $j['dept'] . '~!~' . $j['batch'] . '~!~' . $j['d_of_cancellation'] . '~!~' . $j['fullname'] . '~!~' . $j['auth_no'] . '~!~' . $j['i_status'] . '&quot;)">' . $c . '</td>';
 				echo '<td>' . $j['process'] . '</td>';
 				echo '<td>' . $j['auth_no'] . '</td>';
 				echo '<td>' . $j['fullname'] . '</td>';
