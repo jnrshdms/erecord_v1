@@ -126,7 +126,7 @@ if ($method == 'fetch_category') {
 		// For row numbering
 		$c = $page_first_result;
 		
-		$query = "SELECT b.batch,a.up_date_time,a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.updated_by,a.r_status,b.fullname,b.m_name,b.agency,a.dept,b.batch,b.emp_id,c.category";
+		$query = "SELECT b.batch,a.up_date_time,a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.up_date_time,a.r_status,b.fullname,b.m_name,b.agency,a.dept,b.batch,b.emp_id,c.category";
 
 		if ($category == 'Final') {
 			$query = $query . " FROM `t_f_process`";
@@ -158,7 +158,7 @@ if ($method == 'fetch_category') {
 					$row_class = " bg-danger";
 				}
 
-				echo '<tr style="cursor:pointer;" class="modal-trigger'.$row_class.'" data-toggle="modal" data-target="#view" onclick="rec_details(&quot;'.$j['id'].'~!~'.$j['auth_year'].'~!~'.$j['date_authorized'].'~!~'.$j['expire_date'].'~!~'.$j['remarks'].'~!~'.$j['r_of_cancellation'].'~!~'.$j['d_of_cancellation'].'~!~'.$j['updated_by'].'~!~'.$j['fullname'].'~!~'.$j['m_name'].'~!~'.$j['auth_no'].'&quot;)">';
+				echo '<tr style="cursor:pointer;" class="modal-trigger'.$row_class.'" data-toggle="modal" data-target="#view" onclick="rec_details(&quot;'.$j['id'].'~!~'.$j['auth_year'].'~!~'.$j['date_authorized'].'~!~'.$j['expire_date'].'~!~'.$j['remarks'].'~!~'.$j['r_of_cancellation'].'~!~'.$j['d_of_cancellation'].'~!~'.$j['up_date_time'].'~!~'.$j['fullname'].'~!~'.$j['m_name'].'~!~'.$j['auth_no'].'&quot;)">';
 					
 					// echo '<td>'.$j['process'].'</td>';
 					// echo '<td>'.$j['expire_date'].'</td>';
@@ -169,7 +169,7 @@ if ($method == 'fetch_category') {
 					echo '<td>'.$j['emp_id'].'</td>';
 					echo '<td>'.$j['batch'].'</td>';
 					echo '<td>'.$j['dept'].'</td>';
-					echo '<td>'.$j['up_date_time'].'</td>';
+					// echo '<td>'.$j['up_date_time'].'</td>';
 					// echo '<td>'.$j['r_of_cancellation'].'</td>';
 					// echo '<td>'.$j['d_of_cancellation'].'</td>';
 					
@@ -192,7 +192,7 @@ if ($method == 'view') {
 
 	$c = 0;
 
-		$query = "SELECT a.batch, a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.updated_by,a.r_status,a.i_status,b.fullname,b.emp_id,a.dept,c.category";
+		$query = "SELECT a.batch, a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.up_date_time,a.r_status,a.i_status,b.fullname,b.emp_id,a.dept,c.category";
 
 		if ($category == 'Final') {
 			$query = $query . " FROM `t_f_process`";
@@ -217,7 +217,7 @@ if ($method == 'view') {
 				$row_class = " bg-danger";
 			}
 			if ($i_status == 'Approved') {
-			echo '<tr style="cursor:pointer;" class="modal-trigger'.$row_class.'" data-toggle="modal" data-target="#update" onclick="rec_update(&quot;'.$j['id'].'~!~'.$j['auth_year'].'~!~'.$j['date_authorized'].'~!~'.$j['expire_date'].'~!~'.$j['remarks'].'~!~'.$j['r_of_cancellation'].'~!~'.$j['dept'].'~!~'.$j['d_of_cancellation'].'~!~'.$j['updated_by'].'~!~'.$j['fullname'].'~!~'.$j['auth_no'].'~!~'.$j['i_status'].'&quot;)">';
+			echo '<tr style="cursor:pointer;" class="modal-trigger'.$row_class.'" data-toggle="modal" data-target="#update" onclick="rec_update(&quot;'.$j['id'].'~!~'.$j['auth_year'].'~!~'.$j['date_authorized'].'~!~'.$j['expire_date'].'~!~'.$j['remarks'].'~!~'.$j['r_of_cancellation'].'~!~'.$j['dept'].'~!~'.$j['d_of_cancellation'].'~!~'.$j['up_date_time'].'~!~'.$j['fullname'].'~!~'.$j['auth_no'].'~!~'.$j['i_status'].'&quot;)">';
 				
 				echo '<td>'.$j['auth_year'].'</td>';
 				echo '<td>'.$j['date_authorized'].'</td>';
@@ -226,7 +226,7 @@ if ($method == 'view') {
 				echo '<td>'.$j['r_of_cancellation'].'</td>';
 				echo '<td>'.$j['d_of_cancellation'].'</td>';
 				echo '<td>'.$j['dept'].'</td>';
-				echo '<td>'.$j['updated_by'].'</td>';
+				echo '<td>'.$j['up_date_time'].'</td>';
 				
 				
 			echo '</tr>';
@@ -249,10 +249,10 @@ if ($method == 'update') {
     $date_authorized = $_POST['date_authorized'];
     $expire_date = $_POST['expire_date'];
     $remarks = $_POST['remarks'];
-    // $r_of_cancellation = $_POST['r_of_cancellation'];
+    $r_of_cancellation = $_POST['r_of_cancellation'];
     $dept = $_POST['dept'];
-    // $d_of_cancellation = $_POST['d_of_cancellation'];
-    $updated_by = $_POST['updated_by'];
+    $d_of_cancellation = $_POST['d_of_cancellation'];
+    $up_date_time = $_POST['up_date_time'];
     $id = $_POST['id'];
     $category = $_POST['category'];
     $c = 0;
@@ -276,20 +276,20 @@ if ($method == 'update') {
         } else if ($category == 'Initial') {
             $query .= "`t_i_process`";
         }
-        $query .= " SET remarks = '$remarks', auth_year = '$auth_year', date_authorized = '$date_authorized', expire_date = '$expire_date', dept = '$dept', i_status = 'Pending', updated_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE id = '$id'";
+        $query .= " SET remarks = '$remarks', auth_year = '$auth_year', date_authorized = '$date_authorized', expire_date = '$expire_date', dept = '$dept', i_status = 'Pending', up_date_time = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE id = '$id'";
         $stmt = $conn->prepare($query);
-    //     if (!$stmt->execute()) {
-    //         $error++;
-    //     }
-    // } else {
-    //     $query = "UPDATE ";
-    //     if ($category == 'Final') {
-    //         $query .= "`t_f_process`";
-    //     } else if ($category == 'Initial') {
-    //         $query .= "`t_i_process`";
-    //     }
-    //     $query .= " SET r_of_cancellation = '$r_of_cancellation', d_of_cancellation = '$d_of_cancellation', r_status = 'Pending', dept = '$dept', updated_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE auth_no = '$auth_no'";
-    //     $stmt = $conn->prepare($query);
+        if (!$stmt->execute()) {
+            $error++;
+        }
+    } else {
+        $query = "UPDATE ";
+        if ($category == 'Final') {
+            $query .= "`t_f_process`";
+        } else if ($category == 'Initial') {
+            $query .= "`t_i_process`";
+        }
+        $query .= " SET r_of_cancellation = '$r_of_cancellation', d_of_cancellation = '$d_of_cancellation', r_status = 'Pending', dept = '$dept', up_date_time = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE auth_no = '$auth_no'";
+        $stmt = $conn->prepare($query);
         if (!$stmt->execute()) {
             $error++;
         }
@@ -321,7 +321,7 @@ if ($method == 'qc_fetch_category') {
 		// For row numbering
 		$c = $page_first_result;
 		
-		$query = "SELECT b.batch,a.up_date_time,a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.updated_by,a.r_status,b.fullname,b.m_name,b.agency,a.dept,b.batch,b.emp_id,c.category";
+		$query = "SELECT b.batch,a.up_date_time,a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.up_date_time,a.r_status,b.fullname,b.m_name,b.agency,a.dept,b.batch,b.emp_id,c.category";
 
 		if ($category == 'Final') {
 			$query = $query . " FROM `t_f_process`";
@@ -353,7 +353,7 @@ if ($method == 'qc_fetch_category') {
 					$row_class = " bg-danger";
 				}
 
-				echo '<tr style="cursor:pointer;" class="modal-trigger'.$row_class.'" data-toggle="modal" data-target="#view" onclick="qc_rec_details(&quot;'.$j['id'].'~!~'.$j['auth_year'].'~!~'.$j['date_authorized'].'~!~'.$j['expire_date'].'~!~'.$j['remarks'].'~!~'.$j['r_of_cancellation'].'~!~'.$j['d_of_cancellation'].'~!~'.$j['updated_by'].'~!~'.$j['fullname'].'~!~'.$j['m_name'].'~!~'.$j['auth_no'].'&quot;)">';
+				echo '<tr style="cursor:pointer;" class="modal-trigger'.$row_class.'" data-toggle="modal" data-target="#view" onclick="qc_rec_details(&quot;'.$j['id'].'~!~'.$j['auth_year'].'~!~'.$j['date_authorized'].'~!~'.$j['expire_date'].'~!~'.$j['remarks'].'~!~'.$j['r_of_cancellation'].'~!~'.$j['d_of_cancellation'].'~!~'.$j['up_date_time'].'~!~'.$j['fullname'].'~!~'.$j['m_name'].'~!~'.$j['auth_no'].'&quot;)">';
 					
 					// echo '<td>'.$j['process'].'</td>';
 					// echo '<td>'.$j['expire_date'].'</td>';
@@ -364,7 +364,7 @@ if ($method == 'qc_fetch_category') {
 					echo '<td>'.$j['emp_id'].'</td>';
 					echo '<td>'.$j['batch'].'</td>';
 					echo '<td>'.$j['dept'].'</td>';
-					echo '<td>'.$j['up_date_time'].'</td>';
+					// echo '<td>'.$j['up_date_time'].'</td>';
 					// echo '<td>'.$j['r_of_cancellation'].'</td>';
 					// echo '<td>'.$j['d_of_cancellation'].'</td>';
 					
@@ -387,7 +387,7 @@ if ($method == 'qc_view') {
 
 	$c = 0;
 
-		$query = "SELECT a.batch, a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.updated_by,a.r_status,a.i_status,b.fullname,b.emp_id,a.dept,c.category";
+		$query = "SELECT a.batch, a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.up_date_time,a.r_status,a.i_status,b.fullname,b.emp_id,a.dept,c.category";
 
 		if ($category == 'Final') {
 			$query = $query . " FROM `t_f_process`";
@@ -412,7 +412,7 @@ if ($method == 'qc_view') {
 				$row_class = " bg-danger";
 			}
 			if ($i_status == 'Approved') {
-			echo '<tr style="cursor:pointer;" class="modal-trigger'.$row_class.'" data-toggle="modal" data-target="#admine_r_update" onclick="qc_rec_update(&quot;'.$j['id'].'~!~'.$j['auth_year'].'~!~'.$j['date_authorized'].'~!~'.$j['expire_date'].'~!~'.$j['remarks'].'~!~'.$j['r_of_cancellation'].'~!~'.$j['dept'].'~!~'.$j['d_of_cancellation'].'~!~'.$j['updated_by'].'~!~'.$j['fullname'].'~!~'.$j['auth_no'].'~!~'.$j['i_status'].'&quot;)">';
+			echo '<tr style="cursor:pointer;" class="modal-trigger'.$row_class.'" data-toggle="modal" data-target="#admine_r_update" onclick="qc_rec_update(&quot;'.$j['id'].'~!~'.$j['auth_year'].'~!~'.$j['date_authorized'].'~!~'.$j['expire_date'].'~!~'.$j['remarks'].'~!~'.$j['r_of_cancellation'].'~!~'.$j['dept'].'~!~'.$j['d_of_cancellation'].'~!~'.$j['up_date_time'].'~!~'.$j['fullname'].'~!~'.$j['auth_no'].'~!~'.$j['i_status'].'&quot;)">';
 				
 				echo '<td>'.$j['auth_year'].'</td>';
 				echo '<td>'.$j['date_authorized'].'</td>';
@@ -421,7 +421,7 @@ if ($method == 'qc_view') {
 				echo '<td>'.$j['r_of_cancellation'].'</td>';
 				echo '<td>'.$j['d_of_cancellation'].'</td>';
 				echo '<td>'.$j['dept'].'</td>';
-				echo '<td>'.$j['updated_by'].'</td>';
+				echo '<td>'.$j['up_date_time'].'</td>';
 				
 				
 			echo '</tr>';
@@ -447,7 +447,7 @@ if ($method == 'qc_update') {
     $r_of_cancellation = $_POST['r_of_cancellation'];
     $dept = $_POST['dept'];
     $d_of_cancellation = $_POST['d_of_cancellation'];
-    $updated_by = $_POST['updated_by'];
+    $up_date_time = $_POST['up_date_time'];
     $id = $_POST['id'];
     $category = $_POST['category'];
     $c = 0;
@@ -471,7 +471,7 @@ if ($method == 'qc_update') {
     //     } else if ($category == 'Initial') {
     //         $query .= "`t_i_process`";
     //     }
-    //     $query .= " SET remarks = '$remarks', auth_year = '$auth_year', date_authorized = '$date_authorized', expire_date = '$expire_date', dept = '$dept', r_status = 'Pending', updated_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE id = '$id'";
+    //     $query .= " SET remarks = '$remarks', auth_year = '$auth_year', date_authorized = '$date_authorized', expire_date = '$expire_date', dept = '$dept', r_status = 'Pending', up_date_time = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE id = '$id'";
     //     $stmt = $conn->prepare($query);
     //     if (!$stmt->execute()) {
     //         $error++;
@@ -483,7 +483,7 @@ if ($method == 'qc_update') {
         } else if ($category == 'Initial') {
             $query .= "`t_i_process`";
         }
-        $query .= " SET r_of_cancellation = '$r_of_cancellation', d_of_cancellation = '$d_of_cancellation', r_status = 'Pending', dept = '$dept', updated_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE auth_no = '$auth_no'";
+        $query .= " SET r_of_cancellation = '$r_of_cancellation', d_of_cancellation = '$d_of_cancellation', r_status = 'Pending', dept = '$dept', up_date_time = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE auth_no = '$auth_no'";
         $stmt = $conn->prepare($query);
         if (!$stmt->execute()) {
             $error++;

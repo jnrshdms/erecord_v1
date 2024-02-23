@@ -52,15 +52,15 @@
                 </div>
                 <div class="col-3">
                  <span><b>Reason Of Cancellation:</b></span>
-                 <input type="text" id="r_of_cancellation_can" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" disabled>
+                 <input type="text" id="r_of_cancellation_can" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" >
             </div>
             <div class="col-3">
                  <span><b>Date Of Cancellation:</b></span>
-                 <input type="date" id="d_of_cancellation_can" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" disabled>
+                 <input type="date" id="d_of_cancellation_can" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" >
             </div>
             <div class="col-3">
                  <span><b>Updated By:</b></span>
-                 <input type="text" id="updated_by_can" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" disabled>
+                 <input type="text" id="up_date_time_can" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" disabled>
             </div>
         </div>
       </div>
