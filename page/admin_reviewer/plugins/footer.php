@@ -15,15 +15,17 @@ include '../../modals/update.php';
 include '../../modals/add_admin_r.php';
 include '../../modals/update_acc_admin_r.php';
 include '../../modals/add_emp.php';
-include '../../modals/import_employee.php';
+// include '../../modals/import_employee.php';
 include '../../modals/edit_emp.php';
-include '../../modals/add_emp_pro.php';
+// include '../../modals/add_emp_pro.php';
 
 include '../../modals/view_p.php';
 include '../../modals/review.php';
 include '../../modals/approve.php';
 include '../../modals/i_review.php';
 include '../../modals/qc_i_review.php';
+include '../../modals/add_new_autho.php';
+include '../../modals/add_autho.php';
 ?>
 <!-- jQuery -->
 <!-- <script src="../../plugins/jquery/jquery.min.js"></script> -->

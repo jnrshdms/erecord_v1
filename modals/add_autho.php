@@ -11,22 +11,30 @@
       </div>
       <div class="modal-body">
         <div class="row">
-          <div class="col-sm-3">
+           <!-- <div class="col-sm-3"> -->
             <!-- category -->
-            <label style="font-weight: normal;color: #000;"></label>
+            <!-- <label style="font-weight: normal;color: #000;"></label>
             <select class="form-control  btn bg-teal" recquired name="category_add" id="category_add">
               <option value="">Category</option>
               <option>Initial</option>
               <option>Final</option>
             </select>
-          </div>
-          <div class="col-sm-5">
+          </div> 
+          <div class="col-sm-5"> -->
             <!-- select process -->
-            <label style="font-weight: normal;color: #000;"></label>
+            <!-- <label style="font-weight: normal;color: #000;"></label>
             <select class="form-control btn" name="pro_add" recquired id="pro_add" style="width: 100%; border: 2px solid black;background-color: white;color: black;font-size: 16px;cursor: pointer; border-color: #7ADFB5;">
               <option>Please select a process.....</option>
               <option></option>
             </select>
+          </div> -->
+          <div class="col-sm-4">
+            <span><b>Category:</b></span>
+            <input type="text" id="category_add" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" readonly>
+          </div>
+          <div class="col-sm-4">
+            <span><b>Process:</b></span>
+            <input type="text" id="process_add" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" readonly>
           </div>
           <input type="hidden" id="batch_add" class="form-control" style="height:45px; border: 1px solid black; font-size: 15px;" autocomplete="off" readonly>
           <div class="col-sm-4">

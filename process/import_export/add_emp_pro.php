@@ -4,45 +4,48 @@ include '../session.php';
 
 $method = $_POST['method'];
 
-if ($method == 'fetch_pro') {
-	$category = $_POST['category'];
-	$query = "SELECT `process` FROM `m_process` WHERE category = '$category' ORDER BY process ASC";
-	$stmt = $conn -> prepare($query);
-	$stmt -> execute();
-	if ($stmt -> rowCount() > 0) {
-		echo '<option value="">Please select a process.....</option>';
-		foreach($stmt -> fetchAll() as $row) {
-			echo '<option>'.htmlspecialchars($row['process']).'</option>';
-		}
-	} else {
-		echo '<option>Please select a process.....</option>';
-	}
-}
+// if ($method == 'fetch_pro') {
+// 	$category = $_POST['category'];
+// 	$query = "SELECT `process` FROM `m_process` WHERE category = '$category' ORDER BY process ASC";
+// 	$stmt = $conn -> prepare($query);
+// 	$stmt -> execute();
+// 	if ($stmt -> rowCount() > 0) {
+// 		echo '<option value="">Please select a process.....</option>';
+// 		foreach($stmt -> fetchAll() as $row) {
+// 			echo '<option>'.htmlspecialchars($row['process']).'</option>';
+// 		}
+// 	} else {
+// 		echo '<option>Please select a process.....</option>';
+// 	}
+// }
 
 if ($method == 'get_auth_no_by_emp_no') {
-	$pro = $_POST['pro'];
-	$auth_no = '';
+	// $pro = $_POST['pro'];
+	// $auth_no = '';
 	$auth_no= $_POST['auth_no'];
-	$category = $_POST['category'];
+	// $category = $_POST['category'];
 	$message = '';
 
-	$is_valid = false;
+	// $is_valid = false;
 
-	if (!empty($category)) {
-		if (!empty($pro)) {
-			$is_valid = true;
-		} else $message = 'Process Not Set';
-	} else $message = 'Category Not Set';
+	// if (!empty($category)) {
+	// 	if (!empty($pro)) {
+	// 		$is_valid = true;
+	// 	} else $message = 'Process Not Set';
+	// } else $message = 'Category Not Set';
 
-	if ($is_valid == true) {
-		$query = "SELECT a.emp_id, a.batch, a.dept, b.fullname, b.emp_id";
+	// if ($is_valid == true) {
+	
+		// $query = "SELECT a.process, a.emp_id, a.batch, a.dept, b.fullname, b.emp_id c.process, c.category";
+		// $query = $query . "a LEFT JOIN m_process c ON a.process = c.process";
 
-		if ($category == 'Final') {
-			$query = $query . " FROM `t_f_process`";
-		}else if ($category == 'Initial') {
-			$query = $query . " FROM `t_i_process`";
-		}
-		$query = $query . "a LEFT JOIN t_employee_m b ON a.emp_id = b.emp_id WHERE process = '$pro' AND auth_no = '$auth_no'";
+		// if ($category == 'Final') {
+		// 	$query = $query . " FROM `t_f_process`";
+		// }else if ($category == 'Initial') {
+		// 	$query = $query . " FROM `t_i_process`";
+		// }
+		// $query = $query . "a LEFT JOIN t_employee_m b ON a.emp_id = b.emp_id WHERE auth_no = '$auth_no'";
+	
 		$stmt = $conn->prepare($query);
 		$stmt->execute();
 		if ($stmt->rowCount() > 0) {
@@ -50,16 +53,20 @@ if ($method == 'get_auth_no_by_emp_no') {
 				$emp_id = $row['emp_id'];
 				$dept = $row['dept'];
 				$batch = $row['batch'];
+				$process = $row['process'];
+				$category = $row['category'];
 				$fullname = $row['fullname'];
 			}
 			$message = 'success';
 		} else {
 			$message = 'Not Found';
 		}
-	}
+	// }
 
 	$response_arr = array(
         'emp_id' => $emp_id,
+		'process' => $process,
+	    'category' => $category,
 		'dept'=> $dept,
 		'batch' => $batch,
 		'fullname' => $fullname,
