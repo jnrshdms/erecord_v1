@@ -18,13 +18,16 @@ if (isset($_POST['upload'])) {
             if (!$csvFile) {
                 // Handle file open error
             }
-            
+
+            // Skip the first row
+            fgetcsv($csvFile);
+
             $error = 0;
             while (($line = fgetcsv($csvFile)) !== false) {
                 if (empty(array_filter($line))) {
                     continue;
                 }
-                
+
                 $fullname = $line[0];
                 $m_name = $line[1];
                 $emp_id = $line[2];
@@ -114,4 +117,3 @@ if (isset($_POST['upload'])) {
               </script>';
     }
 }
-?>
