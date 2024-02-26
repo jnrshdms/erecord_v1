@@ -11,23 +11,6 @@
       </div>
       <div class="modal-body">
         <div class="row">
-           <!-- <div class="col-sm-3"> -->
-            <!-- category -->
-            <!-- <label style="font-weight: normal;color: #000;"></label>
-            <select class="form-control  btn bg-teal" recquired name="category_add" id="category_add">
-              <option value="">Category</option>
-              <option>Initial</option>
-              <option>Final</option>
-            </select>
-          </div> 
-          <div class="col-sm-5"> -->
-            <!-- select process -->
-            <!-- <label style="font-weight: normal;color: #000;"></label>
-            <select class="form-control btn" name="pro_add" recquired id="pro_add" style="width: 100%; border: 2px solid black;background-color: white;color: black;font-size: 16px;cursor: pointer; border-color: #7ADFB5;">
-              <option>Please select a process.....</option>
-              <option></option>
-            </select>
-          </div> -->
           <div class="col-sm-4">
             <span><b>Category:</b></span>
             <input type="text" id="category_add" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" readonly>
@@ -55,10 +38,6 @@
           <div class="col-sm-3">
             <span><b>Department:</b></span>
             <input type="text" id="dept_add" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" >
-            <!-- <select id="dept_add" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off">
-              <option value="PD">PD</option>
-              <option value="QA">QA</option>
-            </select> -->
           </div>
         </div>
         <br>
@@ -83,7 +62,7 @@
       </div>
       <div class="modal-footer" style="background:#fff;">
         <div class="col-sm-3">
-          <button class="btn btn-block" onclick="save_emp_pro()" style="color:#fff;height:34px;border-radius:.25rem;background: #425B2C;font-size:15px;font-weight:normal;">Add Authorization</button>
+          <button class="btn btn-block" onclick="add_emp_pro()" style="color:#fff;height:34px;border-radius:.25rem;background: #425B2C;font-size:15px;font-weight:normal;">Add Authorization</button>
         </div>
       </div>
     </div>

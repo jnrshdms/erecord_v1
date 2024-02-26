@@ -114,7 +114,7 @@ if ($method == 'fetch_status_cert') {
 			$query = $query . " AND (b.emp_id = '$emp_id' OR b.emp_id_old = '$emp_id')";
 		}
 		$query = $query . " AND b.fullname LIKE '$fullname%' ";
-		$query = $query . " ORDER BY a.up_date_time DESC LIMIT " . $page_first_result . ", " . $results_per_page;
+		$query = $query . " ORDER BY a.updated_by DESC LIMIT " . $page_first_result . ", " . $results_per_page;
 		$stmt = $conn->prepare($query);
 		$stmt->execute();
 		if ($stmt->rowCount() > 0) {
@@ -137,8 +137,6 @@ if ($method == 'fetch_status_cert') {
 				echo '<td>' . $j['i_status'] . '</td>';
 				echo '<td>' . $j['dept'] . '</td>';
 				echo '<td>' . $j['remarks'] . '</td>';
-
-
 				echo '</tr>';
 			}
 		} else {

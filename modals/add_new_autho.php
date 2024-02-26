@@ -14,7 +14,7 @@
           <div class="col-sm-3">
             <!-- category -->
            <label style="font-weight: normal;color: #000;"></label>
-            <select class="form-control  btn bg-teal" recquired name="category_add" id="new_category_add">
+            <select class="form-control  btn bg-teal" recquired name="new_category_add" id="new_category_add">
               <option value="">Category</option>
               <option>Initial</option>
               <option>Final</option>
@@ -31,26 +31,26 @@
           <input type="hidden" id="new_batch_add" class="form-control" style="height:45px; border: 1px solid black; font-size: 15px;" autocomplete="off" readonly>
           <div class="col-sm-4">
             <span><b>Employee No.:</b></span>
-            <input type="text" id="new_emp_id_add" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" readonly>
+            <input type="text" id="new_emp_id_add" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" value="N/A">
           </div>
         </div>
         <br>
         <div class="row">
-          <div class="col-sm-4">
-            <span><b>Authorization No.:</b></span>
-            <input type="text" id="new_auth_no_add" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" value="N/A">
-          </div>
-          <div class="col-sm-5">
+        <div class="col-sm-5">
             <span><b>Employee Name:</b></span>
             <input type="text" id="new_fullname_add" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" readonly>
           </div>
+          <div class="col-sm-4">
+            <span><b>Authorization No.:</b></span>
+            <input type="text" id="new_auth_no_add" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" >
+          </div>
           <div class="col-sm-3">
             <span><b>Department:</b></span>
-            <input type="text" id="new_dept_add" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" >
-      <select id="dept_add" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off">
+      <select id="new_dept_add" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off">
               <option value="PD">PD</option>
               <option value="QA">QA</option>
             </select> 
+        </div>
         </div>
         <br>
         <div class="row">
@@ -74,7 +74,7 @@
       </div>
       <div class="modal-footer" style="background:#fff;">
         <div class="col-sm-3">
-          <button class="btn btn-block" onclick="save_new_emp_pro()" style="color:#fff;height:34px;border-radius:.25rem;background: #425B2C;font-size:15px;font-weight:normal;">Add Authorization</button>
+          <button class="btn btn-block" onclick="add_new_autho()" style="color:#fff;height:34px;border-radius:.25rem;background: #425B2C;font-size:15px;font-weight:normal;">Add New Authorization</button>
         </div>
       </div>
     </div>
