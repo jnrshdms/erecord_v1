@@ -25,24 +25,38 @@
     <div class="row">
       <!-- ./col -->
       <div class="col-lg-3 col-6">
-        <!-- small card -->
-        <a href="#" data-toggle="modal" data-target="#add_emp_pro">
-          <div class="small-box bg-danger">
-            <div class="inner">
-              <h4>ADD</h4>
-              <br>
-              <p></p>
+          <!-- small card -->
+          <a href="#" data-toggle="modal" data-target="#add_new_autho">
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h4>ADD NEW</h4>
+                <br>
+                <p></p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-plus-circle"></i>
+              </div>
             </div>
-            <div class="icon">
-              <i class="fa fa-plus-circle"></i>
-            </div>
-          </div>
-      </div>
+        </div>
       </a>
-      <!-- ./col -->
       <div class="col-lg-3 col-6">
+          <!-- small card -->
+          <a href="#" data-toggle="modal" data-target="#add_emp_pro">
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h4>ADD AUTHORIZATION</h4>
+                <br>
+                <p></p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-plus-circle"></i>
+              </div>
+            </div>
+        </div>
+      <!-- ./col -->
+      <!-- <div class="col-lg-2 col-6"> -->
         <!-- small card -->
-        <a href="../../template/import.csv" download>
+        <!-- <a href="../../template/import.csv" download>
           <div class="small-box bg-warning">
             <div class="inner">
               <h4>DOWNLOAD</h4>
@@ -54,7 +68,7 @@
             </div>
           </div>
       </div>
-      </a>
+      </a> -->
       <!-- ./col -->
       <div class="col-lg-3 col-6">
         <!-- small card -->

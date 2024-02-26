@@ -18,7 +18,7 @@
           </div>
           <div class="row ml-4">
             <div class="col- 0">
-            <select class="btn bg-teal" name="category" id="category" required>
+            <select class="btn btn-block btn-info" name="category" id="category" required>
               <option value="">Category</option>
               <option value="initial">Initial</option>
               <option value="final">Final</option>
@@ -27,8 +27,10 @@
           </div>
         </div>
         <div class="modal-footer">
+        <button type="button" class="btn btn-success" onclick="window.location.href='../../template/import.csv'" download>Download Template</button>
           <button type="submit" value="upload" name="upload" id="import_pro" onclick="import_pro()" class="btn btn-primary">Upload</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
         </div>
       </form>
     </div>

@@ -56,9 +56,9 @@
         </div>
         </a>
         <!-- ./col -->
-        <div class="col-lg-2 col-6">
+        <!-- <div class="col-lg-2 col-6"> -->
           <!-- small card -->
-          <a href="../../template/import.csv" download>
+          <!-- <a href="../../template/import.csv" download>
             <div class="small-box bg-warning">
               <div class="inner">
                 <h4>DOWNLOAD</h4>
@@ -69,10 +69,10 @@
                 <i class="fa fa-arrow-circle-down"></i>
               </div>
             </div>
-        </div>
+        </div> -->
         </a>
         <!-- ./col -->
-        <div class="col-lg-2 col-6">
+        <div class="col-lg-3 col-6">
           <!-- small card -->
           <a href="#" data-toggle="modal" data-target="#import_data">
             <div class="small-box bg-success">
@@ -88,7 +88,7 @@
           </a>
         </div>
         <!-- ./col -->
-        <div class="col-lg-2 col-6">
+        <div class="col-lg-3 col-6">
           <!-- small card -->
           <a href="#" onclick="export_data('employee_data')">
             <div class="small-box bg-info">
