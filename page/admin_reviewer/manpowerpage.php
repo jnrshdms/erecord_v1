@@ -90,7 +90,9 @@
       </div>
       <!-- ./col -->
     </div>
+
   </section>
+  <!-- Main content -->
   <section class="content">
     <div class="col-md-12">
       <div class="card card-light" style="background: #fff; border-top: 2px solid #6c757d;">
@@ -100,16 +102,16 @@
         <div class="card-body">
           <div class="row">
             <div class="col-sm-2">Resigned:🟪 Retired:🟦 Dismiss:🟧</div>
-            <div div class="col-sm-1">
-              <select class="form-control btn-outline-secondary" id="emp_status" onchange="search_data(1)">
+            <div class="col-sm-1">
+              <select class="form-control btn btn-outline-secondary" id="emp_status" onchange="search_data(1)">
                 <option>STATUS:</option>
                 <option value="Resigned">Resigned</option>
                 <option value="Retired">Retired</option>
                 <option value="Dismiss">Dismiss</option>
               </select>
             </div>
-            <div div class="col-sm-1">
-              <select class="form-control btn-outline-secondary" name="agency" id="agency" onchange="search_data(1)">
+            <div class="col-sm-1">
+              <select class="form-control btn btn-outline-secondary" name="agency" id="agency" onchange="search_data(1)">
                 <option>Provider</option>
                 <option></option>
               </select>
@@ -118,39 +120,36 @@
               <input class="form-control" placeholder="Employee ID" type="text" id="emp_id_search">
             </div>
             <div class="col-sm-2">
+              <input class="form-control" placeholder="Batch No." type="number" id="batch">
+            </div>
+            <div div class="col-sm-2">
               <input class="form-control" placeholder="Employee Name" type="text" id="fullname_search">
             </div>
             <div class="col-sm-2">
-              <input class="form-control" placeholder="Batch No." type="number" id="batch">
-            </div>
-            <div class="col-sm-2">
               <!-- search button -->
-              <button class="btn btn-block d-flex justify-content-left" id="search_btn" onclick="search_data(1)" style="color:#fff;height:34px;border-radius:.25rem;background: #20c997;font-size:15px;font-weight:normal;"><img src="../../dist/img/search.png" style="height:19px;">&nbsp;&nbsp;Search</button>
+              <button class="btn btn-block d-flex justify-content-left" id="search_btn" onclick="search_data(1)" style="color:#fff;height:38px;border-radius:.25rem;background: #20c997;font-size:15px;font-weight:normal;"><img src="../../dist/img/search.png" style="height:19px;">&nbsp;&nbsp;Search</button>
             </div>
           </div>
           <br>
           <div class="col-12">
-            <div class="card-body table-responsive p-0" style="height: 450px;">
+            <div class="card-body table-responsive p-0" style="height: 500px;">
               <table class="table table-head-fixed text-nowrap" id="employee_data">
-
                 <thead>
-
                   <tr>
                     <th>#</th>
                     <th>Employee Name</th>
                     <th>Maiden Name</th>
                     <th>Employee ID</th>
+                    <th>Employee ID Old</th>
                     <th>Provider</th>
-                    <!-- <th>Department</th> -->
                     <th>Batch No.</th>
                   </tr>
                 </thead>
                 <tbody id="details_emp">
-
                 </tbody>
-
               </table>
             </div>
+            <br>
             <div class="row">
               <div class="col-sm-12 col-md-9 col-9">
                 <div class="dataTables_info" id="count_rows_display" role="status" aria-live="polite"></div>

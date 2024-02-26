@@ -2,7 +2,7 @@
 $(function() {
   agency_data();
    search_data(1);
-   import_emp();
+   import_emp(); 
 });
 
 document.querySelectorAll('#emp_id_search, #fullname_search, #batch').forEach(input => {
@@ -50,7 +50,7 @@ const search_data =current_page=>{
   var batch = document.getElementById('batch').value;
   var fullname = document.getElementById('fullname_search').value;
   var emp_status = document.getElementById('emp_status').value;
-     if (emp_status == 'STATUS:') {
+  if (emp_status == 'STATUS:') {
     emp_status = '';
   }
   if (agency == 'Provider') {
@@ -174,9 +174,8 @@ const search_data_pagination =()=>{
 //     }
 //   });     
 // }
-
 const import_emp =()=> {
-  $("#import_emp").click(function(){
+    $("#import_emp").click(function(){
     $('#import_employee').modal('hide');
     Swal.fire({
       icon: 'info',
@@ -208,7 +207,6 @@ const save_emp_data =()=>{
     var fullname = document.getElementById('fullname').value;
     var emp_id = document.getElementById('emp_id').value;
     var agency = document.getElementById('agency_get').value;
-    var dept = document.getElementById('dept').value;
     var batch = document.getElementById('batch_get').value;
     var m_name = document.getElementById('m_name_get').value;
  
@@ -237,14 +235,6 @@ const save_emp_data =()=>{
                 showConfirmButton: false,
                 timer : 1000
             });
-  }else if(dept == ''){
-    Swal.fire({
-                icon: 'info',
-                title: 'Please Select Department !!!',
-                text: 'Information',
-                showConfirmButton: false,
-                timer : 1000
-            });
   }else if(batch == ''){
     Swal.fire({
                 icon: 'info',
@@ -263,7 +253,6 @@ const save_emp_data =()=>{
     fullname:fullname,
     emp_id:emp_id,
     agency:agency,
-    dept:dept,
     batch:batch,
     m_name:m_name
     },success:function(response){
@@ -281,7 +270,6 @@ const save_emp_data =()=>{
             $('#fullname').val('');
             $('#emp_id').val('');
             $('#agency').val('');
-            $('#dept').val('');
             $('#batch').val('');
       }else if(response == 'existing'){
         Swal.fire({
@@ -295,7 +283,6 @@ const save_emp_data =()=>{
             $('#fullname').val('');
             $('#emp_id').val('');
             $('#agency').val('');
-            $('#dept').val('');
             $('#batch').val('');
       }else{
         Swal.fire({
@@ -339,7 +326,7 @@ const save_emp_data =()=>{
 }
 
 
-const edit_employee =(param)=>{
+  const edit_employee =(param)=>{
   var data = param.split('~!~');
   var id = data[0];
   var fullname = data[1];
@@ -358,6 +345,7 @@ const edit_employee =(param)=>{
   $('#batch_edit').val(batch);
   $('#emp_status_edit').val(emp_status);
   $('#m_name_edit').val(m_name);
+
   console.log(param)
 
 }
@@ -432,6 +420,7 @@ const edit_employee =(param)=>{
             $('#edit_emp').modal('hide');
             $('#fullname').val('');
             $('#emp_id').val('');
+            $('#emp_id_old').val('');
             $('#agency').val('');
             $('#batch').val('');
       }else if(response == 'existing'){
@@ -445,6 +434,7 @@ const edit_employee =(param)=>{
             $('#edit_emp').modal('hide');
             $('#fullname').val('');
             $('#emp_id').val('');
+            $('#emp_id_old').val('');
             $('#agency').val('');
             $('#batch').val('');
       }else{

@@ -16,13 +16,14 @@ include '../../modals/update_admin.php';
 include '../../modals/add_emp.php';
 include '../../modals/import_m.php';
 include '../../modals/edit_emp.php';
-include '../../modals/add_new_autho.php';
-include '../../modals/add_autho.php';
 include '../../modals/view_p.php';
 include '../../modals/review.php';
 include '../../modals/approve.php';
 include '../../modals/disapproved.php';
 include '../../modals/qc_disapproved.php';
+
+include '../../modals/add_new_autho.php';
+include '../../modals/add_autho.php';
 ?>
 <!-- jQuery -->
 <!-- <script src="../../plugins/jquery/jquery.min.js"></script> -->

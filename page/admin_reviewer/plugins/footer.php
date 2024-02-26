@@ -9,6 +9,7 @@
 //MODALS
 include '../../modals/logout.php';
 include '../../modals/import_data.php';
+include '../../modals/import_m.php';
 include '../../modals/view.php';
 include '../../modals/admin_update.php';
 include '../../modals/update.php';
