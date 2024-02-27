@@ -103,7 +103,7 @@
             </div>
           <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
             <div class="row">
-              <div class="col-sm-2"></div>
+              <div class="col-sm-4"></div>
               <div class="col-sm-2"> <select class=" form-control btn bg-teal" name="category" id="categoryyy" required onchange="search_history(1)">
                   <option value="">Category</option>
                   <option>Initial</option>
@@ -117,7 +117,7 @@
               <button class="btn btn-block d-flex justify-content-left" id="search_btn" onclick="search_history(1)" style="color:#fff;height:34px;border-radius:.25rem;background: #20c997;font-size:15px;font-weight:normal;"><img src="../../dist/img/search.png" style="height:19px;">&nbsp;&nbsp;Search</button>
             </div>
             </div>
-
+<br>
               <div class="col-12">
                 <div class="card-body table-responsive p-0" style="height: 500px;">
                   <table class="table table-head-fixed text-nowrap" id="employee_data">
