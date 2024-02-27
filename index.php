@@ -136,7 +136,7 @@
   <!-- /.content-wrapper -->
   <div style="text-align: center;">
     <footer class="content-fluid">
-      <strong>Copyright &copy; 2023. Developed by: EJ Montañano </strong>
+      <strong>Copyright &copy; 2023. EJ Montañano & Jane Irish Bautista </strong>
       All rights reserved.
       <div class=" d-none d-sm-inline-block">
         <b>Version</b> 1.0.1
