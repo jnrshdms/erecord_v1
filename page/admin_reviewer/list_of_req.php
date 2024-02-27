@@ -107,69 +107,75 @@
                 </div>
               </div>
             </div>
-          <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
-            <div class="row">
-              <div class="col-sm-4"></div>
-              <div class="col-sm-2"> <select class="form-control  btn bg-teal" name="category" id="categoryyy" required onchange="search_history(1)">
-                  <option value="">Category</option>
-                  <option>Initial</option>
-                  <option>Final</option>
-                </select></div>
-              <div class="col-sm-2"><input placeholder="Employee Name" type="text" id="fullname_h" class="form-control" autocomplete="off"></div>
-              <div class="col-sm-2"><input placeholder="Employee ID" type="text" id="emp_id_h" class="form-control" autocomplete="off"></div>
-              <div class="col-sm-2">
-                <!-- search button -->
-                <button class="btn btn-block d-flex justify-content-left" id="search_btn" onclick="search_history(1)" style="color:#fff;height:37px;border-radius:.25rem;background: #20c997;font-size:15px;font-weight:normal;"><img src="../../dist/img/search.png" style="height:19px;">&nbsp;&nbsp;Search</button>
-              </div>
-            </div>
-            <br>
-            <div class="col-12">
-              <div class="card-body table-responsive p-0" style="height: 500px;">
-                <table class="table table-head-fixed text-nowrap" id="employee_data">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Process Name</th>
-                      <th>Authorization&nbsp;No.</th>
-                      <th>Employee&nbsp;Name</th>
-                      <th>Employee No</th>
-                      <th>Authorization Year</th>
-                      <th>Date Authorized</th>
-                      <th>Expire&nbsp;Date</th>
-                      <th>Reason Of Cancellation</th>
-                      <th>Date of Cancellation</th>
-                      <th>Prepared By/ Date/ Time</th>
-                      <th>Review By/ Date/ Time</th>
-                      <th>Approved By/ Date/ Time</th>
-                      <th>Department</th>
-                      <th>Status</th>
-                      <th>Remarks</th>
-                    </tr>
-                  </thead>
-                  <tbody id="history_list">
-                  </tbody>
-                </table>
-              </div>
+            <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
               <div class="row">
-                <div class="col-sm-12 col-md-9 col-9">
-                  <div class="dataTables_info" id="count_rows_display2" role="status" aria-live="polite"></div>
-                  <input type="hidden" id="count_rows2">
+                <!-- <div class="col-sm-4"></div> -->
+                <div class="col-sm-2"> <select class="form-control  btn bg-teal" name="category" id="categoryyy" required onchange="search_history(1)">
+                    <option value="">Category</option>
+                    <option>Initial</option>
+                    <option>Final</option>
+                  </select></div>
+                <div class="col-sm-2"><input placeholder="Employee Name" type="text" id="fullname_h" class="form-control" autocomplete="off"></div>
+                <div class="col-sm-2"><input placeholder="Employee ID" type="text" id="emp_id_h" class="form-control" autocomplete="off"></div>
+                <div class="col-sm-2">
+                  <input class="form-control" type="text" placeholder="Date Authorized" onfocus="(this.type='date')" onblur="(this.type='text')" id="date_authorized_h">
                 </div>
-                <br>
-                <div class="col-sm-12 col-md-1 col-1">
-                  <button type="button" id="btnPrevPage2" class="btn bg-gray-dark btn-block" onclick="get_prev_page2()">Prev</button>
+                <div class="col-sm-2">
+                  <input class="form-control" type="text" placeholder="Expire Date" onfocus="(this.type='date')" onblur="(this.type='text')" id="expire_date_h">
                 </div>
-                <div class="col-sm-12 col-md-1 col-1">
-                  <input list="history_list_paginations2" class="form-control" id="history_list_pagination2" maxlength="255">
-                  <datalist id="history_list_paginations2"></datalist>
+                <div class="col-sm-2">
+                  <!-- search button -->
+                  <button class="btn btn-block d-flex justify-content-left" id="search_btn" onclick="search_history(1)" style="color:#fff;height:37px;border-radius:.25rem;background: #20c997;font-size:15px;font-weight:normal;"><img src="../../dist/img/search.png" style="height:19px;">&nbsp;&nbsp;Search</button>
                 </div>
-                <div class="col-sm-12 col-md-1 col-1">
-                  <button type="button" id="btnNextPage2" class="btn bg-gray-dark btn-block" onclick="get_next_page2()">Next</button>
+              </div>
+              <br>
+              <div class="col-12">
+                <div class="card-body table-responsive p-0" style="height: 500px;">
+                  <table class="table table-head-fixed text-nowrap" id="employee_data">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Process Name</th>
+                        <th>Authorization&nbsp;No.</th>
+                        <th>Employee&nbsp;Name</th>
+                        <th>Employee No</th>
+                        <th>Authorization Year</th>
+                        <th>Date Authorized</th>
+                        <th>Expire&nbsp;Date</th>
+                        <th>Reason Of Cancellation</th>
+                        <th>Date of Cancellation</th>
+                        <th>Prepared By/ Date/ Time</th>
+                        <th>Review By/ Date/ Time</th>
+                        <th>Approved By/ Date/ Time</th>
+                        <th>Department</th>
+                        <th>Status</th>
+                        <th>Remarks</th>
+                      </tr>
+                    </thead>
+                    <tbody id="history_list">
+                    </tbody>
+                  </table>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12 col-md-9 col-9">
+                    <div class="dataTables_info" id="count_rows_display2" role="status" aria-live="polite"></div>
+                    <input type="hidden" id="count_rows2">
+                  </div>
+                  <br>
+                  <div class="col-sm-12 col-md-1 col-1">
+                    <button type="button" id="btnPrevPage2" class="btn bg-gray-dark btn-block" onclick="get_prev_page2()">Prev</button>
+                  </div>
+                  <div class="col-sm-12 col-md-1 col-1">
+                    <input list="history_list_paginations2" class="form-control" id="history_list_pagination2" maxlength="255">
+                    <datalist id="history_list_paginations2"></datalist>
+                  </div>
+                  <div class="col-sm-12 col-md-1 col-1">
+                    <button type="button" id="btnNextPage2" class="btn bg-gray-dark btn-block" onclick="get_next_page2()">Next</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
   </section>
   <!-- /.content -->
 </div>
