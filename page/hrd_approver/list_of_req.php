@@ -124,7 +124,7 @@
                   </div>
                   <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
                     <div class="row mt-2">
-                      <div class="col-sm-5"></div>
+                      <!-- <div class="col-sm-5"></div> -->
                       <!-- category -->
                       <div class="col-sm-2">
                         <select class="form-control btn bg-teal" rname="category" id="categoryyy" required onchange="search_history(1)">
@@ -139,7 +139,13 @@
                       <div class="col-sm-2">
                         <input class="form-control" placeholder="Employee Name" type="text" id="fullname_h" autocomplete="off">
                       </div>
-                      <div class="col-sm-1">
+                      <div class="col-sm-2">
+                        <input class="form-control" type="text" placeholder="Date Authorized" onfocus="(this.type='date')" onblur="(this.type='text')" id="date_authorized_h">
+                      </div>
+                      <div class="col-sm-2">
+                        <input class="form-control" type="text" placeholder="Expire Date" onfocus="(this.type='date')" onblur="(this.type='text')" id="expire_date_h">
+                      </div>
+                      <div class="col-sm-2">
                         <!-- search button -->
                         <button class="btn btn-block d-flex justify-content-left" id="search_btn" onclick="search_history(1)" style="color:#fff;height:37px;border-radius:.25rem;background: #20c997;font-size:15px;font-weight:normal;"><img src="../../dist/img/search.png" style="height:19px;">&nbsp;&nbsp;Search</button>
                       </div>

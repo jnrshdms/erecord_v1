@@ -9,6 +9,8 @@ function count_history($search_arr, $conn) {
 	$emp_id = $_POST['emp_id'];
 	$fullname = $_POST['fullname'];
 	$category = $_POST['category'];
+	$date_authorized = $_POST['date_authorized'];
+	$expire_date = $_POST['expire_date'];
 
 	$query = "SELECT count(a.id) as total";
 
@@ -27,6 +29,12 @@ function count_history($search_arr, $conn) {
 			}
 		if (!empty($fullname)) {
 			$query = $query . " AND b.fullname LIKE'".$search_arr['fullname']."%'";
+		}
+		if (!empty($search_arr['expire_date'])) {
+			$query = $query . " AND a.expire_date = '".$search_arr['expire_date']."' ";
+		}
+		if (!empty($search_arr['date_authorized'])) {
+			$query = $query . " AND a.date_authorized = '".$search_arr['date_authorized']."' ";
 		}
 		$query = $query ." ORDER BY a.process ASC, b.fullname ASC, a.auth_year DESC";
 
@@ -47,11 +55,16 @@ if ($method == 'count_history') {
 	$emp_id = $_POST['emp_id'];
 	$fullname = $_POST['fullname'];
 	$category = $_POST['category'];
+	$category = $_POST['category'];
+	$date_authorized = $_POST['date_authorized'];
+	$expire_date = $_POST['expire_date'];
 
 	$search_arr = array(
 		"emp_id" => $emp_id, 
 		"fullname" => $fullname, 
-		"category" => $category
+		"category" => $category,
+		"date_authorized" => $date_authorized,
+		"expire_date" => $expire_date
 	);
 
 	echo count_history($search_arr, $conn);
@@ -61,11 +74,15 @@ if ($method == 'history_pagination') {
 	$emp_id = $_POST['emp_id'];
 	$fullname = $_POST['fullname'];
 	$category = $_POST['category'];
+	$date_authorized = $_POST['date_authorized'];
+	$expire_date = $_POST['expire_date'];
 
 	$search_arr = array(
 		"emp_id" => $emp_id, 
 		"fullname" => $fullname, 
-		"category" => $category
+		"category" => $category,
+		"date_authorized" => $date_authorized,
+		"expire_date" => $expire_date
 	);
 
 	$results_per_page = 100;
@@ -85,6 +102,8 @@ if ($method == 'history') {
 	$emp_id = $_POST['emp_id'];
 	$fullname = $_POST['fullname'];
 	$category = $_POST['category'];
+	$date_authorized = $_POST['date_authorized'];
+	$expire_date = $_POST['expire_date'];
 	$current_page = intval($_POST['current_page']);
 	$c = 0;
 
@@ -111,6 +130,15 @@ if ($method == 'history') {
 							where a.i_status = 'Approved'";
 		if (!empty($emp_id)) {
 			$query = $query . " AND (b.emp_id = '$emp_id' OR b.emp_id_old = '$emp_id')";
+		}
+		if (!empty($fullname)) {
+			$query = $query . " AND b.fullname = '$fullname' ";
+		}
+		if (!empty($expire_date)) {
+			$query = $query . " AND a.expire_date = '$expire_date' ";
+		}
+		if (!empty($date_authorized)) {
+			$query = $query . " AND a.date_authorized = '$date_authorized' ";
 		}
 
 		$query = $query . " AND b.fullname LIKE '$fullname%'";
