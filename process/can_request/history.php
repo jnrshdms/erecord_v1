@@ -118,7 +118,7 @@ if ($method == 'history') {
 		if (!empty($fullname)) {
 			$query = $query . " AND b.fullname LIKE'$fullname%'";
 		}
-		$query = $query . "GROUP BY a.auth_no ASC ORDER BY b.fullname ASC LIMIT ".$page_first_result.", ".$results_per_page;
+		$query = $query . "GROUP BY a.auth_no ASC ORDER BY a.i_review_by DESC, a.i_approve_by DESC, a.up_date_time DESC LIMIT ".$page_first_result.", ".$results_per_page;
 		$stmt = $conn->prepare($query);
 		$stmt->execute();
 		if ($stmt->rowCount() > 0) {

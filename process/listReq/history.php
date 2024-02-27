@@ -114,16 +114,13 @@ if ($method == 'history') {
 		}
 
 		$query = $query . " AND b.fullname LIKE '$fullname%'";
-		$query = $query ." ORDER BY a.process ASC, b.fullname ASC, a.auth_year DESC LIMIT ".$page_first_result.", ".$results_per_page;
+		$query = $query ."ORDER BY a.i_review_by DESC, a.i_approve_by DESC, a.up_date_time DESC LIMIT ".$page_first_result.", ".$results_per_page;
 		$stmt = $conn->prepare($query);
 		$stmt->execute();
 		if ($stmt->rowCount() > 0) {
 			foreach($stmt->fetchAll() as $j){
 				$c++;
-				
 					echo '<tr>';
-					
-
 					echo '<td>'.$c.'</td>';
 					echo '<td>'.$j['process'].'</td>';
 					echo '<td>'.$j['auth_no'].'</td>';
