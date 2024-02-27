@@ -44,6 +44,8 @@ const get_next_page2 = () => {
   var emp_id = document.getElementById('emp_id_h').value;
   var fullname = document.getElementById('fullname_h').value;
   var category = document.getElementById('categoryyy').value;
+  var date_authorized = document.getElementById('date_authorized_h').value;
+  var expire_date = document.getElementById('expire_date_h').value;
 
    if (category == 'Category') {
     category = '';
@@ -57,6 +59,8 @@ const get_next_page2 = () => {
     emp_id:emp_id,
     fullname:fullname,
     category:category,
+    date_authorized:date_authorized,
+    expire_date:expire_date,
     current_page:current_page 
     
     },success:function(response){
@@ -71,6 +75,8 @@ const get_next_page2 = () => {
   var emp_id = document.getElementById('emp_id_h').value;
   var fullname = document.getElementById('fullname_h').value;
   var category = document.getElementById('categoryyy').value;
+  var date_authorized = document.getElementById('date_authorized_h').value;
+  var expire_date = document.getElementById('expire_date_h').value;
 
    if (category == 'Category') {
     category = '';
@@ -83,6 +89,8 @@ const get_next_page2 = () => {
     method:'count_history',
     emp_id:emp_id,
     fullname:fullname,
+    date_authorized:date_authorized,
+    expire_date:expire_date,
     category:category
     
     },success:function(response){
@@ -107,6 +115,8 @@ const history_pagination  = ()=>{
   var emp_id = document.getElementById('emp_id_h').value;
   var fullname = document.getElementById('fullname_h').value;
   var category = document.getElementById('categoryyy').value;
+  var date_authorized = document.getElementById('date_authorized_h').value;
+  var expire_date = document.getElementById('expire_date_h').value;
   var current_page = sessionStorage.getItem('history_list_pagination2');
  
    if (category == 'Category') {
@@ -120,6 +130,8 @@ const history_pagination  = ()=>{
     method:'history_pagination',
     emp_id:emp_id,
     fullname:fullname,
+    date_authorized:date_authorized,
+    expire_date:expire_date,
     category:category
     
     },success:function(response){
