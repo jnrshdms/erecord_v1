@@ -132,7 +132,7 @@ if ($method == 'history') {
 			$query = $query . " AND (b.emp_id = '$emp_id' OR b.emp_id_old = '$emp_id')";
 		}
 		if (!empty($fullname)) {
-			$query = $query . " AND b.fullname = '$fullname' ";
+			$query = $query . " AND b.fullname LIKE'$fullname%'";
 		}
 		if (!empty($expire_date)) {
 			$query = $query . " AND a.expire_date = '$expire_date' ";
