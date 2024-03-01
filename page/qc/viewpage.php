@@ -64,7 +64,7 @@
             </div>
             <div class="col-sm-2">
               <!-- exportt button -->
-              <a class="btn btn-block d-flex justify-content-left" onclick="export_data('employee_data')" style="color:#fff;height:34px;border-radius:.25rem;background: #F29A35;font-size:15px;font-weight:normal;"><img src="../../dist/img/export.png" style="height:19px;">&nbsp;&nbsp;Export</a>
+              <a class="btn btn-block d-flex justify-content-left" onclick="export_data()" style="color:#fff;height:34px;border-radius:.25rem;background: #F29A35;font-size:15px;font-weight:normal;"><img src="../../dist/img/export.png" style="height:19px;">&nbsp;&nbsp;Export</a>
             </div>
           </div>
         </div>
