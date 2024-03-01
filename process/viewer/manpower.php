@@ -208,35 +208,36 @@ if ($method == 'save_up') {
 	$emp_status = $_POST['emp_status'];
 	$m_name = $_POST['m_name'];
 
-	$check ="SELECT emp_id FROM t_employee_m WHERE id = '$id'";
+	$check = "SELECT emp_id, batch FROM t_employee_m WHERE id = '$id'";
 	$stmt = $conn->prepare($check);
 	$stmt->execute();
-	if($stmt->rowCount() > 0){
-        foreach($stmt->fetchALL() as $x){
+	if ($stmt->rowCount() > 0) {
+        foreach ($stmt->fetchAll() as $x) {
             $emp_id_ref = $x['emp_id'];
+            $batch_ref = $x['batch'];
         }
     }
 
-	$query = "UPDATE t_employee_m SET fullname = '$fullname'"; 
+	$query = "UPDATE t_employee_m SET fullname = '$fullname', batch = '$batch'"; 
 
 	if ($emp_id_ref != $emp_id) {
-    	$query = $query . ", emp_id_old = emp_id";
+    	$query .= ", emp_id_old = '$emp_id_ref'"; // Corrected concatenation
     }
 
-    $query = $query . ", emp_id = '$emp_id', agency = '$agency', batch = '$batch', emp_status='$emp_status', m_name = '$m_name' WHERE id = '$id' "; 
+    $query .= ", emp_id = '$emp_id', agency = '$agency', emp_status = '$emp_status', m_name = '$m_name' WHERE id = '$id' "; 
 
 	$stmt = $conn->prepare($query);
 	if ($stmt->execute()) {
-		if ($emp_id_ref != $emp_id) {
-	    	$query = "UPDATE t_f_process SET emp_id_old = emp_id, emp_id = '$emp_id' WHERE emp_id = '$emp_id_ref'";
-	    	$stmt = $conn->prepare($query);
-	    	$stmt->execute();
-	    	$query = "UPDATE t_i_process SET emp_id_old = emp_id, emp_id = '$emp_id' WHERE emp_id = '$emp_id_ref'";
-	    	$stmt = $conn->prepare($query);
-	    	$stmt->execute();
+		if ($emp_id_ref != $emp_id || $batch_ref != $batch) {
+	    	$query_f = "UPDATE t_f_process SET emp_id_old = '$emp_id_ref', emp_id = '$emp_id', batch = '$batch' WHERE emp_id = '$emp_id_ref'";
+	    	$stmt_f = $conn->prepare($query_f);
+	    	$stmt_f->execute();
+	    	$query_i = "UPDATE t_i_process SET emp_id_old = '$emp_id_ref', emp_id = '$emp_id', batch = '$batch' WHERE emp_id = '$emp_id_ref'";
+	    	$stmt_i = $conn->prepare($query_i);
+	    	$stmt_i->execute();
 	    }
 		echo 'success';
-	}else{
+	} else {
 		echo 'error';
 	}
 }
