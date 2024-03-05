@@ -45,7 +45,7 @@
           <a href="#" data-toggle="modal" data-target="#add_emp_pro">
             <div class="small-box bg-danger">
               <div class="inner">
-                <h4>ADD AUTHORIZATION</h4>
+                <h4>ADD RENEW</h4>
                 <br>
                 <p></p>
               </div>
