@@ -37,7 +37,7 @@ if ($category == 'Final') {
 } else if ($category == 'Initial') {
     $query = $query . " FROM `t_i_process`";
 }
-$query = $query . " a LEFT JOIN t_employee_m b ON a.emp_id = b.emp_id AND a.batch = b.batch JOIN `m_process` c ON a.process = c.process WHERE a.i_status = 'Approved'";
+$query = $query . " a LEFT JOIN t_employee_m b ON a.emp_id = b.emp_id  JOIN `m_process` c ON a.process = c.process WHERE a.i_status = 'Approved'";
 
 if (!empty($emp_id)) {
     $query = $query . " AND (b.emp_id = '$emp_id' OR b.emp_id_old = '$emp_id')";

@@ -138,7 +138,7 @@ if ($method == 'fetch_category') {
 		}
 
 		$query = $query . " a
-							LEFT JOIN t_employee_m b ON a.emp_id = b.emp_id AND a.batch = b.batch
+							LEFT JOIN t_employee_m b ON a.emp_id = b.emp_id 
 							JOIN `m_process` c ON a.process = c.process
 							where a.i_status = 'Approved'";
 		if (!empty($emp_id)) {
