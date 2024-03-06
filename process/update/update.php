@@ -302,6 +302,67 @@ if ($method == 'update') {
     }
 }
 
+//minor update
+
+if ($method == 'minor_update') {
+    $auth_no = $_POST['auth_no'];
+    $auth_year = $_POST['auth_year'];
+    $date_authorized = $_POST['date_authorized'];
+    $expire_date = $_POST['expire_date'];
+    $remarks = $_POST['remarks'];
+    $r_of_cancellation = $_POST['r_of_cancellation'];
+    $dept = $_POST['dept'];
+    $d_of_cancellation = $_POST['d_of_cancellation'];
+    $up_date_time = $_POST['up_date_time'];
+    $id = $_POST['id'];
+    $category = $_POST['category'];
+    $c = 0;
+
+    $error = 0;
+
+    $query = "SELECT id FROM ";
+    if ($category == 'Final') {
+        $query .= "`t_f_process`";
+    } else if ($category == 'Initial') {
+        $query .= "`t_i_process`";
+    }
+    $query .= " WHERE id = '$id' AND  auth_no='$auth_no'  AND auth_year = '$auth_year' AND date_authorized = '$date_authorized' AND expire_date = '$expire_date' AND remarks = '$remarks' AND dept = '$dept'";
+
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    if ($stmt->rowCount() < 1) {
+        $query = "UPDATE ";
+        if ($category == 'Final') {
+            $query .= "`t_f_process`";
+        } else if ($category == 'Initial') {
+            $query .= "`t_i_process`";
+        }
+        $query .= " SET remarks = '$remarks', auth_year = '$auth_year', date_authorized = '$date_authorized', expire_date = '$expire_date', dept = '$dept', i_status = 'Approved' WHERE id = '$id'";
+        $stmt = $conn->prepare($query);
+        if (!$stmt->execute()) {
+            $error++;
+        }
+    } else {
+        $query = "UPDATE ";
+        if ($category == 'Final') {
+            $query .= "`t_f_process`";
+        } else if ($category == 'Initial') {
+            $query .= "`t_i_process`";
+        }
+        $query .= " SET r_of_cancellation = '$r_of_cancellation', d_of_cancellation = '$d_of_cancellation', r_status = 'Approved', dept = '$dept' WHERE auth_no = '$auth_no'";
+        $stmt = $conn->prepare($query);
+        if (!$stmt->execute()) {
+            $error++;
+        }
+    }
+
+    if ($error == 0) {
+        echo 'success';
+    } else {
+        echo 'error';
+    }
+}
+
 // for QC Cancellation
 if ($method == 'qc_fetch_category') {
 	$emp_id = $_POST['emp_id'];

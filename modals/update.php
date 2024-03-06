@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
-            <b>Update Data</b>
+            <b>Update Data </b>
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"  >
           <span aria-hidden="true">&times;</span>
@@ -64,15 +64,14 @@
             </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <div class="row">
-            <div class="col-12">
-                <div class="float-right">
-                    <a href="#" class="btn btn-primary" onclick="save_data()">Save</a>
+      <div class="modal-footer" style="background:#fff;">
+                <div class="col-sm-3">
+                    <button class="btn btn-block" onclick="minor_save_data()" style="color:#fff;height:34px;border-radius:.25rem;background: #CA3F3F;font-size:15px;font-weight:normal;">Minor Update Data</button>
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-block" onclick="save_data()" style="color:#fff;height:34px;border-radius:.25rem;background: #425B2C;font-size:15px;font-weight:normal;">Update Data</button>
                 </div>
             </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
