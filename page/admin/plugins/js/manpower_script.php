@@ -297,34 +297,6 @@ const save_emp_data =()=>{
   });
   }
 }
- function export_data(table_id, separator = ',') {
-    // Select rows from table_id
-    var rows = document.querySelectorAll('table#' + table_id + ' tr');
-    // Construct csv
-    var csv = [];
-    for (var i = 0; i < rows.length; i++) {
-        var row = [], cols = rows[i].querySelectorAll('td, th');
-        for (var j = 0; j < cols.length; j++) {
-            var data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, '').replace(/(\s\s)/gm, ' ')
-            data = data.replace(/"/g, '""');
-            // Push escaped string
-            row.push('"' + data + '"');
-        }
-        csv.push(row.join(separator));
-    }
-    var csv_string = csv.join('\n');
-    // Download it
-    var filename = 'employee_data'+ '_' + new Date().toLocaleDateString() + '.csv';
-    var link = document.createElement('a');
-    link.style.display = 'none';
-    link.setAttribute('target', '_blank');
-    link.setAttribute('href', 'data:text/csv;charset=utf-8,%EF%BB%BF' + encodeURIComponent(csv_string));
-    link.setAttribute('download', filename);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
-
 
   const edit_employee =(param)=>{
   var data = param.split('~!~');
@@ -484,5 +456,14 @@ const delete_emp =()=>{
     }
   });
 }
-  
+
+function export_data_masterlist() {
+    var emp_id = document.getElementById('emp_id_search').value;
+    var agency = document.getElementById('agency').value;
+    var batch = document.getElementById('batch').value;
+    var fullname = document.getElementById('fullname_search').value;
+    var emp_status = document.getElementById('emp_status').value;
+    window.open('../../process/import_export/export_masterlist.php?agency=' + agency + "&emp_id=" + emp_id + "&batch=" + batch + "&fullname=" + fullname + "&emp_status=" + emp_status, '_blank');
+}
+
 </script>

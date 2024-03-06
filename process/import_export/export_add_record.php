@@ -19,7 +19,7 @@ $c = 0;
 
 $delimiter = ",";
 $datenow = date('Y-m-d');
-$filename = "E-Record_Data - " . $datenow . ".csv";
+$filename = "E-Record_Authorization  - " . $datenow . ".csv";
 
 // Create a file pointer 
 $f = fopen('php://memory', 'w');
