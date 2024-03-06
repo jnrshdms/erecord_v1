@@ -222,30 +222,6 @@ const search_data_pagination = () =>{
 
 }
 
-// const view_data =()=>{
-//   var fullname = document.getElementById('employee_name_view').value;
-//   var auth_no = document.getElementById('auth_no_view').value;
-//   var category = document.getElementById('category').value;
-  
-
-//   console.log(auth_no)
-//   $.ajax({
-//     url:'../../process/viewer/view_page.php',
-//     type:'POST',
-//     cache:false,
-//     data:{
-//     method:'view',
-//     fullname:fullname,
-//     auth_no:auth_no,
-//     category:category
-//     },success:function(response){
-//       $('#details').html(response);
-//       let table_rows = parseInt($("#details tr").length);
-//       $('#demo').html(table_rows);
-//     }
-//   });     
-// }
-
 const export_data = () => {
   var emp_id = document.getElementById('emp_id_search').value;
   var category = document.getElementById('category').value;
