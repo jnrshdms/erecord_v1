@@ -149,8 +149,8 @@ if ($method == 'fetch_category') {
 			$c++;
 			$row_class = "";
 			$i_status = $j['i_status'];
-			if ($j['r_status'] == 'Approved') {
-				$row_class = " bg-danger";
+			if ($j['status'] == 'NotQualified') {
+				$row_class = " bg-warning";
 			}
 
 			echo '<tr class="modal-trigger'.$row_class.'">';

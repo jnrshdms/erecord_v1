@@ -254,4 +254,72 @@ if ($method == 'delete_account') {
 	}
 }
 
+if ($method == 'fetch_data_m') {
+	$agency = $_POST['agency'];
+	$emp_id = $_POST['emp_id'];
+	$batch = $_POST['batch'];
+	$fullname = $_POST['fullname'];
+	$emp_status = $_POST['emp_status'];
+	$current_page = intval($_POST['current_page']);
+	$c = 0;
+
+	$results_per_page = 100;
+
+	//determine the sql LIMIT starting number for the results on the displaying page
+	$page_first_result = ($current_page-1) * $results_per_page;
+
+	// For row numbering
+	$c = $page_first_result;
+
+	$query = "SELECT  * FROM t_employee_m WHERE (emp_id LIKE '$emp_id%' OR emp_id_old LIKE '$emp_id%') ";
+	if (!empty($emp_status)){
+		$query = $query ."AND emp_status = '$emp_status' ";
+	}
+	if (!empty($fullname)) {
+		$query = $query . "AND  fullname LIKE '$fullname%'";
+	}
+	if (!empty($agency)) {
+		$query = $query . "AND  agency = '$agency'";
+	}
+	if (!empty($batch)){
+		$query = $query ."AND batch ='$batch' ";
+	}
+	
+	$query = $query ." ORDER BY fullname ASC  LIMIT ".$page_first_result.", ".$results_per_page;
+
+	$stmt = $conn->prepare($query);
+	$stmt->execute();
+	if ($stmt->rowCount() > 0) {
+		foreach($stmt->fetchAll() as $j){
+			$c++;
+			$row_class = "";
+				
+				if ($j['emp_status'] == 'Resigned') {
+					$row_class = "	bg-purple";
+				}elseif ($j['emp_status'] == 'Retired') {
+					$row_class = "	bg-primary";
+				}
+				elseif ($j['emp_status'] == 'Dismiss') {
+					$row_class = "	bg-orange";
+				}
+				echo '<tr style="cursor:pointer;">';
+				echo '<td>'.$c.'</td>';				
+				echo '<td>'.$j['fullname'].'</td>';
+				echo '<td>'.$j['m_name'].'</td>';
+				echo '<td>'.$j['emp_id'].'</td>';
+				echo '<td>'.$j['emp_id_old'].'</td>';
+				echo '<td>'.$j['agency'].'</td>';
+				echo '<td>'.$j['batch'].'</td>';
+				
+			echo '</tr>';
+	}
+	
+}else{
+		echo '<tr>';
+			echo '<td style="text-align:center;" colspan="4">No Result</td>';
+		echo '</tr>';
+	}
+}
+
+
 ?>

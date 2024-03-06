@@ -39,7 +39,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="viewpage.php" class="nav-link active" >
+          <a href="viewpage.php" class="nav-link">
             <img src="../../dist/img/view.png" style="height:25px;">
             <p class="pl-1" style="font-size:16px; color:black">
               View Data
@@ -47,7 +47,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="manpowerpage.php" class="nav-link ">
+          <a href="manpowerpage.php" class="nav-link active">
             <img src="../../dist/img/group.png" style="height:25px;">
             <p class="pl-1" style="font-size:16px; color:black">
               Masterlist 
