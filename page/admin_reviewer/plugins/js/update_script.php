@@ -401,5 +401,137 @@ const save_data =()=>{
   }
 }
 
+//minor update
+const minor_save_data =()=>{
+  var auth_no = document.getElementById('auth_no_can').value;
+  var auth_year = document.getElementById('auth_year_can').value;
+  var date_authorized = document.getElementById('date_authorized_can').value;
+  var expire_date = document.getElementById('expire_date_can').value;
+  var remarks = document.getElementById('remarks_can').value;
+  var r_of_cancellation = document.getElementById('r_of_cancellation_can').value;
+  var dept = document.getElementById('dept_can').value;
+  var d_of_cancellation = document.getElementById('d_of_cancellation_can').value;
+  var up_date_time = document.getElementById('up_date_time_can').value;
+  var id = document.getElementById('id_can').value;
+  var fullname = document.getElementById('employee_name_can').value;
+  var category = document.getElementById('category').value;
+
+  if (auth_no == '') {
+      Swal.fire({
+              icon: 'info',
+              title: 'Please Input Authorization No. !!!',
+              text: 'Information',
+              showConfirmButton: false,
+              timer : 1000
+          });}
+  else if(auth_year == ''){
+      Swal.fire({
+              icon: 'info',
+              title: 'Please Input Authorization Year!!!',
+              text: 'Information',
+              showConfirmButton: false,
+              timer : 1000
+          });
+  }else if(date_authorized == ''){
+      Swal.fire({
+              icon: 'info',
+              title: 'Please Input Date Authorized !!!',
+              text: 'Information',
+              showConfirmButton: false,
+              timer : 1000
+          });
+  }else if(expire_date == ''){
+      Swal.fire({
+              icon: 'info',
+              title: 'Please Input Expire Date !!!',
+              text: 'Information',
+              showConfirmButton: false,
+              timer : 1000
+          });
+  }
+      else{
+    $.ajax({
+          url:'../../process/update/update.php',
+          type:'POST',
+          cache:false,
+          data:{
+          method:'minor_update',
+          auth_no:auth_no,
+          auth_year:auth_year,
+          date_authorized:date_authorized,
+          expire_date:expire_date,
+          remarks:remarks,
+          r_of_cancellation:r_of_cancellation,
+          dept:dept,
+          d_of_cancellation:d_of_cancellation,
+          up_date_time:up_date_time,
+          id:id,
+          fullname:fullname,
+          category:category       
+          },success:function(response){    
+              // console.log(response)
+              if (response == 'success') {
+                      Swal.fire({
+                        icon: 'success',
+                        title: 'Succesfully Recorded!!!',
+                        text: 'Success',
+                        showConfirmButton: false,
+                        timer : 1000
+                      });
+                  $("#auth_no").val('');
+                  $("#auth_year").val('');
+                  $("#date_authorized").val('');
+                  $("#expire_date").val('');
+                  $("#remarks").val('');
+                  $("#r_of_cancellation").val('');
+                  $("#dept").val('');
+                  $("#d_of_cancellation").val('');
+                  $("#up_date_time").val('');
+                  view_data();
+                  $('#update').modal('hide');
+                  
+              }else if(response == 'existing'){
+                       Swal.fire({
+                        icon: 'info',
+                        title: 'Duplicate Data !!!',
+                        text: 'Information',
+                        showConfirmButton: false,
+                        timer : 1000
+                      });
+                  $("#auth_no").val('');
+                  $("#auth_year").val('');
+                  $("#date_authorized").val('');
+                  $("#expire_date").val('');
+                  $("#remarks").val('');
+                      // $("#r_of_cancellation").val('');
+                      $("#dept").val('');
+                  // $("#d_of_cancellation").val('');
+                  $("#up_date_time").val('');
+                  $('#update').modal('hide');
+                  
+              }else{
+                      Swal.fire({
+                        icon: 'error',
+                        title: 'Error !!!',
+                        text: 'Error',
+                        showConfirmButton: false,
+                        timer : 1000
+                      });
+                  $("#auth_no").val('');
+                  $("#auth_year").val('');
+                  $("#date_authorized").val('');
+                  $("#expire_date").val('');
+                  $("#remarks").val('');
+                  // $("#r_of_cancellation").val('');
+                  $("#dept").val('');
+                  // $("#d_of_cancellation").val('');
+                  $("#up_date_time").val('');
+                  $('#update').modal('hide');
+                  }
+          }
+      });
+  }
+}
+
   
 </script>

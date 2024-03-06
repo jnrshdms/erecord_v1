@@ -399,6 +399,7 @@ const save_data =()=>{
   }
 }
 
+//minor update
 const minor_save_data =()=>{
   var auth_no = document.getElementById('auth_no_can').value;
   var auth_year = document.getElementById('auth_year_can').value;
