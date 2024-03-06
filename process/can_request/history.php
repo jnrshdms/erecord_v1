@@ -119,7 +119,7 @@ if ($method == 'history') {
 		$results_per_page = 100;
 		$page_first_result = ($current_page-1) * $results_per_page;
 		$c = $page_first_result;
-		$query = "SELECT a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.updated_by,a.r_status,a.r_review_by,a.r_approve_by,b.fullname,b.agency,a.dept,b.batch,b.emp_id,c.category,c.process";
+		$query = "SELECT a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.up_date_time,a.r_status,a.r_review_by,a.r_approve_by,b.fullname,b.agency,a.dept,b.batch,b.emp_id,c.category,c.process";
 
 		if ($category == 'Final') {
 			$query = $query . " FROM `t_f_process`";
@@ -158,7 +158,7 @@ if ($method == 'history') {
 					echo '<td>'.$j['emp_id'].'</td>';
 					echo '<td>'.$j['r_of_cancellation'].'</td>';
 					echo '<td>'.$j['d_of_cancellation'].'</td>';
-					echo '<td>'.$j['updated_by'].'</td>';
+					echo '<td>'.$j['up_date_time'].'</td>';
 					echo '<td>'.$j['r_review_by'].'</td>';
 					echo '<td>'.$j['r_approve_by'].'</td>';
 					echo '<td>'.$j['dept'].'</td>';
@@ -186,7 +186,7 @@ if ($method == 'view') {
 
 	$c = 0;
 
-		$query = "SELECT a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.updated_by,a.r_review_by,a.r_approve_by,a.r_status,b.fullname,b.emp_id,c.category";
+		$query = "SELECT a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.up_date_time,a.r_review_by,a.r_approve_by,a.r_status,b.fullname,b.emp_id,c.category";
 
 		if ($category == 'Final') {
 			$query = $query . " FROM `t_f_process`";

@@ -225,7 +225,7 @@ if ($method == 'update') {
 	// $r_of_cancellation = $_POST['r_of_cancellation'];
 	$dept = $_POST['dept'];
 	// $d_of_cancellation = $_POST['d_of_cancellation'];
-	$updated_by = $_POST['updated_by'];
+	$up_date_time = $_POST['up_date_time'];
 	$id = $_POST['id'];
 	$category = $_POST['category'];
 	$c = 0;
@@ -249,7 +249,7 @@ if ($method == 'update') {
 		} else if ($category == 'Initial') {
 			$query .= "`t_i_process`";
 		}
-		$query .= " SET remarks = '$remarks', auth_year = '$auth_year', date_authorized = '$date_authorized', expire_date = '$expire_date', dept = '$dept', i_status = 'Pending', updated_by = '" . $_SESSION['fname'] . "/ " . $server_date_time . "' WHERE id = '$id'";
+		$query .= " SET remarks = '$remarks', auth_year = '$auth_year', date_authorized = '$date_authorized', expire_date = '$expire_date', dept = '$dept', i_status = 'Pending', up_date_time = '" . $_SESSION['fname'] . "/ " . $server_date_time . "' WHERE id = '$id'";
 		$stmt = $conn->prepare($query);
 		if (!$stmt->execute()) {
 			$error++;

@@ -447,7 +447,6 @@ if ($method == 'qc_update') {
     $r_of_cancellation = $_POST['r_of_cancellation'];
     $dept = $_POST['dept'];
     $d_of_cancellation = $_POST['d_of_cancellation'];
-    $up_date_time = $_POST['up_date_time'];
     $id = $_POST['id'];
     $category = $_POST['category'];
     $c = 0;

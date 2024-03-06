@@ -104,7 +104,7 @@ if ($method == 'fetch_rev') {
 		// For row numbering
 		$c = $page_first_result;
 
-		$query = "SELECT a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.updated_by,a.r_status,a.r_review_by,b.fullname,b.agency,a.dept,b.batch,b.emp_id,c.category,c.process";
+		$query = "SELECT a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.up_date_time,a.r_status,a.r_review_by,b.fullname,b.agency,a.dept,b.batch,b.emp_id,c.category,c.process";
 
 		if ($category == 'Final') {
 			$query = $query . " FROM `t_f_process`";
@@ -128,7 +128,7 @@ if ($method == 'fetch_rev') {
 		if ($stmt->rowCount() > 0) {
 			foreach($stmt->fetchAll() as $j){
 				$c++;
-					echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#view_p" onclick="p_details(&quot;'.$j['id'].'~!~'.$j['auth_year'].'~!~'.$j['date_authorized'].'~!~'.$j['expire_date'].'~!~'.$j['remarks'].'~!~'.$j['r_of_cancellation'].'~!~'.$j['d_of_cancellation'].'~!~'.$j['updated_by'].'~!~'.$j['fullname'].'~!~'.$j['auth_no'].'&quot;)">';
+					echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#view_p" onclick="p_details(&quot;'.$j['id'].'~!~'.$j['auth_year'].'~!~'.$j['date_authorized'].'~!~'.$j['expire_date'].'~!~'.$j['remarks'].'~!~'.$j['r_of_cancellation'].'~!~'.$j['d_of_cancellation'].'~!~'.$j['up_date_time'].'~!~'.$j['fullname'].'~!~'.$j['auth_no'].'&quot;)">';
 					
 
 					echo '<td>';
@@ -146,7 +146,7 @@ if ($method == 'fetch_rev') {
 					echo '<td>'.$j['emp_id'].'</td>';
 					echo '<td>'.$j['r_of_cancellation'].'</td>';
 					echo '<td>'.$j['d_of_cancellation'].'</td>';
-					echo '<td>'.$j['updated_by'].'</td>';
+					echo '<td>'.$j['up_date_time'].'</td>';
 					echo '<td>'.$j['r_review_by'].'</td>';
 					echo '<td>'.$j['dept'].'</td>';
 					echo '<td>'.$j['r_status'].'</td>';
@@ -173,7 +173,7 @@ if ($method == 'view') {
 
 	$c = 0;
 
-		$query = "SELECT a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.updated_by,a.r_review_by,a.r_status,b.fullname,b.emp_id,c.category";
+		$query = "SELECT a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.up_date_time,a.r_review_by,a.r_status,b.fullname,b.emp_id,c.category";
 
 		if ($category == 'Final') {
 			$query = $query . " FROM `t_f_process`";

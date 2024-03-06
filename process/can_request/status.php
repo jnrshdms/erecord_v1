@@ -97,7 +97,7 @@ if ($method == 'fetch_status_can') {
 		$results_per_page = 100;
 		$page_first_result = ($current_page-1) * $results_per_page;
 		$c = $page_first_result;
-		$query = "SELECT a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.updated_by,a.r_status,a.r_review_by,a.r_approve_by,b.fullname,b.agency,a.dept,b.batch,b.emp_id,c.category,c.process";
+		$query = "SELECT a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.up_date_time,a.r_status,a.r_review_by,a.r_approve_by,b.fullname,b.agency,a.dept,b.batch,b.emp_id,c.category,c.process";
 
 		if ($category == 'Final') {
 			$query = $query . " FROM `t_f_process`";
@@ -122,7 +122,7 @@ if ($method == 'fetch_status_can') {
 				$c++;
 				$r_status = $j['r_status'];
 				
-				// echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#qc_disapproved" onclick="rec_qc_disapproved(&quot;' . $j['id'] . '~!~' . $j['auth_year'] . '~!~' . $j['date_authorized'] . '~!~' . $j['expire_date'] . '~!~' . $j['remarks'] . '~!~' . $j['dept'] .'~!~' . $j['r_of_cancellation'] .'~!~' . $j['d_of_cancellation'] . '~!~' . $j['updated_by'] . '~!~' . $j['fullname'] . '~!~' . $j['auth_no'] . '~!~' . $j['category'] .'~!~' . $j['r_status'].  '&quot;)">';
+				// echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#qc_disapproved" onclick="rec_qc_disapproved(&quot;' . $j['id'] . '~!~' . $j['auth_year'] . '~!~' . $j['date_authorized'] . '~!~' . $j['expire_date'] . '~!~' . $j['remarks'] . '~!~' . $j['dept'] .'~!~' . $j['r_of_cancellation'] .'~!~' . $j['d_of_cancellation'] . '~!~' . $j['up_date_time'] . '~!~' . $j['fullname'] . '~!~' . $j['auth_no'] . '~!~' . $j['category'] .'~!~' . $j['r_status'].  '&quot;)">';
 				 	echo'<tr>';
 					echo '<td>'.$c.'</td>';
 					echo '<td>'.$j['process'].'</td>';
@@ -131,7 +131,7 @@ if ($method == 'fetch_status_can') {
 					echo '<td>'.$j['emp_id'].'</td>';
 					echo '<td>'.$j['r_of_cancellation'].'</td>';
 					echo '<td>'.$j['d_of_cancellation'].'</td>';
-					echo '<td>'.$j['updated_by'].'</td>';
+					echo '<td>'.$j['up_date_time'].'</td>';
 					echo '<td>'.$j['r_review_by'].'</td>';
 					echo '<td>'.$j['r_approve_by'].'</td>';
 					echo '<td>'.$j['dept'].'</td>';
@@ -158,7 +158,7 @@ if ($method == 'ds_qc_update') {
     $dept = $_POST['dept'];
     $r_of_cancellation = $_POST['r_of_cancellation'];
     $d_of_cancellation = $_POST['d_of_cancellation'];
-    $updated_by = $_POST['updated_by'];
+    $up_date_time = $_POST['up_date_time'];
     $id = $_POST['id'];
     $category = $_POST['category'];
     $c = 0;
@@ -174,9 +174,9 @@ if ($method == 'ds_qc_update') {
         
      
         if ($r_of_cancellation == 'NULL' && $d_of_cancellation == 'NULL') {
-            $query .= " SET r_of_cancellation = NULL, d_of_cancellation = NULL,  r_status = 'Pending', updated_by = '" . $_SESSION['fname'] . "/ " . $server_date_time . "' WHERE id = '$id'";
+            $query .= " SET r_of_cancellation = NULL, d_of_cancellation = NULL,  r_status = 'Pending', up_date_time = '" . $_SESSION['fname'] . "/ " . $server_date_time . "' WHERE id = '$id'";
         } else {
-            $query .= " SET r_of_cancellation = '$r_of_cancellation', d_of_cancellation = '$d_of_cancellation',  r_status = 'Pending', updated_by = '" . $_SESSION['fname'] . "/ " . $server_date_time . "' WHERE id = '$id'";
+            $query .= " SET r_of_cancellation = '$r_of_cancellation', d_of_cancellation = '$d_of_cancellation',  r_status = 'Pending', up_date_time = '" . $_SESSION['fname'] . "/ " . $server_date_time . "' WHERE id = '$id'";
         }
 
         $stmt = $conn->prepare($query);
