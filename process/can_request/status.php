@@ -10,7 +10,7 @@ function count_can($search_arr, $conn) {
 	$fullname = $_POST['fullname'];
 	$category = $_POST['category'];
 	$i_status = $_POST['r_status'];
-	$query = "SELECT count(a.id) as total";
+	$query = "SELECT  COUNT(DISTINCT a.emp_id) as total";
 
 	if ($category == 'Final') {
 			$query = $query . " FROM `t_f_process`";
@@ -48,41 +48,39 @@ if ($method == 'count_can') {
 	$r_status = $_POST['r_status'];
 
 	$search_arr = array(
-		"emp_id" => $emp_id, 
-		"fullname" => $fullname, 
+		"emp_id" => $emp_id,
+		"fullname" => $fullname,
 		"category" => $category,
 		"r_status" => $r_status
 	);
 
 	echo count_can($search_arr, $conn);
 }
-
 if ($method == 'fetch_can_pagination') {
-	$emp_id = $_POST['emp_id'];
-	$fullname = $_POST['fullname'];
-	$category = $_POST['category'];
-	$r_status = $_POST['r_status'];
+    $emp_id = $_POST['emp_id'];
+    $fullname = $_POST['fullname'];
+    $category = $_POST['category'];
+    $r_status = $_POST['r_status'];
 
-	$search_arr = array(
-		"emp_id" => $emp_id, 
-		"fullname" => $fullname, 
-		"category" => $category,
-		"r_status" => $r_status
-	);
+    $search_arr = array(
+        "emp_id" => $emp_id,
+        "fullname" => $fullname,
+        "category" => $category,
+        "r_status" => $r_status
+    );
 
-	$results_per_page = 100;
+    $results_per_page = 100;
 
-	$number_of_result = intval(count_can($search_arr, $conn));
+    $number_of_result = intval(count_can($search_arr, $conn));
 
-	//determine the total number of pages available  
-	$number_of_page = ceil($number_of_result / $results_per_page);
+    // Determine the total number of pages available  
+    $number_of_page = ceil($number_of_result / $results_per_page);
 
-	for ($page = 1; $page <= $number_of_page; $page++) {
-		echo '<option value="'.$page.'">'.$page.'</option>';
+    // Echo the pagination options
+    for ($page = 1; $page <= $number_of_page; $page++) {
+        echo '<option value="' . $page . '">' . $page . '</option>';
     }
-
 }
-
 
 if ($method == 'fetch_status_can') {
 	$emp_id = $_POST['emp_id'];
