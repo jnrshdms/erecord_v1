@@ -90,7 +90,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-6">
           <!-- small card -->
-          <a href="#" onclick="export_data('employee_data')">
+          <a href="#" onclick="export_data_code()">
             <div class="small-box bg-info">
               <div class="inner">
                 <h4>EXPORT</h4>
