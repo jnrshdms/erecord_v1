@@ -220,7 +220,7 @@ const get_next_page2 = () => {
     type:'POST',
     cache:false,
     data:{
-    method:'history',
+    method:'history_approver',
     emp_id:emp_id,
     fullname:fullname,
     date_authorized:date_authorized,
