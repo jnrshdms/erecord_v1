@@ -224,7 +224,7 @@ const get_next_page2 = () => {
     type:'POST',
     cache:false,
     data:{
-    method:'history',
+    method:'history_admin_r',
     emp_id:emp_id,
     fullname:fullname,
     category:category,

@@ -4,7 +4,8 @@ include '../conn.php';
 
 $method = $_POST['method'];
 
-function count_history($search_arr, $conn) {
+// History for Admin Reviewer 
+function count_history_admin_r($search_arr, $conn) {
 	if (!empty($search_arr['category'] )) {
 	$emp_id = $_POST['emp_id'];
 	$fullname = $_POST['fullname'];
@@ -21,8 +22,7 @@ function count_history($search_arr, $conn) {
 		}
 		$query = $query . " a
 							LEFT JOIN t_employee_m b ON a.emp_id = b.emp_id 
-							JOIN `m_process` c ON a.process = c.process
-							where a.i_status = 'Approved'";
+							JOIN `m_process` c ON a.process = c.process";
 
 		if (!empty($search_arr['emp_id'])) {
 				$query = $query . " AND (b.emp_id = '".$search_arr['emp_id']."' OR b.emp_id_old = '".$search_arr['emp_id']."')";
@@ -36,7 +36,7 @@ function count_history($search_arr, $conn) {
 		if (!empty($search_arr['date_authorized'])) {
 			$query = $query . " AND a.date_authorized = '".$search_arr['date_authorized']."' ";
 		}
-		$query = $query ." ORDER BY a.process ASC, b.fullname ASC, a.auth_year DESC";
+		$query = $query ." ORDER BY a.i_review_by DESC";
 
 	$stmt = $conn->prepare($query);
 	$stmt->execute();
@@ -67,7 +67,7 @@ if ($method == 'count_history') {
 		"expire_date" => $expire_date
 	);
 
-	echo count_history($search_arr, $conn);
+	echo count_history_admin_r($search_arr, $conn);
 }
 
 if ($method == 'history_pagination') {
@@ -87,7 +87,7 @@ if ($method == 'history_pagination') {
 
 	$results_per_page = 100;
 
-	$number_of_result = intval(count_history($search_arr, $conn));
+	$number_of_result = intval(count_history_admin_r($search_arr, $conn));
 
 	//determine the total number of pages available  
 	$number_of_page = ceil($number_of_result / $results_per_page);
@@ -98,7 +98,7 @@ if ($method == 'history_pagination') {
 
 }
 
-if ($method == 'history') {
+if ($method == 'history_admin_r') {
 	$emp_id = $_POST['emp_id'];
 	$fullname = $_POST['fullname'];
 	$category = $_POST['category'];
@@ -126,8 +126,8 @@ if ($method == 'history') {
 		}
 		$query = $query . " a
 							LEFT JOIN t_employee_m b ON a.emp_id = b.emp_id 
-							JOIN `m_process` c ON a.process = c.process
-							where a.i_status = 'Approved'";
+							JOIN `m_process` c ON a.process = c.process ";
+				
 		if (!empty($emp_id)) {
 			$query = $query . " AND (b.emp_id = '$emp_id' OR b.emp_id_old = '$emp_id')";
 		}
@@ -142,13 +142,17 @@ if ($method == 'history') {
 		}
 
 		$query = $query . " AND b.fullname LIKE '$fullname%'";
-		$query = $query ."ORDER BY a.i_review_by DESC, a.i_approve_by DESC, a.up_date_time DESC LIMIT ".$page_first_result.", ".$results_per_page;
+		$query = $query ."ORDER BY a.i_review_by DESC LIMIT ".$page_first_result.", ".$results_per_page;
 		$stmt = $conn->prepare($query);
 		$stmt->execute();
 		if ($stmt->rowCount() > 0) {
 			foreach($stmt->fetchAll() as $j){
 				$c++;
-					echo '<tr>';
+				$row_class = "";
+				if ($j['i_status'] == 'Disapproved') {
+					$row_class = " bg-maroon";
+				}
+					echo '<tr class="' . $row_class .'">';
 					echo '<td>'.$c.'</td>';
 					echo '<td>'.$j['process'].'</td>';
 					echo '<td>'.$j['auth_no'].'</td>';
@@ -179,6 +183,91 @@ if ($method == 'history') {
 	}
 }
 
+
+if ($method == 'history_approver') {
+	$emp_id = $_POST['emp_id'];
+	$fullname = $_POST['fullname'];
+	$category = $_POST['category'];
+	$date_authorized = $_POST['date_authorized'];
+	$expire_date = $_POST['expire_date'];
+	$current_page = intval($_POST['current_page']);
+	$c = 0;
+
+	if (!empty($category)) {
+
+		$results_per_page = 100;
+
+		//determine the sql LIMIT starting number for the results on the displaying page
+		$page_first_result = ($current_page-1) * $results_per_page;
+
+		// For row numbering
+		$c = $page_first_result;
+
+		$query = "SELECT a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.up_date_time,a.i_status,a.i_review_by,a.i_approve_by,b.fullname,b.agency,a.dept,b.batch,b.emp_id,c.category,c.process";
+
+		if ($category == 'Final') {
+			$query = $query . " FROM `t_f_process`";
+		}else if ($category == 'Initial') {
+			$query = $query . " FROM `t_i_process`";
+		}
+		$query = $query . " a
+							LEFT JOIN t_employee_m b ON a.emp_id = b.emp_id 
+							JOIN `m_process` c ON a.process = c.process ";
+				
+		if (!empty($emp_id)) {
+			$query = $query . " AND (b.emp_id = '$emp_id' OR b.emp_id_old = '$emp_id')";
+		}
+		if (!empty($fullname)) {
+			$query = $query . " AND b.fullname LIKE'$fullname%'";
+		}
+		if (!empty($expire_date)) {
+			$query = $query . " AND a.expire_date = '$expire_date' ";
+		}
+		if (!empty($date_authorized)) {
+			$query = $query . " AND a.date_authorized = '$date_authorized' ";
+		}
+
+		$query = $query . " AND b.fullname LIKE '$fullname%'";
+		$query = $query ."ORDER BY  a.i_approve_by DESC LIMIT ".$page_first_result.", ".$results_per_page;
+		$stmt = $conn->prepare($query);
+		$stmt->execute();
+		if ($stmt->rowCount() > 0) {
+			foreach($stmt->fetchAll() as $j){
+				$c++;
+				$row_class = "";
+				if ($j['i_status'] == 'Disapproved') {
+					$row_class = " bg-maroon";
+				}
+					echo '<tr class="' . $row_class .'">';
+					echo '<td>'.$c.'</td>';
+					echo '<td>'.$j['process'].'</td>';
+					echo '<td>'.$j['auth_no'].'</td>';
+					echo '<td>'.$j['fullname'].'</td>';
+					echo '<td>'.$j['emp_id'].'</td>';
+					echo '<td>'.$j['auth_year'].'</td>';
+					echo '<td>'.$j['date_authorized'].'</td>';
+					echo '<td>'.$j['expire_date'].'</td>';
+					echo '<td>'.$j['r_of_cancellation'].'</td>';
+					echo '<td>'.$j['d_of_cancellation'].'</td>';
+					echo '<td>'.$j['up_date_time'].'</td>';
+					echo '<td>'.$j['i_review_by'].'</td>';
+					echo '<td>'.$j['i_approve_by'].'</td>';
+					echo '<td>'.$j['dept'].'</td>';
+					echo '<td>'.$j['i_status'].'</td>';
+					echo '<td>'.$j['remarks'].'</td>';
+					
+					
+				echo '</tr>';
+			}
+		}else{
+				echo '<tr>';
+					echo '<td style="text-align:center;" colspan="4">No Result</td>';
+				echo '</tr>';
+			}
+	}else {
+		echo '<script>alert("Please select category ");</script>';
+	}
+}
 
 
 
