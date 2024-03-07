@@ -167,7 +167,7 @@ const get_checked_length = () => {
 }
  
 
-
+// History of Admin Reviewer
 document.querySelectorAll('#fullname_h, #emp_id_h').forEach(input => {
   input.addEventListener("keyup", e => {
     if (e.which === 13) {
@@ -256,7 +256,7 @@ const get_next_page2 = () => {
     type:'POST',
     cache:false,
     data:{
-    method:'count_history',
+    method:'count_history_admin',
     emp_id:emp_id,
     fullname:fullname,
     date_authorized:date_authorized,
@@ -297,7 +297,7 @@ const history_pagination  = ()=>{
     type:'POST',
     cache:false,
     data:{
-    method:'history_pagination',
+    method:'history_pagination_admin_r',
     emp_id:emp_id,
     fullname:fullname,
     date_authorized:date_authorized,
