@@ -61,7 +61,7 @@
 					if (response == 'success') {
 						Swal.fire({
 							icon: 'success',
-							title: 'Succesfully Recorded !!!',
+							title: 'Succesfully Approved !!!',
 							text: 'Success',
 							showConfirmButton: false,
 							timer: 1000

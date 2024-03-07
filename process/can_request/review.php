@@ -221,7 +221,7 @@ if ($method == 'qc_approve') {
 		}else if ($category == 'Initial') {
 			$query = $query . " `t_i_process`";
 		}
-		$query = $query . " SET r_status = 'Approved', r_approve_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE auth_no = '$auth_no' ";
+		$query = $query . " SET r_status = 'Approved', status = 'NotQualified', r_approve_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE auth_no = '$auth_no' ";
 		$stmt = $conn->prepare($query);
 		$stmt -> execute();
 		$count--;
@@ -247,7 +247,7 @@ if ($method == 'qc_disapprove') {
         } else if ($category == 'Initial') {
             $query .= " `t_i_process`";
         }
-        $query .= " SET r_status = 'Disapproved', r_review_by = '".$_SESSION['fname']. "/ " .$server_date_time."', r_of_cancellation = NULL, d_of_cancellation = NULL WHERE auth_no = '$auth_no'";
+        $query .= " SET r_status = 'Disapproved', status = 'Qualified',  r_approve_by = '".$_SESSION['fname']. "/ " .$server_date_time."', r_of_cancellation = NULL, d_of_cancellation = NULL WHERE auth_no = '$auth_no'";
         $stmt = $conn->prepare($query);
         $stmt->execute();
         $count--;

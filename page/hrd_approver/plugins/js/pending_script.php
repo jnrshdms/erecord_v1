@@ -140,7 +140,7 @@ var arr = [];
           if (response == 'success') {
             Swal.fire({
                     icon: 'success',
-                    title: 'Succes!!!',
+                    title: 'Successfully Recorded!!!',
                     text: 'Success',
                     showConfirmButton: false,
                     timer : 1000

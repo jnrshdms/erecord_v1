@@ -548,7 +548,7 @@ var arr = [];
           if (response == 'success') {
             Swal.fire({
                     icon: 'success',
-                    title: 'Disreview Succes!!!',
+                    title: 'Successfully Disapproved !!!',
                     text: 'Success',
                     showConfirmButton: false,
                     timer : 1000

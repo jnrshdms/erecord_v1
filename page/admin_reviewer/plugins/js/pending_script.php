@@ -251,7 +251,7 @@ var arr = [];
           if (response == 'success') {
             Swal.fire({
                     icon: 'success',
-                    title: 'Succes!!!',
+                    title: 'Successfully Approved !!!',
                     text: 'Success',
                     showConfirmButton: false,
                     timer : 1000
@@ -295,7 +295,7 @@ var arr = [];
           if (response == 'success') {
             Swal.fire({
                     icon: 'success',
-                    title: 'Succes!!!',
+                    title: 'Successfully Disapproved !!!',
                     text: 'Success',
                     showConfirmButton: false,
                     timer : 1000
