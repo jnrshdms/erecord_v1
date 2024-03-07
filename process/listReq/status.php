@@ -109,7 +109,7 @@ if ($method == 'fetch_status_cert') {
 		$query = $query . " a
 							LEFT JOIN t_employee_m b ON a.emp_id = b.emp_id 
 							JOIN `m_process` c ON a.process = c.process
-							where a.i_status = '$i_status'";
+							where a.i_status = '$i_status' ";
 		if (!empty($emp_id)) {
 			$query = $query . " AND (b.emp_id = '$emp_id' OR b.emp_id_old = '$emp_id')";
 		}
