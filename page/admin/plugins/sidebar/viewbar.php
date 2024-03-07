@@ -13,7 +13,7 @@
         <img src="../../dist/img/user1.png" class="img-circle" alt="User Image">
       </div>
       <div class="info">
-        <a class="d-block" style="font-size:16px; color:black"><?= htmlspecialchars($_SESSION['username']); ?></a>
+        <a class="d-block" style="font-size:16px; color:black"><?= htmlspecialchars($_SESSION['fname']); ?></a>
       </div>
     </div>
 
