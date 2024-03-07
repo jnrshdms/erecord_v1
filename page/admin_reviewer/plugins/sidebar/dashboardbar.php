@@ -22,7 +22,15 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
-          <li class="nav-item">
+        <li class="nav-item">
+          <a href="record_status.php" class="nav-link">
+            <img src="../../dist/img/check-list.png" style="height:25px;">
+            <p class="pl-1" style="font-size:16px; color:black">
+              Record Status
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="list_of_req.php" class="nav-link">
             <img src="../../dist/img/list.png" style="height:25px;">
             <p class="pl-1" style="font-size:16px; color:black">
@@ -31,7 +39,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="dashboard.php" class="nav-link active" >
+          <a href="dashboard.php" class="nav-link active">
             <img src="../../dist/img/file.png" style="height:25px;">
             <p class="pl-1" style="font-size:16px; color:black">
               Cancellation Request
@@ -66,7 +74,7 @@
           <a href="manpowerpage.php" class="nav-link">
             <img src="../../dist/img/group.png" style="height:25px;">
             <p class="pl-1" style="font-size:16px; color:black">
-              Masterlist 
+              Masterlist
             </p>
           </a>
         </li>
