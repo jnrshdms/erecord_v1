@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <!-- table -->
-                    <div class="card-body table-responsive m-0 p-0" style="max-height: 500px;">
+                    <div class="card-body table-responsive m-0 p-0" style="max-height: 600px;">
                         <table class="table col-12 mt-3 table-head-fixed text-nowrap table-hover" id="" style="background: #F9F9F9;">
                             <thead style="text-align: center;">
                                 <!-- table switching content -->

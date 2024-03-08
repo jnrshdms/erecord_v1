@@ -76,7 +76,7 @@
                     <br>
 
                     <div class="col-12">
-                      <div class="card-body table-responsive p-0" style="height: 500px;">
+                      <div class="card-body table-responsive p-0" style="height: 600px;">
                         <table class="table table-head-fixed text-nowrap" id="employee_data">
                           <thead>
                             <tr>
@@ -152,7 +152,7 @@
                     </div>
                     <br>
                     <div class="col-12">
-                      <div class="card-body table-responsive p-0" style="height: 500px;">
+                      <div class="card-body table-responsive p-0" style="height: 600px;">
                         <table class="table table-head-fixed text-nowrap" id="employee_data">
                           <thead>
                             <tr>
