@@ -443,7 +443,7 @@ const search_can_pagination =()=>{
   }else if(r_status == 'Reviewed'){
     r_status = 'Reviewed';
   }else if(r_status == 'Disapproved'){
-    r_status = 'disapprove';
+    r_status = 'Disapproved';
   }
   $.ajax({
     url:'../../process/can_request/status.php',

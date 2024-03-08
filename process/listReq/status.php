@@ -21,7 +21,7 @@ function count_cert($search_arr, $conn)
 		$query = $query . " a
 							LEFT JOIN t_employee_m b ON a.emp_id = b.emp_id 
 							JOIN `m_process` c ON a.process = c.process
-							where a.i_status ='" . $search_arr['i_status'] . "'";
+							where a.i_status ='" . $search_arr['i_status'] . "' AND a.up_date_time LIKE '%" . $_SESSION['fname'] . "%'";
 		if (!empty($search_arr['emp_id'])) {
 			$query = $query . " AND (b.emp_id = '" . $search_arr['emp_id'] . "' OR b.emp_id_old = '" . $search_arr['emp_id'] . "')";
 		}
@@ -82,6 +82,8 @@ if ($method == 'fetch_cert_pagination') {
 		echo '<option value="' . $page . '">' . $page . '</option>';
 	}
 }
+
+
 if ($method == 'fetch_status_cert') {
 	$emp_id = $_POST['emp_id'];
 	$fullname = $_POST['fullname'];
@@ -109,7 +111,7 @@ if ($method == 'fetch_status_cert') {
 		$query = $query . " a
 							LEFT JOIN t_employee_m b ON a.emp_id = b.emp_id 
 							JOIN `m_process` c ON a.process = c.process
-							where a.i_status = '$i_status' ";
+							WHERE a.i_status = '$i_status' AND a.up_date_time LIKE '%" . $_SESSION['fname'] . "%'";
 		if (!empty($emp_id)) {
 			$query = $query . " AND (b.emp_id = '$emp_id' OR b.emp_id_old = '$emp_id')";
 		}

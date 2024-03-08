@@ -105,7 +105,7 @@ if ($method == 'fetch_status_can') {
 		$query = $query . " a
 							LEFT JOIN t_employee_m b ON a.emp_id = b.emp_id  
 							JOIN `m_process` c ON a.process = c.process
-							where a.r_status = '$r_status'";
+							where a.r_status = '$r_status' AND a.up_date_time LIKE '%" . $_SESSION['fname'] . "%'";
 		if (!empty($emp_id)) {
 			$query = $query . " AND (b.emp_id = '$emp_id' OR b.emp_id_old = '$emp_id')";
 		}

@@ -114,10 +114,9 @@ if ($method == 'get_auth_no_by_emp_no') {
                       FROM t_f_process a
                       LEFT JOIN t_employee_m d ON a.emp_id = d.emp_id
                       LEFT JOIN m_process c ON c.process = a.process
-                      WHERE a.auth_no = :auth_no";
+                      WHERE a.auth_no = '$auth_no'";
 
             $stmt = $conn->prepare($query);
-            $stmt->bindParam(':auth_no', $auth_no);
             $stmt->execute();
 
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
