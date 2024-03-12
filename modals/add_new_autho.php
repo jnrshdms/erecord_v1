@@ -5,7 +5,7 @@
         <h5 class="modal-title" id="exampleModalLabel">
           <b>Add New Authorization</b>
         </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="javascript:location.reload()">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -13,14 +13,14 @@
         <div class="row">
           <div class="col-sm-3">
             <!-- category -->
-           <label style="font-weight: normal;color: #000;"></label>
+            <label style="font-weight: normal;color: #000;"></label>
             <select class="form-control  btn bg-teal" recquired name="new_category_add" id="new_category_add">
               <option value="">Category</option>
               <option>Initial</option>
               <option>Final</option>
             </select>
           </div>
-          <div class="col-sm-5"> 
+          <div class="col-sm-5">
             <!-- select process -->
             <label style="font-weight: normal;color: #000;"></label>
             <select class="form-control btn" name="new_pro_add" recquired id="new_pro_add" style="width: 100%; border: 2px solid black;background-color: white;color: black;font-size: 16px;cursor: pointer; border-color: #7ADFB5;">
@@ -36,21 +36,21 @@
         </div>
         <br>
         <div class="row">
-        <div class="col-sm-5">
+          <div class="col-sm-5">
             <span><b>Employee Name:</b></span>
             <input type="text" id="new_fullname_add" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" readonly>
           </div>
           <div class="col-sm-4">
             <span><b>Authorization No.:</b></span>
-            <input type="text" id="new_auth_no_add" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" >
+            <input type="text" id="new_auth_no_add" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off">
           </div>
           <div class="col-sm-3">
             <span><b>Department:</b></span>
-      <select id="new_dept_add" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off">
+            <select id="new_dept_add" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off">
               <option value="PD">PD</option>
               <option value="QA">QA</option>
-            </select> 
-        </div>
+            </select>
+          </div>
         </div>
         <br>
         <div class="row">
@@ -79,4 +79,4 @@
       </div>
     </div>
   </div>
-</div> 
+</div>
