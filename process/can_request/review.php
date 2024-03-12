@@ -221,7 +221,7 @@ if ($method == 'qc_approve') {
 		}else if ($category == 'Initial') {
 			$query = $query . " `t_i_process`";
 		}
-		$query = $query . " SET r_status = 'Approved', status = 'NotQualified', r_approve_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE auth_no = '$auth_no' ";
+		$query = $query . " SET r_status = 'Approved', status = 'Not Qualified', r_approve_by = '".$_SESSION['fname']. "/ " .$server_date_time."' WHERE auth_no = '$auth_no' ";
 		$stmt = $conn->prepare($query);
 		$stmt -> execute();
 		$count--;

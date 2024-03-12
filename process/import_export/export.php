@@ -149,7 +149,7 @@ if ($method == 'fetch_category') {
 			$c++;
 			$row_class = "";
 			$i_status = $j['i_status'];
-			if ($j['status'] == 'NotQualified') {
+			if ($j['status'] == 'Not Qualified') {
 				$row_class = " bg-warning";
 			}
 

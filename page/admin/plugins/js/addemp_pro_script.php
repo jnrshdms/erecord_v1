@@ -432,6 +432,7 @@
 						$("#fullname").val('');
 						$("#dept").val('');
 						$("#batch").val('');
+				
 
 					} else {
 						Swal.fire({
@@ -452,6 +453,7 @@
 						$("#fullname").val('');
 						$("#dept").val('');
 						$("#batch").val('');
+						
 
 
 
