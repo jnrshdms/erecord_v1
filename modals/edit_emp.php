@@ -32,8 +32,10 @@
             <input type="text" id="id_old_edit" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off">
           </div> -->
           <div class="col-sm-4">
-            <span><b>Provider:</b></span><br>
-            <select class="form-control" id="agency_edit" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off">
+            <span><b>Provider:</b></span>
+            <input type="text" id="agency_edit" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off">
+          </div>
+            <!-- <select class="form-control" id="agency_edit" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off">
               <option></option>
               <option>ADDEVEN</option>
               <option>FAS</option>
@@ -43,7 +45,7 @@
               <option>ONESOURCE</option>
               <option>PKMT</option>
             </select>
-          </div>
+          </div> -->
           <div class="col-sm-4">
             <span><b>Batch No.:</b></span>
             <input type="number" id="batch_edit" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off">

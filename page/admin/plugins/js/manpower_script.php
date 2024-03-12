@@ -421,7 +421,7 @@ const save_emp_data =()=>{
     }
   });
   }
-}
+} 
 
 const delete_emp =()=>{
   var id = document.getElementById('id_edit').value;
