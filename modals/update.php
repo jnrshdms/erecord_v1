@@ -45,10 +45,8 @@
         
             <div class="col-3">
                <span><b>Department:</b></span>
-               <select id="dept_can" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" >
-                    <option value="PD">PD</option>
-                    <option value="QA">QA</option>
-               </select>
+               <input type="text" id="dept_can" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" >
+        
                 </div>
                 <div class="col-3">
                  <span><b>Reason Of Cancellation:</b></span>

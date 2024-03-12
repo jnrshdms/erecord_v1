@@ -321,7 +321,7 @@ const save_data =()=>{
           type:'POST',
           cache:false,
           data:{
-          method:'update',
+          method:'admin_update',
           auth_no:auth_no,
           auth_year:auth_year,
           date_authorized:date_authorized,
@@ -383,21 +383,13 @@ const save_data =()=>{
                         showConfirmButton: false,
                         timer : 1000
                       });
-                  $("#auth_no").val('');
-                  $("#auth_year").val('');
-                  $("#date_authorized").val('');
-                  $("#expire_date").val('');
-                  $("#remarks").val('');
-                  // $("#r_of_cancellation").val('');
-                  $("#dept").val('');
-                  // $("#d_of_cancellation").val('');
-                  $("#up_date_time").val('');
-                  $('#update').modal('hide');
+              
                   }
           }
       });
   }
 }
+
 
 //minor update
 const minor_save_data =()=>{

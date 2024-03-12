@@ -193,7 +193,6 @@
 							showConfirmButton: false,
 							timer: 1000
 						});
-						$('#add_new_autho').modal('hide');
 						$("#pro").val('');
 						$("#auth_no").val('');
 						$("#emp_id").val('');
@@ -204,7 +203,12 @@
 						$("#fullname").val('');
 						$("#dept").val('');
 						$("#batch").val('');
-
+						$('#add_new_autho').modal('hide');
+  
+						setTimeout(function () {
+                        location.reload();
+                       }, 10);
+					   
 					} else {
 						Swal.fire({
 							icon: 'error',
@@ -213,20 +217,6 @@
 							showConfirmButton: false,
 							timer: 1000
 						});
-						$('#add_new_autho').modal('hide');
-						$("#pro").val('');
-						$("#auth_no").val('');
-						$("#emp_id").val('');
-						$("#auth_year").val('');
-						$("#date_authorized").val('');
-						$("#expire_date").val('');
-						$("#remarks").val('');
-						$("#fullname").val('');
-						$("#dept").val('');
-						$("#batch").val('');
-
-
-
 					}
 				}
 			});
@@ -421,7 +411,7 @@
 							showConfirmButton: false,
 							timer: 1000
 						});
-						$('#add_emp_pro').modal('hide');
+					
 						$("#pro").val('');
 						$("#auth_no").val('');
 						$("#emp_id").val('');
@@ -432,7 +422,11 @@
 						$("#fullname").val('');
 						$("#dept").val('');
 						$("#batch").val('');
-				
+
+						$('#add_emp_pro').modal('hide');
+						setTimeout(function () {
+                        location.reload();
+                       }, 10);
 
 					} else {
 						Swal.fire({
@@ -442,21 +436,6 @@
 							showConfirmButton: false,
 							timer: 1000
 						});
-						$('#add_emp_pro').modal('hide');
-						$("#pro").val('');
-						$("#auth_no").val('');
-						$("#emp_id").val('');
-						$("#auth_year").val('');
-						$("#date_authorized").val('');
-						$("#expire_date").val('');
-						$("#remarks").val('');
-						$("#fullname").val('');
-						$("#dept").val('');
-						$("#batch").val('');
-						
-
-
-
 					}
 				}
 			});
