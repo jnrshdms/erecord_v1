@@ -222,7 +222,7 @@ function count_history_approver($search_arr, $conn)
 		if (!empty($search_arr['date_authorized'])) {
 			$query = $query . " AND a.date_authorized = '" . $search_arr['date_authorized'] . "' ";
 		}
-		$query = $query . " ORDER BY SUBSTRING_INDEX(a.i_approve_by , '/', -1)";
+		$query = $query . " ORDER BY SUBSTRING_INDEX(a.i_approve_by , '/', -1) DESC";
 
 		$stmt = $conn->prepare($query);
 		$stmt->execute();
@@ -327,7 +327,7 @@ if ($method == 'history_approver') {
 		}
 
 		$query = $query . " AND b.fullname LIKE '$fullname%'";
-		$query = $query . "ORDER BY SUBSTRING_INDEX(a.i_approve_by , '/', -1) LIMIT " . $page_first_result . ", " . $results_per_page;
+		$query = $query . "ORDER BY SUBSTRING_INDEX(a.i_approve_by , '/', -1) DESC LIMIT " . $page_first_result . ", " . $results_per_page;
 		$stmt = $conn->prepare($query);
 		$stmt->execute();
 		if ($stmt->rowCount() > 0) {

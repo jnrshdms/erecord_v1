@@ -32,7 +32,7 @@ function count_rev($search_arr, $conn) {
 	}
 
 	
-	$query = $query . "GROUP BY a.auth_no ORDER BY b.fullname ASC";
+	$query = $query . "GROUP BY a.auth_no ORDER BY SUBSTRING_INDEX(a.up_date_time, '/', -1) Desc";
 
 	$query = $query . ") AS asub";
 
@@ -122,7 +122,7 @@ if ($method == 'fetch_rev') {
 		if (!empty($fullname)) {
 			$query = $query . " AND b.fullname LIKE'$fullname%'";
 		}
-		$query = $query . "GROUP BY a.auth_no ASC ORDER BY b.fullname ASC LIMIT ".$page_first_result.", ".$results_per_page;
+		$query = $query . "GROUP BY a.auth_no ASC  ORDER BY SUBSTRING_INDEX(a.up_date_time, '/', -1) Desc LIMIT ".$page_first_result.", ".$results_per_page;
 		$stmt = $conn->prepare($query);
 		$stmt->execute();
 		if ($stmt->rowCount() > 0) {
