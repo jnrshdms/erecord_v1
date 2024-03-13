@@ -323,7 +323,7 @@ const save_data =()=>{
           type:'POST',
           cache:false,
           data:{
-          method:'update',
+          method:'admin_update',
           auth_no:auth_no,
           auth_year:auth_year,
           date_authorized:date_authorized,

@@ -32,7 +32,7 @@ function count_pending($search_arr, $conn) {
 	}
 
 	
-	$query = $query . "GROUP BY a.auth_no ORDER BY b.fullname ASC";
+	$query = $query . "GROUP BY a.auth_no ORDER BY SUBSTRING_INDEX(a.up_date_time, '/', -1) DESC";
 
 	$query = $query . ") AS asub";
 
@@ -124,7 +124,7 @@ if ($method == 'fetch_category') {
 		if (!empty($fullname)) {
 			$query = $query . " AND b.fullname LIKE'$fullname%'";
 		}
-		$query = $query . "GROUP BY a.auth_no ASC ORDER BY b.fullname ASC LIMIT ".$page_first_result.", ".$results_per_page;
+		$query = $query . "GROUP BY a.auth_no ASC ORDER BY SUBSTRING_INDEX(a.up_date_time, '/', -1) DESC LIMIT ".$page_first_result.", ".$results_per_page;
 		$stmt = $conn->prepare($query);
 		$stmt->execute();
 		if ($stmt->rowCount() > 0) {
