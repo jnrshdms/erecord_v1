@@ -27,7 +27,7 @@ function count_cert($search_arr, $conn)
 		}
 
 		$query = $query . " AND b.fullname LIKE '" . $search_arr['fullname'] . "%'";
-		$query = $query . " ORDER BY a.up_date_time DESC";
+		$query = $query . " ORDER BY SUBSTRING_INDEX(a.up_date_time , '/', -1) DESC";
 
 		$stmt = $conn->prepare($query);
 		$stmt->execute();
@@ -113,7 +113,7 @@ if ($method == 'fetch_status_cert') {
 			$query = $query . " AND (b.emp_id = '$emp_id' OR b.emp_id_old = '$emp_id')";
 		}
 		$query = $query . " AND b.fullname LIKE '$fullname%' ";
-		$query = $query . " ORDER BY a.up_date_time DESC LIMIT " . $page_first_result . ", " . $results_per_page;
+		$query = $query . "  ORDER BY SUBSTRING_INDEX(a.up_date_time , '/', -1) DESC LIMIT " . $page_first_result . ", " . $results_per_page;
 		$stmt = $conn->prepare($query);
 		$stmt->execute();
 		if ($stmt->rowCount() > 0) {
@@ -133,6 +133,7 @@ if ($method == 'fetch_status_cert') {
 				echo '<td>' . $j['d_of_cancellation'] . '</td>';
 				echo '<td>' . $j['up_date_time'] . '</td>';
 				echo '<td>' . $j['i_review_by'] . '</td>';
+				echo '<td>' . $j['i_approve_by'] . '</td>';
 				echo '<td>' . $j['i_status'] . '</td>';
 				echo '<td>' . $j['dept'] . '</td>';
 				echo '<td>' . $j['remarks'] . '</td>';

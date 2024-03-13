@@ -257,29 +257,9 @@ if ($method == 'admin_update') {
 
     $error = 0;
 
-    $query = "SELECT id FROM ";
-    if ($category == 'Final') {
-        $query .= "`t_f_process`";
-    } else if ($category == 'Initial') {
-        $query .= "`t_i_process`";
-    }
-    $query .= " WHERE id = '$id' AND auth_no='$auth_no' AND auth_year = '$auth_year' AND date_authorized = '$date_authorized' AND expire_date = '$expire_date' AND remarks = '$remarks' AND dept = '$dept'";
-
-    $stmt = $conn->prepare($query);
-    $stmt->execute();
-    if ($stmt->rowCount() < 1) {
-        $query = "UPDATE ";
-        if ($category == 'Final') {
-            $query .= "`t_f_process`";
-        } else if ($category == 'Initial') {
-            $query .= "`t_i_process`";
-        }
-        $query .= " SET remarks = '$remarks', auth_year = '$auth_year', date_authorized = '$date_authorized', expire_date = '$expire_date', dept = '$dept', i_status = 'Pending',  up_date_time = '" . $_SESSION['fname'] . "/ " . $server_date_time . "' WHERE id = '$id'";
-        $stmt = $conn->prepare($query);
-        if (!$stmt->execute()) {
-            $error++;
-        }
-    } else {
+   
+    if (!empty($r_of_cancellation) && !empty($d_of_cancellation)) {
+  
         $query = "UPDATE ";
         if ($category == 'Final') {
             $query .= "`t_f_process`";
@@ -287,14 +267,19 @@ if ($method == 'admin_update') {
             $query .= "`t_i_process`";
         }
         $query .= " SET r_of_cancellation = '$r_of_cancellation', d_of_cancellation = '$d_of_cancellation', r_status = 'Pending', dept = '$dept', up_date_time = '" . $_SESSION['fname'] . "/ " . $server_date_time . "' WHERE auth_no = '$auth_no'";
-        $stmt = $conn->prepare($query);
-        if (!$stmt->execute()) {
-            $error++;
+    } else {
+  
+        $query = "UPDATE ";
+        if ($category == 'Final') {
+            $query .= "`t_f_process`";
+        } else if ($category == 'Initial') {
+            $query .= "`t_i_process`";
         }
+        $query .= " SET remarks = '$remarks', auth_year = '$auth_year', date_authorized = '$date_authorized', expire_date = '$expire_date', dept = '$dept', i_status = 'Pending', up_date_time = '" . $_SESSION['fname'] . "/ " . $server_date_time . "' WHERE id = '$id'";
     }
 
-    // Moved the check for $error outside the else block
-    if ($error == 0) {
+    $stmt = $conn->prepare($query);
+    if ($stmt->execute()) {
         echo 'success';
     } else {
         echo 'error';
@@ -302,8 +287,8 @@ if ($method == 'admin_update') {
 }
 
 
-//minor update
 
+//minor update
 if ($method == 'minor_update') {
 	$auth_no = $_POST['auth_no'];
 	$auth_year = $_POST['auth_year'];

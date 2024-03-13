@@ -87,6 +87,7 @@
                             <th>Date of Cancellation</th>
                             <th>Prepared By/ Date/ Time</th>
                             <th>Review By/ Date/ Time</th>
+                            <th>Approved By/ Date/ Time</th>
                             <th>Status</th>
                             <th>Department</th>
                             <th>Remarks</th>

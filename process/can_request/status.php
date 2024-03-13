@@ -10,7 +10,7 @@ function count_can($search_arr, $conn) {
 	$fullname = $_POST['fullname'];
 	$category = $_POST['category'];
 	$i_status = $_POST['r_status'];
-	$query = "SELECT  COUNT(DISTINCT a.emp_id) as total";
+	$query = "SELECT  COUNT(DISTINCT a.auth_no) as total";
 
 	if ($category == 'Final') {
 			$query = $query . " FROM `t_f_process`";
@@ -26,7 +26,7 @@ function count_can($search_arr, $conn) {
 			}
 
 		$query = $query . " AND b.fullname LIKE '".$search_arr['fullname']."%'";
-		$query = $query ." ORDER BY a.up_date_time DESC";
+		$query = $query ." ORDER BY SUBSTRING_INDEX(a.up_date_time , '/', -1) DESC";
 
 	$stmt = $conn->prepare($query);
 	$stmt->execute();
@@ -112,7 +112,7 @@ if ($method == 'fetch_status_can') {
 		if (!empty($fullname)) {
 			$query = $query . " AND b.fullname LIKE'$fullname%'";
 		}
-		$query = $query . "GROUP BY a.auth_no ASC ORDER BY b.fullname ASC LIMIT ".$page_first_result.", ".$results_per_page;
+		$query = $query . "GROUP BY a.auth_no ASC ORDER BY SUBSTRING_INDEX(a.up_date_time , '/', -1) DESC LIMIT ".$page_first_result.", ".$results_per_page;
 		$stmt = $conn->prepare($query);
 		$stmt->execute();
 		if ($stmt->rowCount() > 0) {
@@ -135,8 +135,6 @@ if ($method == 'fetch_status_can') {
 					echo '<td>'.$j['dept'].'</td>';
 					echo '<td>'.$j['r_status'].'</td>';
 					echo '<td>'.$j['remarks'].'</td>';
-					
-					
 				echo '</tr>';
 			}
 		}else{
