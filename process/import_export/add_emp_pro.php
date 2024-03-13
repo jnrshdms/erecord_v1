@@ -65,34 +65,35 @@ if ($method == 'add_new_autho') {
     $fullname = $_POST['fullname'];
     $category = $_POST['category'];
     $up_date = $fname . '/ ' . $server_date_time;
-
+    
     $query = "SELECT a.*, b.fullname, b.emp_id ";
-
     if ($category == 'Final') {
         $query = $query . " FROM `t_f_process`";
     } else if ($category == 'Initial') {
         $query = $query . " FROM `t_i_process`";
     }
     $query = $query . " a LEFT JOIN t_employee_m b ON a.emp_id = b.emp_id WHERE a.process = '$pro' AND a.auth_no = '$auth_no' AND a.emp_id = '$emp_id' AND a.auth_year = '$auth_year' AND a.date_authorized = '$date_authorized' AND a.expire_date ='$expire_date' AND a.remarks = '$remarks' AND a.dept ='$dept' AND a.batch ='$batch' ";
-
-
     $stmt = $conn->prepare($query);
     $stmt->execute();
-    $insert = "";
+    $count = $stmt->fetchColumn();
 
-
-    if ($category == 'Final') {
-        $insert = $insert . "INSERT INTO `t_f_process`";
-    } else if ($category == 'Initial') {
-        $insert = $insert . "INSERT INTO `t_i_process`";
-    }
-
-    $insert = $insert . "(`process`, `auth_no`, `emp_id`, `auth_year`, `date_authorized`, `expire_date`, `remarks`, `up_date_time`, `i_status`, `dept`, `batch`) VALUES ('$pro', '$auth_no', '$emp_id', '$auth_year', '$date_authorized', '$expire_date', '$remarks', '$up_date', 'Pending', '$dept', '$batch')";
-    $stmt = $conn->prepare($insert);
-    if ($stmt->execute()) {
-        echo 'success';
+    if ($count > 0) {
+        echo 'duplicate';
     } else {
-        echo 'error';
+        $insert = "";
+        if ($category == 'Final') {
+            $insert = $insert . "INSERT INTO `t_f_process`";
+        } else if ($category == 'Initial') {
+            $insert = $insert . "INSERT INTO `t_i_process`";
+        }
+
+        $insert = $insert . "(`process`, `auth_no`, `emp_id`, `auth_year`, `date_authorized`, `expire_date`, `remarks`, `up_date_time`, `i_status`, `dept`, `batch`) VALUES ('$pro', '$auth_no', '$emp_id', '$auth_year', '$date_authorized', '$expire_date', '$remarks', '$up_date', 'Pending', '$dept', '$batch')";
+        $stmt = $conn->prepare($insert);
+        if ($stmt->execute()) {
+            echo 'success';
+        } else {
+            echo 'error';
+        }
     }
 }
 
@@ -189,6 +190,7 @@ if ($method == 'add_emp_pro') {
     $category = $_POST['category'];
     $up_date = $fname . '/ ' . $server_date_time;
 
+
     $query = "SELECT a.*, b.fullname, b.emp_id ";
 
     if ($category == 'Final') {
@@ -200,19 +202,24 @@ if ($method == 'add_emp_pro') {
     $query = $query . " a LEFT JOIN t_employee_m b ON a.emp_id = b.emp_id WHERE a.process = '$pro' AND a.auth_no = '$auth_no' AND a.emp_id = '$emp_id' AND a.auth_year = '$auth_year' AND a.date_authorized = '$date_authorized' AND a.expire_date ='$expire_date' AND a.remarks = '$remarks' AND a.dept ='$dept' AND a.batch ='$batch' ";
     $stmt = $conn->prepare($query);
     $stmt->execute();
-    $insert = "";
+    $count = $stmt->fetchColumn();
 
-    if ($category == 'Final') {
-        $insert = $insert . "INSERT INTO `t_f_process`";
-    } else if ($category == 'Initial') {
-        $insert = $insert . "INSERT INTO `t_i_process`";
-    }
-
-    $insert = $insert . "(`process`, `auth_no`, `emp_id`, `auth_year`, `date_authorized`, `expire_date`, `remarks`, `up_date_time`, `i_status`, `dept`, `batch`) VALUES ('$pro', '$auth_no', '$emp_id', '$auth_year', '$date_authorized', '$expire_date', '$remarks', '$up_date', 'Pending', '$dept', '$batch')";
-    $stmt = $conn->prepare($insert);
-    if ($stmt->execute()) {
-        echo 'success';
+    if ($count > 0) {
+        echo 'duplicate';
     } else {
-        echo 'error';
+        $insert = "";
+        if ($category == 'Final') {
+            $insert = $insert . "INSERT INTO `t_f_process`";
+        } else if ($category == 'Initial') {
+            $insert = $insert . "INSERT INTO `t_i_process`";
+        }
+
+        $insert = $insert . "(`process`, `auth_no`, `emp_id`, `auth_year`, `date_authorized`, `expire_date`, `remarks`, `up_date_time`, `i_status`, `dept`, `batch`) VALUES ('$pro', '$auth_no', '$emp_id', '$auth_year', '$date_authorized', '$expire_date', '$remarks', '$up_date', 'Pending', '$dept', '$batch')";
+        $stmt = $conn->prepare($insert);
+        if ($stmt->execute()) {
+            echo 'success';
+        } else {
+            echo 'error';
+        }
     }
 }

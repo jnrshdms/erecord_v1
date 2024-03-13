@@ -397,6 +397,26 @@
             $('#new_dept_add').val('');
             $('#new_batch_add').val('');
             $('#add_new_autho').modal('hide');
+          } else if (response == 'duplicate') {
+						Swal.fire({
+							icon: 'info',
+							title: 'Duplicate Data!',
+							text: 'Information',
+							showConfirmButton: false,
+							timer: 2500
+						});
+            $('#new_pro_add').val('');
+            $('#new_category_add').val('');
+            $('#new_auth_no_add').val('');
+            $('#new_emp_id_add').val('');
+            $('#new_auth_year_add').val('');
+            $('#new_date_authorized_add').val('');
+            $('#new_expire_date_add').val('');
+            $('#new_remarks_add').val('');
+            $('#new_fullname_add').val('');
+            $('#new_dept_add').val('');
+            $('#new_batch_add').val('');
+            $('#add_new_autho').modal('hide');
           } else {
             Swal.fire({
               icon: 'error',
@@ -582,6 +602,26 @@
               showConfirmButton: false,
               timer: 1000
             });
+            $('#add_emp_pro').modal('hide');
+            $("#process_add").val('');
+            $("#auth_no_add").val('');
+            $("#emp_id_add").val('');
+            $("#auth_year_add").val('');
+            $("#date_authorized_add").val('');
+            $("#expire_date_add").val('');
+            $("#remarks_add").val('');
+            $("#fullname_add").val('');
+            $("#dept_add").val('');
+            $("#category_add").val('');
+            $("#batch_add").val('');
+          } else if (response == 'duplicate') {
+						Swal.fire({
+							icon: 'info',
+							title: 'Duplicate Data!',
+							text: 'Information',
+							showConfirmButton: false,
+							timer: 2500
+						});
             $('#add_emp_pro').modal('hide');
             $("#process_add").val('');
             $("#auth_no_add").val('');
