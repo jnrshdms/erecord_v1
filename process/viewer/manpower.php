@@ -168,32 +168,38 @@ if ($method == 'fetch_data') {
 
 
 if ($method == 'save_acc') {
+    $fullname = $_POST['fullname'];
+    $emp_id = $_POST['emp_id'];
+    $agency = $_POST['agency'];
+    $batch = $_POST['batch'];
+    $m_name = $_POST['m_name'];
 
-	$fullname = $_POST['fullname'];
-	$emp_id = $_POST['emp_id'];
-	$agency = $_POST['agency'];
-	$batch = $_POST['batch'];
-	$m_name = $_POST['m_name'];
+    $check_duplicate = "SELECT COUNT(*) FROM t_employee_m WHERE emp_id = :emp_id";
+    $stmt_duplicate = $conn->prepare($check_duplicate);
+    $stmt_duplicate->bindParam(':emp_id', $emp_id);
+    $stmt_duplicate->execute();
+    $count = $stmt_duplicate->fetchColumn();
 
-	if (is_string($fullname) == true && is_string($emp_id) == true && is_string($agency) == true) {
-		try {
-			$insert = "INSERT INTO t_employee_m (`fullname`, `emp_id`, `agency`,`batch`,`m_name`) VALUES (:fullname,:emp_id,:agency,:batch,:m_name)";
-			$stmt = $conn->prepare($insert);
-			$stmt->execute(array(
-				':fullname' => $fullname,
-				':emp_id' => $emp_id,
-				':agency' => $agency,
-				':batch' => $batch,
-				':m_name' => $m_name
-			));
-			echo 'success';
-		} catch (Exception $e) {
-			echo 'fail';
-		}
-	} else {
-		echo 'fail';
-	}
+    if ($count > 0) {
+        echo 'duplicate'; 
+    } else {
+        try {
+            $insert = "INSERT INTO t_employee_m (`fullname`, `emp_id`, `agency`,`batch`,`m_name`) VALUES (:fullname,:emp_id,:agency,:batch,:m_name)";
+            $stmt = $conn->prepare($insert);
+            $stmt->execute(array(
+                ':fullname' => $fullname,
+                ':emp_id' => $emp_id,
+                ':agency' => $agency,
+                ':batch' => $batch,
+                ':m_name' => $m_name
+            ));
+            echo 'success';
+        } catch (Exception $e) {
+            echo 'fail'; // Return fail message if insertion fails
+        }
+    }
 }
+
 
 if ($method == 'save_up') {
 

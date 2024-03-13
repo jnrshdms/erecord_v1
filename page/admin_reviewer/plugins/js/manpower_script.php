@@ -271,10 +271,10 @@ const save_emp_data =()=>{
             $('#emp_id').val('');
             $('#agency').val('');
             $('#batch').val('');
-      }else if(response == 'existing'){
+      }else if(response == 'duplicate'){
         Swal.fire({
                 icon: 'info',
-                title: 'Existing Data !!!',
+                title: 'Duplicate Data !!!',
                 text: 'Information',
                 showConfirmButton: false,
                 timer : 1000
