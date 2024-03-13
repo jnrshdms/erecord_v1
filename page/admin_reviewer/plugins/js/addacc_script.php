@@ -75,7 +75,7 @@
 					} else if (response == 'duplicate') {
 						Swal.fire({
 							icon: 'info',
-							title: 'Duplicate Data!',
+							title: 'Username already exists!',
 							text: 'Information',
 							showConfirmButton: false,
 							timer: 2500
@@ -164,7 +164,7 @@
 					});
 					$('#update_admin_r').modal('hide');
 					load_accounts();
-					
+
 					$('#fname').val('')
 					$('#username').val('');
 					$('#password').val('');
@@ -172,7 +172,7 @@
 				} else if (response == 'duplicate') {
 					Swal.fire({
 						icon: 'info',
-						title: 'Duplicate Data!',
+						title: 'Username already exists!',
 						text: 'Information',
 						showConfirmButton: false,
 						timer: 2500
