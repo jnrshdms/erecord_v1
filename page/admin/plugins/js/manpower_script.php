@@ -393,8 +393,8 @@ const save_emp_data =()=>{
             $('#fullname').val('');
             $('#emp_id').val('');
             $('#emp_id_old').val('');
-            $('#agency').val('');
-            $('#batch').val('');
+            $('#agency_edit').val('');
+            $('#batch_edit').val('');
       }else if(response == 'existing'){
         Swal.fire({
                 icon: 'info',
@@ -407,8 +407,8 @@ const save_emp_data =()=>{
             $('#fullname').val('');
             $('#emp_id').val('');
             $('#emp_id_old').val('');
-            $('#agency').val('');
-            $('#batch').val('');
+            $('#agency_edit').val('');
+            $('#batch_edit').val('');
       }else{
         Swal.fire({
                 icon: 'error',
@@ -421,7 +421,7 @@ const save_emp_data =()=>{
     }
   });
   }
-} 
+}
 
 const delete_emp =()=>{
   var id = document.getElementById('id_edit').value;

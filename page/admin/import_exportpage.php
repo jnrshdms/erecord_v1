@@ -199,4 +199,3 @@
 <!-- /.content-wrapper -->
 <?php include 'plugins/footer.php'; ?>
 <?php include 'plugins/js/export_script.php'; ?>
-<?php include 'plugins/js/addemp_pro_script.php'; ?>
