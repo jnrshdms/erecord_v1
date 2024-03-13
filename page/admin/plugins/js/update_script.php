@@ -262,12 +262,7 @@
     $('#up_date_time_can').val(up_date_time);
     $('#employee_name_can').val(fullname);
     $('#auth_no_can').val(auth_no);
-
-
-
     console.log(param)
-
-
 
   }
 
@@ -361,28 +356,7 @@
             $('category').val('');
             view_data();
             $('#update').modal('hide');
-          } else if (response == 'existing') {
-            Swal.fire({
-              icon: 'info',
-              title: 'Duplicate Data !!!',
-              text: 'Information',
-              showConfirmButton: false,
-              timer: 1000
-            });
-            $('auth_no_can').val('');
-            $('auth_year_can').val('');
-            $('date_authorized_can').val('');
-            $('expire_date_can').val('');
-            $('remarks_can').val('');
-            $('r_of_cancellation_can').val('');
-            $('dept_can').val('');
-            $('d_of_cancellation_can').val('');
-            $('up_date_time_can').val('');
-            $('id_can').val('');
-            $('employee_name_can').val('');
-            $('category').val('');
-            $('#update').modal('hide');
-          } else {
+           } else {
             Swal.fire({
               icon: 'error',
               title: 'Error !!!',

@@ -30,7 +30,7 @@ function count_rev($search_arr, $conn) {
 		if (!empty($fullname)) {
 			$query = $query . " AND b.fullname LIKE'".$search_arr['fullname']."%'";
 		}
-		$query = $query ." ORDER BY a.process ASC, b.fullname ASC, a.auth_year DESC";
+		$query = $query ." ORDER BY SUBSTRING_INDEX(a.up_date_time, '/', -1)";
 
 	$stmt = $conn->prepare($query);
 	$stmt->execute();
@@ -118,7 +118,7 @@ if ($method == 'fetch_rev') {
 		if (!empty($fullname)) {
 			$query = $query . " AND b.fullname LIKE'$fullname%'";
 		}
-		$query = $query ." ORDER BY  a.process ASC, b.fullname ASC, a.auth_year DESC LIMIT ".$page_first_result.", ".$results_per_page;
+		$query = $query ."ORDER BY SUBSTRING_INDEX(a.up_date_time, '/', -1) LIMIT ".$page_first_result.", ".$results_per_page;
 		echo $query;
 		$stmt = $conn->prepare($query);
 		$stmt->execute();

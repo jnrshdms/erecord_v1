@@ -96,10 +96,7 @@ if ($method == 'fetch_status_cert') {
 
 		$results_per_page = 100;
 
-		//determine the sql LIMIT starting number for the results on the displaying page
 		$page_first_result = ($current_page - 1) * $results_per_page;
-
-		// For row numbering
 		$c = $page_first_result;
 		$query = "SELECT a.up_date_time,a.id,a.auth_no,a.auth_year,a.date_authorized,a.expire_date,a.r_of_cancellation,a.d_of_cancellation,a.remarks,a.up_date_time,a.i_status,a.i_review_by,b.fullname,b.agency,a.dept,b.batch,b.emp_id,c.category,c.process";
 

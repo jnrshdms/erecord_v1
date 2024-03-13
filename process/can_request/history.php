@@ -143,7 +143,7 @@ if ($method == 'history_admin_reviwer') {
             $query .= " AND a.date_authorized = '$date_authorized' ";
         }
 
-        $query .= " GROUP BY a.auth_no ASC ORDER BY a.r_review_by DESC LIMIT ".$page_first_result.", ".$results_per_page;
+        $query .= " GROUP BY a.auth_no ASC ORDER BY SUBSTRING_INDEX(a.r_review_by, '/', -1) DESC LIMIT ".$page_first_result.", ".$results_per_page;
 
         $stmt = $conn->prepare($query);
         $stmt->execute();
