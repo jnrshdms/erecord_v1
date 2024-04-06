@@ -60,9 +60,10 @@ if (isset($_POST['upload'])) {
                     $params = [$fullname, $emp_id, $batch, $m_name, $agency, $emp_status];
 
                     if (!empty($emp_id_old)) {
-                        if (empty($emp_id_old_ref)) {
-                            $updateQuery .= ", emp_id_old = emp_id";
-                        } else if ($emp_id_old != $emp_id_old_ref) {
+                        // if (empty($emp_id_old_ref)) {
+                        //     $updateQuery .= ", emp_id_old = emp_id";
+                        // } else
+                         if ($emp_id_old != $emp_id_old_ref) {
                             $updateQuery .= ", emp_id_old = ?";
                             $params[] = $emp_id_old;
                         }

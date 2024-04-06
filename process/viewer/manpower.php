@@ -227,16 +227,16 @@ if ($method == 'save_up') {
 		$query .= ", emp_id_old = '$emp_id_ref'";
 	}
 
-	$query .= ", emp_id = '$emp_id', agency = '$agency', emp_status = '" . $emp_status . "/ " . $server_date_only . "', m_name = '$m_name' WHERE id = '$id' ";
+	$query .= ", emp_id = '$emp_id', agency = '$agency', emp_status = '$emp_status', m_name = '$m_name' WHERE id = '$id' ";
 
 	$stmt = $conn->prepare($query);
 
 	$stmt = $conn->prepare($query);
 	if ($stmt->execute()) {
-		$query_f = "UPDATE t_f_process SET emp_id_old = '$emp_id_ref', emp_id = '$emp_id', batch = '$batch', remarks = '" . $emp_status . "/ " . $server_date_only . "' WHERE emp_id = '$emp_id_ref'";
+		$query_f = "UPDATE t_f_process SET emp_id_old = '$emp_id_ref', emp_id = '$emp_id', batch = '$batch', remarks = '$emp_status' WHERE emp_id = '$emp_id_ref'";
 		$stmt_f = $conn->prepare($query_f);
 		$stmt_f->execute();
-		$query_i = "UPDATE t_i_process SET emp_id_old = '$emp_id_ref', emp_id = '$emp_id', batch = '$batch', remarks = '" . $emp_status . "/ " . $server_date_only . "' WHERE emp_id = '$emp_id_ref'";
+		$query_i = "UPDATE t_i_process SET emp_id_old = '$emp_id_ref', emp_id = '$emp_id', batch = '$batch', remarks = '$emp_status' WHERE emp_id = '$emp_id_ref'";
 		$stmt_i = $conn->prepare($query_i);
 		$stmt_i->execute();
 		echo 'success';

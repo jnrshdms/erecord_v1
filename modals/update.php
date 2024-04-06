@@ -22,7 +22,7 @@
             <span><b>Authorization No. :</b></span>
           </div>
           <div class="col-3">
-            <input type="text" id="auth_no_can" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" disabled>
+            <input type="text" id="auth_no_can" class="form-control" style="height:35px; border: 1px solid black; font-size: 15px;" autocomplete="off" >
           </div>
         </div>
         <div class="row mt-3">

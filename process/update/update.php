@@ -322,7 +322,7 @@ if ($method == 'minor_update') {
 		} else if ($category == 'Initial') {
 			$query .= "`t_i_process`";
 		}
-		$query .= " SET remarks = '$remarks', auth_year = '$auth_year', date_authorized = '$date_authorized', expire_date = '$expire_date', dept = '$dept', i_status = 'Approved' WHERE id = '$id'";
+		$query .= " SET remarks = '$remarks', auth_no='$auth_no', auth_year = '$auth_year', date_authorized = '$date_authorized', expire_date = '$expire_date', dept = '$dept', i_status = 'Approved' WHERE id = '$id'";
 		$stmt = $conn->prepare($query);
 		if (!$stmt->execute()) {
 			$error++;
