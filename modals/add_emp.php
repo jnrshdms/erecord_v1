@@ -30,13 +30,13 @@
             <span><b>Provider:</b></span><br>
             <select class="form-control" id="agency_get" style="height:35px; border: 1px solid black; font-size: 15px;">
               <option></option>
-              <option>ADDEVEN</option>
+              <option>ADD EVEN</option>
               <option>FAS</option>
               <option>GOLDENHAND</option>
               <option>MAXIM</option>
               <option>MEGATREND</option>
-              <option>ONESOURCE</option>
-              <option>PKMT</option>
+              <option>ONE SOURCE</option>
+              <option>PKIMT</option>
             </select>
           </div>
           <div class="col-sm-4">
